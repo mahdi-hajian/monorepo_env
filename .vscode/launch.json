@@ -1,0 +1,99 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach To Run Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Launch BDMP & Debug Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "start-angular-bdmp",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Launch DIA & Debug Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "start-angular-dia",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Launch IAP-BDMP & Debug Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "start-angular-iap-bdmp",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Attach to Tests Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Run BDMP Tests Chrome And Debug",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/Web/WebUI",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      },
+      "preLaunchTask": "test-bdmp-debug"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Project repos — tracked separately, not part of this analytics workspace git
+LAP.DataModel/
+MicroService.IAP/
+MicroService.LAP.DW/
+Web/
+_Output

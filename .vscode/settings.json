@@ -1,0 +1,74 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit"
+        }
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "typescript.format.enable": false,
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.tsserver.maxTsServerMemory": 8192,
+    "typescript.tsserver.useSyntaxServer": "auto",
+    "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+    "typescript.preferences.autoImportFileExcludePatterns": [
+        "**/dist/**",
+        "**/out-tsc/**",
+        "**/*.spec.ts",
+        "**/*.stories.ts"
+    ],
+    "files.watcherExclude": {
+        "**/.angular/**": true,
+        "**/.nx/**": true,
+        "**/node_modules/**": true,
+        "**/coverage/**": true,
+        "**/dist/**": true,
+        "**/out-tsc/**": true,
+        "**/test-result/**": true,
+        "**/test-results/**": true,
+        "**/storybook-static/**": true,
+        "**/base/assets/scripts/**": true,
+        "**/base/assets/styles/**": true,
+        "**/dap/assets/Bundles/**": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.angular": true,
+        "**/.nx": true,
+        "**/coverage": true,
+        "**/dist": true,
+        "**/out-tsc": true,
+        "**/test-result": true,
+        "**/test-results": true,
+        "**/storybook-static": true,
+        "pnpm-lock.yaml": true,
+        "package-lock.json": true,
+        "**/base/assets/scripts": true,
+        "**/base/assets/styles": true,
+        "**/dap/assets/Bundles": true
+    },
+    "files.exclude": {
+        "**/.angular": true,
+        "**/.nx/cache": true,
+        "**/coverage": true,
+        "**/out-tsc": true
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "prettier.configPath": "",
+    "prettier.prettierPath": "./node_modules/prettier"
+}
