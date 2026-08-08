@@ -266,6 +266,7 @@ return list;
 - For **new** public methods and interfaces that perform I/O, remote calls, scans, or other potentially slow work: add **`CancellationToken cancellationToken = default`** as the **last** parameter so existing callers keep compiling; prefer omitting the argument at call sites when no cancellation is wired yet.
 - **Thread** the same token through every layer that participates in the operation (orchestrators, loaders, builders, repositories) and pass it into framework APIs that accept `CancellationToken` (e.g. Elasticsearch client, `Task` overloads).
 - Call **`cancellationToken.ThrowIfCancellationRequested()`** only **before** expensive steps (heavy queries, large materialization, pagination over non-`IList`), not on every line. Avoid throwing immediately after trivial work unless the contract requires it.
+- **Visualizer plugin `executeFunction` methods** (and any other public entry where reflection matches FE args 1:1): do **not** add `CancellationToken` to the method signature — `BasePluginRequestManager` requires `args.Length == GetParameters().Length`. Prefer a parameter token when the API allows it; when it does not, use **`MethodContext.Context.CancellationToken`** (`Mohaymen.Mrpc.Host.ApiControllerManager`) and call **`MethodContext.Context.CancellationToken.ThrowIfCancellationRequested()`** before expensive steps (same timing rules as above). Pass that token into nested APIs that accept `CancellationToken` when available.
 
 ```csharp
 public ResponseDto Load(LoadRequest request, CancellationToken cancellationToken = default)
@@ -275,6 +276,17 @@ public ResponseDto Load(LoadRequest request, CancellationToken cancellationToken
     var rows = _repository.Query(request, cancellationToken);
     cancellationToken.ThrowIfCancellationRequested();
     return _mapper.ToResponse(rows);
+}
+```
+
+```csharp
+// executeFunction-compatible package method (FE sends only business args)
+public FileBrowserListFilesResult ListFiles(int from, int size)
+{
+    MethodContext.Context.CancellationToken.ThrowIfCancellationRequested();
+    var documents = TabService.DataService.GetInstances(fileElementId);
+    MethodContext.Context.CancellationToken.ThrowIfCancellationRequested();
+    return _provider.Provide(documents, from, size);
 }
 ```
 
@@ -519,7 +531,7 @@ private static VisualizerHistogram BuildVisualizerHistogram(
 - Service class naming: no "Service" suffix (section 9)
 - Return directly, no intermediate variable (section 10)
 - Invalid Guid parsing in active flow throws explicit exception (section 11)
-- **CancellationToken**: last param `= default`, thread through, `ThrowIfCancellationRequested` before slow work only (section 12)
+- **CancellationToken**: last param `= default` when allowed; otherwise `MethodContext.Context.CancellationToken`; `ThrowIfCancellationRequested` before slow work only (section 12)
 - **Tracing**: inject `ITraceInstrumentation`, `using var activity = _traceInstrumentation.ActivitySource.StartActivity(...)` at operation entry (section 13)
 - **Business/applicability validation**: FluentValidation `AbstractValidator<T>` + `IValidator<T>` + error codes; not static `IsApplicable` / checker services (section 14)
 - **Exception messages**: fixed literals only — no interpolated variables in `throw` message text (section 15)
