@@ -5,13 +5,13 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Wave:** 1 (before `FE-02`)  
 **Domain:** CONTEXT Phase 1 browse / File list item; ADR 0002
 
-- [ ] FileBrowser backend package exists and does not call Explore package methods
-- [ ] ListFiles supports `from`/`size` + total count; default order by name
-- [ ] Membership = all Documents on current tab including Fade’d; selection ignored
-- [ ] Fields: id (tab Document identity), name, extension, size; empty Name/Extension/Length pass through
-- [ ] Package tests (BaseVisualizerTests-style) lock membership and list contract
+- [x] FileBrowser backend package exists and does not call Explore package methods
+- [x] ListFiles supports `from`/`size` + total count; default order by name
+- [x] Membership = all Documents on current tab including Fade’d; selection ignored
+- [x] Fields: id (tab Document identity), name, extension, size; empty Name/Extension/Length pass through
+- [x] Package tests (BaseVisualizerTests-style) lock membership and list contract
