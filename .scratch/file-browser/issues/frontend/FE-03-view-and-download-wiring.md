@@ -10,7 +10,7 @@
 **Wave:** 2 (after `BE-02`)  
 **Domain:** CONTEXT Phase 1 view vs download
 
-- [ ] View action: PrepareView(id) → FileViewer open-file open
-- [ ] Download action: PrepareDownload(id) → download URL
-- [ ] Only list `id` sent on requests
+- [ ] View action: PrepareView(instanceId) → FileViewer open-file open
+- [ ] Download action: PrepareDownload(instanceId) → download URL
+- [ ] Only list `instanceId` sent on requests
 - [ ] Do not start until BE-02 is done

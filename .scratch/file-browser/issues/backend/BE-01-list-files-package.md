@@ -13,5 +13,5 @@
 - [x] FileBrowser backend package exists and does not call Explore package methods
 - [x] ListFiles supports `from`/`size` + total count; default order by name
 - [x] Membership = all Documents on current tab including Fade’d; selection ignored
-- [x] Fields: id (tab Document identity), name, extension, size; empty Name/Extension/Length pass through
+- [x] Fields: instanceId (tab Document identity / BaseInstance.Guid), name, extension, size; empty Name/Extension/Length pass through
 - [x] Package tests (BaseVisualizerTests-style) lock membership and list contract
