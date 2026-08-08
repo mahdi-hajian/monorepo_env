@@ -1,0 +1,15 @@
+---
+description: WebUI HTML templates — same coding RULES as TypeScript frontend
+globs: Web/WebUI/**/*.html
+alwaysApply: false
+---
+
+# WebUI Angular templates
+
+When editing `Web/WebUI/**/*.html`, follow the same load order as TypeScript frontend coding:
+
+1. [`Web/WebUI/convention.md`](../../Web/WebUI/convention.md)
+2. [`Web/WebUI/.agents/RULES/coding/coding-principles.md`](../../Web/WebUI/.agents/RULES/coding/coding-principles.md)
+3. [`webui-coding`](../../.agents/skills/webui-coding/SKILL.md)
+
+For `iap/**` templates (visualizer / explore), also load [`iap-lap-coding`](../../.agents/skills/iap-lap-coding/SKILL.md) and when changing plugins [`iap-plugin-architecture-frontend`](../../.agents/skills/iap-plugin-architecture-frontend/SKILL.md).

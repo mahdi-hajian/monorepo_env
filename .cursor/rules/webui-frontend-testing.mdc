@@ -1,0 +1,15 @@
+---
+description: WebUI Jasmine/TestBed specs — load testing RULES + IAP unit-test-run
+globs: Web/WebUI/**/*.spec.ts
+alwaysApply: false
+---
+
+# WebUI frontend unit tests
+
+Before writing or editing `*.spec.ts` under `Web/WebUI/**`:
+
+1. [`Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`](../../Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md) (first)
+2. [`Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`](../../Web/WebUI/.agents/RULES/testing/tests-writing-principles.md)
+3. Skill [`webui-testing`](../../.agents/skills/webui-testing/SKILL.md)
+
+If the spec is under `iap/**`, also load [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) and run the mandated `ng test iap --configuration=withConfig` command after edits.

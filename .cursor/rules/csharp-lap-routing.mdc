@@ -1,0 +1,15 @@
+---
+description: Route C# / LAP work to IAP coding rules and .agents skills
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# C# / LAP agent routing (analytics workspace)
+
+When the active files or task involve C# / MicroService.IAP / LAP:
+
+1. Follow [`.cursor/rules/csharp-code-style.mdc`](csharp-code-style.mdc) for production code.
+2. Follow [`.cursor/rules/csharp-test-style.mdc`](csharp-test-style.mdc) for `*Tests.cs` / `LAP.Tests`.
+3. For build / test / feature flags / ADO PR workflows, read the matching skill under [`.agents/skills/`](../../.agents/skills/) (see root [`AGENTS.md`](../../AGENTS.md)).
+
+Do not invent alternate style; these files are the source of truth for this monorepo.

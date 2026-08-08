@@ -1,0 +1,31 @@
+---
+description: WebUI / IAP frontend coding — load RULES + IMAP skills when editing Angular/TS
+globs: Web/WebUI/**/*.ts
+alwaysApply: false
+---
+
+# WebUI frontend coding (analytics workspace)
+
+When editing frontend code under `Web/WebUI/**` (TypeScript, and co-located HTML/SCSS), **read these before writing code**. Do not wait for `@` mentions or `IMAP` / `coding` keywords.
+
+## Always (production + specs)
+
+1. [`Web/WebUI/convention.md`](../../Web/WebUI/convention.md) — single source of truth for shared Angular standards
+2. [`Web/WebUI/.agents/RULES/coding/coding-principles.md`](../../Web/WebUI/.agents/RULES/coding/coding-principles.md)
+3. Workspace skill [`webui-coding`](../../.agents/skills/webui-coding/SKILL.md)
+
+## Also load by path / task
+
+| When | Read |
+|------|------|
+| `iap/**` (esp. visualizer / explore) | [`iap-lap-coding`](../../.agents/skills/iap-lap-coding/SKILL.md) |
+| Visualizer plugins / MountPoint / PluginsModule | [`iap-plugin-architecture-frontend`](../../.agents/skills/iap-plugin-architecture-frontend/SKILL.md) |
+| `*.spec.ts` under `iap/**` | testing rules + [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) |
+| Feature flag / `web.uiconfig` | [`add-web-feature-flag`](../../.agents/skills/add-web-feature-flag/SKILL.md) |
+| Document a web feature flag | [`document-web-feature-flag`](../../.agents/skills/document-web-feature-flag/SKILL.md) |
+| Ogma decoupling phases | [`iap-ogma-decoupling`](../../.agents/skills/iap-ogma-decoupling/SKILL.md) |
+| Branch → HTML change doc | [`iap-branch-change-html-doc`](../../.agents/skills/iap-branch-change-html-doc/SKILL.md) |
+| Persian / RTL replies | [`farsi-rtl-output`](../../.agents/skills/farsi-rtl-output/SKILL.md) |
+| ADO PR follow-up on **Web** repo | [`web-azure-devops-pr-followup`](../../.agents/skills/web-azure-devops-pr-followup/SKILL.md) |
+
+Full index: root [`AGENTS.md`](../../AGENTS.md). Canonical bodies stay under `Web/WebUI/.agents/`.

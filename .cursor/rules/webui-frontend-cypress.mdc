@@ -1,0 +1,14 @@
+---
+description: WebUI Cypress component tests — load cypress + testing RULES
+globs: Web/WebUI/**/*.cy.ts
+alwaysApply: false
+---
+
+# WebUI Cypress
+
+Before writing or editing `*.cy.ts` under `Web/WebUI/**`:
+
+1. [`Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`](../../Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md)
+2. [`Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`](../../Web/WebUI/.agents/RULES/testing/tests-writing-principles.md)
+3. [`Web/WebUI/.agents/RULES/cypress/cypress-writing-principles.md`](../../Web/WebUI/.agents/RULES/cypress/cypress-writing-principles.md)
+4. Skill [`webui-cypress`](../../.agents/skills/webui-cypress/SKILL.md)
