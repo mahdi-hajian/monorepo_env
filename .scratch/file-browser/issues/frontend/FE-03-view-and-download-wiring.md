@@ -5,12 +5,13 @@
 
 **Blocked by:** FE-01; FE-02; BE-02
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Wave:** 2 (after `BE-02`)  
-**Domain:** CONTEXT Phase 1 view vs download
+**Domain:** CONTEXT Phase 1 view vs download  
+**Impl notes:** `iap/.../plugins/file-browser/AGENTS.md` + `mohaymen-file-browser/AGENTS.md`
 
-- [ ] View action: PrepareView(instanceId) → FileViewer open-file open
-- [ ] Download action: PrepareDownload(instanceId) → download URL
-- [ ] Only list `instanceId` sent on requests
-- [ ] Do not start until BE-02 is done
+- [x] View action: PrepareView(instanceId) → FileViewer open-file open
+- [x] Download action: PrepareDownload(instanceId) → download URL
+- [x] Only list `instanceId` sent on requests
+- [x] Do not start until BE-02 is done

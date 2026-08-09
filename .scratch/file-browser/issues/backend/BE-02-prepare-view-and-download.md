@@ -5,12 +5,14 @@
 
 **Blocked by:** BE-01 — FileBrowser ListFiles package
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Wave:** 2 (before `FE-03`)  
-**Domain:** CONTEXT Phase 1 view vs download; ADR 0004
+**Domain:** CONTEXT Phase 1 view vs download; ADR 0004  
+**Impl notes:** `MicroService.IAP/.../Visualizer/Plugin/FileBrowser/AGENTS.md`
 
-- [ ] PrepareView(instanceId) returns view shape usable by FileViewer opener
-- [ ] PrepareDownload(instanceId) returns downloadUrl (optional fileName)
-- [ ] Requests identify the Document only by FileBrowser list `instanceId`
-- [ ] Package tests cover both prepares for tab Documents
+- [x] PrepareView(instanceId) returns view shape usable by FileViewer opener
+- [x] PrepareDownload(instanceId) returns downloadUrl (optional fileName)
+- [x] Requests identify the Document only by FileBrowser list `instanceId`
+- [x] Package tests cover both prepares for tab Documents
+- [x] Prepare view/download split into `IFileBrowserPrepareViewProvider` + `IFileBrowserPrepareDownloadProvider`

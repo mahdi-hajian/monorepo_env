@@ -14,7 +14,7 @@
 
 ## Frontier فعلی
 
-موج ۱ تمام است (`BE-01` + `FE-02` done). بعدی: **`BE-02` PrepareView/Download** سپس `FE-03`.
+موج ۱–۲ تمام است (`BE-01`/`FE-02` + `BE-02`/`FE-03` done). بعدی: **`BE-03` Document-from-file** سپس `FE-04`.
 
 ## موج‌ها (Wave)
 
@@ -22,8 +22,8 @@
 | --- | ------------------------------------- | ------------------------------- | --------- | -------- |
 | 0   | —                                     | `FE-01` FileViewer display-file | 0         | **done** |
 | 1   | `BE-01` ListFiles                     | `FE-02` لیست تخت + شِل          | 1         | **done** |
-| 2   | `BE-02` PrepareView/Download          | `FE-03` مشاهده + دانلود         | 1         | next     |
-| 3   | `BE-03` Document-from-file + add بالک | `FE-04` UI افزودن sync          | 2         |
+| 2   | `BE-02` PrepareView/Download          | `FE-03` مشاهده + دانلود         | 1         | **done** |
+| 3   | `BE-03` Document-from-file + add بالک | `FE-04` UI افزودن sync          | 2         | next     |
 | 4   | — (بدون BE جدید)                      | `FE-05` پنل آپلود async         | 3         |
 | 5   | `BE-04` FilePath + browse level       | `FE-06` پوشه / session empty    | 4         |
 | 6   | —                                     | `FE-07` آپلود پوشه              | 5         |
