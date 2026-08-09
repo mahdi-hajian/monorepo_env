@@ -514,7 +514,53 @@ private static VisualizerHistogram BuildVisualizerHistogram(
     HashSet<Guid> instanceGuids)
 ```
 
-## 20) Quick checklist
+## 20) One public business method -> dedicated interface + implementation
+
+- For **new** application logic: each **public** business capability must have its **own** interface under `Abstraction/` and a matching **`sealed`** implementation registered in DI (see sections 7–8).
+- Typical targets: visualizer package `executeFunction` entry points (`ListFiles`, `PrepareView`, `PrepareDownload`, …), managers, and other orchestrators that expose public operations.
+- Do **not** put multiple unrelated public capabilities on one interface/type (avoid “god” providers such as one type with both `PrepareView` and `PrepareDownload`).
+- Preferred shape: `I…Provider` (or a focused noun) with a **single** primary method — prefer `Provide(...)` (section 19). The package/public entry stays thin: load tab/context, then delegate.
+- Shared private helpers (attribute readers, pure mapping) may live in `internal` helpers or a focused collaborator; they do **not** replace splitting public capabilities.
+- **Exceptions:**
+  - Constructors, property accessors, and framework overrides (`Dispose`, `Equals`, …).
+  - DTOs / `sealed record` types.
+  - A thin public method that only resolves context then calls **one** dedicated provider (the provider still owns that capability).
+  - Existing multi-method interfaces until touched; when adding a **new** public capability, introduce a **new** interface + implementation instead of expanding an unrelated interface.
+
+```csharp
+// Correct — one capability per interface + sealed implementation
+public interface IFileBrowserPrepareViewProvider
+{
+	FileBrowserPrepareViewResult Provide(BaseInstance document, Guid datasetGuid);
+}
+
+public interface IFileBrowserPrepareDownloadProvider
+{
+	FileBrowserPrepareDownloadResult Provide(BaseInstance document, Guid datasetGuid);
+}
+
+public sealed class FileBrowserPrepareViewProvider : IFileBrowserPrepareViewProvider { /* ... */ }
+public sealed class FileBrowserPrepareDownloadProvider : IFileBrowserPrepareDownloadProvider { /* ... */ }
+
+// Package stays thin and delegates
+public FileBrowserPrepareViewResult PrepareView(Guid instanceId)
+{
+	var document = TabService.DataService.GetInstance(instanceId)
+		?? throw new InvalidOperationException("Document was not found on the tab.");
+	return _fileBrowserPrepareViewProvider.Provide(document, TabService.DatasetGuid);
+}
+```
+
+```csharp
+// Wrong — multiple public capabilities on one interface
+public interface IFileBrowserPrepareFileProvider
+{
+	FileBrowserPrepareViewResult PrepareView(BaseInstance document, Guid datasetGuid);
+	FileBrowserPrepareDownloadResult PrepareDownload(BaseInstance document, Guid datasetGuid);
+}
+```
+
+## 21) Quick checklist
 
 - File-scoped `namespace ...;` for new/edited `.cs` files
 - Methods null check: `ThrowIfNull`, `ThrowIfNullOrWhiteSpace`
@@ -538,3 +584,4 @@ private static VisualizerHistogram BuildVisualizerHistogram(
 - **No in-place mutation of caller inputs**: return transformed data; caller assigns or merges (section 16)
 - **DTO records**: simple `init` properties; callers fill via object initializer — no required `FullTab`/`Restricted`-style mode factories (section 18)
 - **Factory helpers**: `Provide…`, not `Build…` (section 19)
+- **One public business capability -> one `I...` + sealed implementation** (section 20)
