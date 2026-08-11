@@ -1,5 +1,5 @@
 ---
-description: Route C# / LAP work to IAP coding rules and .agents skills
+description: Route C# / LAP work to IAP coding rules and skills
 globs: "**/*.cs"
 alwaysApply: false
 ---
@@ -8,8 +8,8 @@ alwaysApply: false
 
 When the active files or task involve C# / MicroService.IAP / LAP:
 
-1. Follow [`.cursor/rules/csharp-code-style.mdc`](csharp-code-style.mdc) for production code.
-2. Follow [`.cursor/rules/csharp-test-style.mdc`](csharp-test-style.mdc) for `*Tests.cs` / `LAP.Tests`.
-3. For build / test / feature flags / ADO PR workflows, read the matching skill under [`.agents/skills/`](../../.agents/skills/) (see root [`AGENTS.md`](../../AGENTS.md)).
+1. Production: [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc) (workspace stub: [`csharp-code-style.mdc`](csharp-code-style.mdc)).
+2. Tests: [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc) (workspace stub: [`csharp-test-style.mdc`](csharp-test-style.mdc)).
+3. Skills (thin wrappers under [`.agents/skills/`](../../.agents/skills/) → canonical under `MicroService.IAP/MicroService.IAP/.cursor/skills/` and `Web/WebUI/.agents/` — see root [`AGENTS.md`](../../AGENTS.md)).
 
-Do not invent alternate style; these files are the source of truth for this monorepo.
+Do not invent alternate style; nested IAP / WebUI folders are the source of truth.

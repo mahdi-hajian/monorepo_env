@@ -10,7 +10,7 @@ description: >-
 
 # C# production conventions (LAP)
 
-**Canonical source:** [`.cursor/rules/csharp-code-style.mdc`](../../../.cursor/rules/csharp-code-style.mdc)
+**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`](../../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc)
 
 ## When to use
 

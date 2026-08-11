@@ -8,7 +8,7 @@ description: >-
 
 # C# unit test conventions (LAP)
 
-**Canonical source:** [`.cursor/rules/csharp-test-style.mdc`](../../../.cursor/rules/csharp-test-style.mdc)
+**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc`](../../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc)
 
 ## When to use
 
