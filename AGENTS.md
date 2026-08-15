@@ -75,4 +75,3 @@ Canonical RULES:
 - Visualizer backend: `MicroService.IAP/MicroService.IAP/MicroService.IAP/Visualizer/Plugin/docs/plugin-architecture-backend.md`
 - Visualizer frontend: `Web/WebUI/iap/docs/visualizer/plugin/plugin-architecture-frontend.md`
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
-
