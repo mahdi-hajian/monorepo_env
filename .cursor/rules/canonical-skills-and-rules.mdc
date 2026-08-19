@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Canonical skills and rules (analytics workspace)
 
-`D:/analytics` is a **meta git**. Nested product repos own the bodies. Do not add a full `SKILL.md`, `RULE.md`, or `.mdc` body at this workspace root for IAP or WebUI work.
+This workspace is a **meta git**. Nested product repos own the bodies. Do not add a full `SKILL.md`, `RULE.md`, or `.mdc` body at this workspace root for IAP or WebUI work.
 
 | Area | Canonical home |
 |------|----------------|

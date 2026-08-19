@@ -75,4 +75,4 @@ Canonical RULES:
 - Visualizer backend: `MicroService.IAP/MicroService.IAP/MicroService.IAP/Visualizer/Plugin/docs/plugin-architecture-backend.md`
 - Visualizer frontend: `Web/WebUI/iap/docs/visualizer/plugin/plugin-architecture-frontend.md`
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
-- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → [`Web/WebUI/.cursor/rules/codebase-memory.mdc`](Web/WebUI/.cursor/rules/codebase-memory.mdc) + [`MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc`](MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)
+- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md) + [`MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc`](MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)

@@ -7,7 +7,7 @@ alwaysApply: true
 
 **Canonical sources (read in full before indexing or graph search):**
 
-- Web: [`Web/WebUI/.cursor/rules/codebase-memory.mdc`](../../Web/WebUI/.cursor/rules/codebase-memory.mdc) — ignore file [`Web/.cbmignore`](../../Web/.cbmignore)
+- Web: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md`](../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md) — ignore file [`Web/.cbmignore`](../../Web/.cbmignore)
 - IAP: [`MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc)
 
-`D:/analytics` is a meta git. Project `D-analytics` is wrappers only. Do not duplicate those bodies here.
+This workspace is a meta git. CBM project `D-analytics` is wrappers only. Nested product repos have their own git roots — index those, never a hardcoded machine path. Do not duplicate those bodies here.
