@@ -1,0 +1,27 @@
+---
+description: Floor rule — put SKILL/RULE bodies in IAP or Web repos; analytics root only points
+alwaysApply: true
+---
+
+# Canonical skills and rules (analytics workspace)
+
+`D:/analytics` is a **meta git**. Nested product repos own the bodies. Do not add a full `SKILL.md`, `RULE.md`, or `.mdc` body at this workspace root for IAP or WebUI work.
+
+| Area | Canonical home |
+|------|----------------|
+| C# / LAP / IAP backend | `MicroService.IAP/MicroService.IAP/.cursor/` (`rules/`, `skills/`) |
+| WebUI frontend | `Web/WebUI/.agents/` (`RULES/`, `IMAP/SKILLS/`) and `Web/WebUI/.cursor/rules/` |
+
+## When adding or changing a skill or rule
+
+1. Write the **full body** in the matching product repo above.
+2. At analytics, add only a **thin wrapper** (link + when-to-read) under `.cursor/rules/` or `.agents/skills/`.
+3. Add one row to root [`AGENTS.md`](../../AGENTS.md). Do not copy the body.
+
+Wrapper pattern: see [`csharp-code-style.mdc`](csharp-code-style.mdc) → `MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`.
+
+## Allowed to live only here
+
+Rules that govern the **workspace itself** (this file). Product indexing (Codebase Memory) lives in IAP/Web; this root only points.
+
+Do not invent a second copy of a product skill/rule at analytics root.

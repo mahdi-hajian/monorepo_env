@@ -2,14 +2,14 @@
 
 When working on **C# / MicroService.IAP / LAP** or **WebUI frontend**, follow the standards and skills below automatically. Do not wait for the user to `@`-mention them.
 
-**Canonical bodies (do not duplicate at repo root):**
+**Canonical bodies (do not duplicate at repo root):** floor rule [`.cursor/rules/canonical-skills-and-rules.mdc`](.cursor/rules/canonical-skills-and-rules.mdc).
 
 | Area | Canonical folder |
 |------|------------------|
 | C# rules + IAP skills | `MicroService.IAP/MicroService.IAP/.cursor/` (`rules/`, `skills/`) |
 | WebUI RULES + IMAP skills | `Web/WebUI/.agents/` (`RULES/`, `IMAP/SKILLS/`) |
 
-Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/) are **thin wrappers** that point at those folders.
+Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/) are **thin wrappers** that point at those folders. New SKILL/RULE files go in the product repo; here only a pointer + an `AGENTS.md` row.
 
 ## Auto-apply for C#
 
@@ -75,3 +75,4 @@ Canonical RULES:
 - Visualizer backend: `MicroService.IAP/MicroService.IAP/MicroService.IAP/Visualizer/Plugin/docs/plugin-architecture-backend.md`
 - Visualizer frontend: `Web/WebUI/iap/docs/visualizer/plugin/plugin-architecture-frontend.md`
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
+- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → [`Web/WebUI/.cursor/rules/codebase-memory.mdc`](Web/WebUI/.cursor/rules/codebase-memory.mdc) + [`MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc`](MicroService.IAP/MicroService.IAP/.cursor/rules/codebase-memory.mdc); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)
