@@ -2,7 +2,7 @@
 name: csharp-code-style
 description: >-
   C# production coding conventions for LAP / MicroService.IAP (file-scoped
-  namespaces, null checks, sealed types, DI, FluentValidation, CancellationToken,
+  namespaces, null checks, sealed types, DI lifetime, DI, FluentValidation, CancellationToken,
   tracing, DTOs, one public capability per interface+implementation). Use
   automatically whenever writing, editing, reviewing, or generating C# production
   code (.cs files that are not tests).
