@@ -13,5 +13,5 @@
 - [ ] Navigate by browse path with breadcrumb; mixed folder+file list from BE
 - [ ] Session empty folders in tab session; Create folder has no backend call
 - [ ] Shared folder-name validator in library
-- [ ] FileBrowser add sends current browse path; stay on level after create
+- [ ] FileBrowser add sends current browse path on **`AddAttachment` config** (`FilePath`); stay on level after create; no `FileBrowser.AddFiles`
 - [ ] Do not start until BE-04 is done; no rename/move/folder-upload in this ticket

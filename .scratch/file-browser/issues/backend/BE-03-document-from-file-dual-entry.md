@@ -1,7 +1,7 @@
 # BE-03 — Shared Document-from-file and dual-entry bulk add
 
 **Layer:** backend  
-**What to build:** One shared Document-from-file core: after client upload yields `fileId`(s), create Document(s) on the tab. FileBrowser add entry: `(0,0)`-origin placement, **no Attach**, bulk partial success, 25MB/flag per file. Graph AddAttachment entry: same create core, bulk, viewport center, Attach each successful Document to current non-Document selection. Raw bytes are not the primary execute payload.
+**What to build:** One shared Document-from-file core: after client upload yields `fileId`(s), create Document(s) on the tab. FileBrowser add entry: `(0,0)`-origin placement, **no Attach**, bulk partial success, 25MB/flag per file. Graph AddAttachment entry: same create core, bulk, viewport center, Attach each successful Document to current non-Document selection. Both UI entries execute plugin **`AddAttachment`** (`AttachToSelection` false vs true). There is **no** `FileBrowser.AddFiles` package method.
 
 **Blocked by:** BE-01 — FileBrowser ListFiles package
 
