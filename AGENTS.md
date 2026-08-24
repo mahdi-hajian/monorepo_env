@@ -69,6 +69,7 @@ Canonical RULES:
 | `run-unit-tests` | Run LAP.Tests | `MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md` |
 | `lap-feature-flag` | Backend `Enable*` / `IOptions<T>` | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md` |
 | `lap-feature-flag-docs` | Document backend flag | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag-docs/SKILL.md` |
+| `lap-fluent-validation` | FluentValidation (`AbstractValidator<T>`, `ValidateAndThrow`, assembly DI) | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md` |
 | `lap-language-dictionary` | Add/use LAP translations (`dictsource`, `fa-IR` XML, `ILanguageDictionaryProvider`, FluentValidation `.WithMessage`) | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md` |
 | `azure-devops-pr-followup` | ADO PR on **MicroService.IAP** | `MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md` |
 | `azure-devops-pr-resolve` | Resolve IAP PR threads only | `MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-resolve/SKILL.md` |
