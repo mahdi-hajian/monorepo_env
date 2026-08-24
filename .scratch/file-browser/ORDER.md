@@ -14,7 +14,7 @@
 
 ## Frontier فعلی
 
-موج ۱–۳ تمام است (`BE-01`/`FE-02` + `BE-02`/`FE-03` + `BE-03`/`FE-04` done). Create از پلاگین **`AddAttachment`** است (نه `FileBrowser.AddFiles`). بعدی: **`FE-05`** پنل آپلود async؛ بعد **`BE-04`**.
+موج ۱–۳ تمام است (`BE-01`/`FE-02` + `BE-02`/`FE-03` + `BE-03`/`FE-04` done). **`BE-04` done.** Create از پلاگین **`AddAttachment`** است (نه `FileBrowser.AddFiles`). بعدی: **`FE-05`** پنل آپلود async؛ بعد **`FE-06`** (پوشه UI، وابسته به BE-04).
 
 ## موج‌ها (Wave)
 
@@ -25,7 +25,7 @@
 | 2   | `BE-02` PrepareView/Download          | `FE-03` مشاهده + دانلود         | 1         | **done** |
 | 3   | `BE-03` Document-from-file + add بالک | `FE-04` UI افزودن sync          | 2         | **done** (`AddAttachment`) |
 | 4   | — (بدون BE جدید)                      | `FE-05` پنل آپلود async         | 3         |
-| 5   | `BE-04` FilePath + browse level       | `FE-06` پوشه / session empty    | 4         |
+| 5   | `BE-04` FilePath + browse level       | `FE-06` پوشه / session empty    | 4         | **done** (BE-04) |
 | 6   | —                                     | `FE-07` آپلود پوشه              | 5         |
 | 7   | —                                     | `FE-08` DnD آپلود               | 6         |
 | 8   | `BE-05` Move FilePath                 | `FE-09` DnD جابجایی تایل        | 7         |
@@ -39,7 +39,7 @@ FE-01 ✓ done
 BE-01 → FE-02
 BE-02 → FE-03
 BE-03 ✓ done → FE-04 ✓ done → FE-05
-BE-04 → FE-06 → FE-07 → FE-08
+BE-04 ✓ done → FE-06 → FE-07 → FE-08
 BE-05 → FE-09
 BE-06 → FE-10
 BE-07 → FE-11
