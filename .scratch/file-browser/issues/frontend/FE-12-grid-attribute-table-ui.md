@@ -5,13 +5,13 @@
 
 **Blocked by:** BE-08
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Wave:** 11  
 **Domain:** CONTEXT FileBrowser grid / FileBrowser tile; phase 10; ADR 0014
 
-- [ ] Remove IAP tile-only lock; default remains tile
-- [ ] Tile still LoadListFiles; grid never uses the three-field list as its payload
-- [ ] Schema once per freeze rules; Data per browse path / filter / sort / page
-- [ ] Mixed window + Name filter on folders; reading mode yes; grouping/pin/expand no
-- [ ] Host adapter tests: which functions tile vs grid call; mixed-window totalCount; never Explore as list API
+- [x] Remove IAP tile-only lock; default remains tile
+- [x] Tile still LoadListFiles; grid never uses the three-field list as its payload
+- [x] Schema once per freeze rules; Data per browse path / filter / sort / page
+- [x] Mixed window + Name filter on folders; reading mode yes; grouping/pin/expand no
+- [x] Host adapter tests: which functions tile vs grid call; mixed-window totalCount; never Explore as list API

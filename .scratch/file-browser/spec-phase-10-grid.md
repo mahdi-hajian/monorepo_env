@@ -1,6 +1,6 @@
 # Spec: FileBrowser grid Schema and Data (phase 10)
 
-Status: ready-for-agent
+Status: done
 
 ## Agent entry
 

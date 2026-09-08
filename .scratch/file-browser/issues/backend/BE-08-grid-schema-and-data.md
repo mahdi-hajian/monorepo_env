@@ -5,14 +5,14 @@
 
 **Blocked by:** BE-01; BE-04
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Wave:** 11  
 **Domain:** CONTEXT FileBrowser grid / FileBrowser grid filter and sort; phase 10; ADR 0014
 
-- [ ] Schema lists every current Document attribute including FilePath, FileContent, and extra attributes
-- [ ] Schema has no totalCount; display sizes from first Schema browse-path files; freeze/invalidation rules as ADR 0014
-- [ ] Data mixed window: folders then files; from/size; totalCount = folders + files
-- [ ] Filter/sort reuse visualizer Grid engine; no Explore package as list API; default file sort by name
-- [ ] Name filter applies to Virtual Folder names; other attribute filters files only
-- [ ] Package tests at Schema/Data seam (same style as LoadListFiles package tests)
+- [x] Schema lists every current Document attribute including FilePath, FileContent, and extra attributes
+- [x] Schema has no totalCount; display sizes from first Schema browse-path files; freeze/invalidation rules as ADR 0014
+- [x] Data mixed window: folders then files; from/size; totalCount = folders + files
+- [x] Filter/sort reuse visualizer Grid engine; no Explore package as list API; default file sort by name
+- [x] Name filter applies to Virtual Folder names; other attribute filters files only
+- [x] Package tests at Schema/Data seam (same style as LoadListFiles package tests)
