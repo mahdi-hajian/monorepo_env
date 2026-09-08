@@ -8,14 +8,15 @@ Status: ready-for-agent
 
 Tickets live under:
 
-- `.scratch/file-browser/issues/backend/` (`BE-01` … `BE-07`)
-- `.scratch/file-browser/issues/frontend/` (`FE-01` … `FE-11`)
+- `.scratch/file-browser/issues/backend/` (`BE-01` … `BE-08`)
+- `.scratch/file-browser/issues/frontend/` (`FE-01` … `FE-12`)
+- Phase 10 grid spec: [spec-phase-10-grid.md](./spec-phase-10-grid.md) (ADR 0014)
 
 Domain language and locked decisions live in:
 
 - `Web/WebUI/iap/app/visualizer/visualizer/plugins/file-browser/CONTEXT.md` (glossary + locked decisions)
 - `Web/WebUI/iap/app/visualizer/visualizer/plugins/file-browser/docs/file-browser-phases.md`
-- ADRs in `…/plugins/file-browser/docs/adr/` (`0001`–`0013`)
+- ADRs in `…/plugins/file-browser/docs/adr/` (`0001`–`0014`)
 - Peer-URL prerequisite (done): shared ADR `iap/docs/visualizer/plugin/adr/0001-plugin-based-view-peer-urls.md`
 
 Use glossary terms exactly: **Document**, **FilePath**, **browse path**, **Virtual Folder**, **session empty folder**, **folder destination collision**, **FileBrowser** (not FileExplorer), **`@mohaymen/file-browser`**. Do not invent Explore-package or LADW GraphQL paths for this feature.

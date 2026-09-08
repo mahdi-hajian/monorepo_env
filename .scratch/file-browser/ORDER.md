@@ -31,6 +31,7 @@
 | 8   | `BE-05` Move FilePath                 | `FE-09` DnD جابجایی تایل        | 7         |
 | 9   | `BE-06` Rename Name/prefix            | `FE-10` مودال Rename            | 8         |
 | 10  | `BE-07` Copy/Cut/Paste IO             | `FE-11` Cut/Copy/Paste UI       | 9         |
+| 11  | `BE-08` Grid Schema + Data            | `FE-12` Grid attribute table UI | 10        |
 
 ## ترتیب خطی پیشنهادی برای یک agent
 
@@ -43,6 +44,7 @@ BE-04 ✓ done → FE-06 → FE-07 → FE-08
 BE-05 → FE-09
 BE-06 → FE-10
 BE-07 → FE-11
+BE-08 → FE-12
 ```
 
 `FE-09` و `FE-10` بعد از `FE-06` می‌توانند موازی باشند **فقط اگر** بک مربوطه (`BE-05` / `BE-06`) تمام شده باشد.
