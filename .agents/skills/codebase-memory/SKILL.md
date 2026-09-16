@@ -6,10 +6,12 @@ description: >-
   tracing callers, indexing this repo, or using CBM / search_graph / index_repository.
 ---
 
-# Codebase Memory indexing (MicroService.IAP)
+# Codebase Memory
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md)
+**Canonical sources (read in full before indexing or graph search):**
 
-For WebUI indexing see [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md).
+- IAP: [`MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md)
+- Web exploration: [`Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md)
+- Web indexing: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md)
 
-Read the canonical file in full and follow it.
+Read the matching canonical file in full and follow it.

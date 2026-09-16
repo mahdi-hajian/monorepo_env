@@ -63,7 +63,7 @@ Canonical RULES:
 |-------|---------|------------------------------|
 | `csharp-code-style` | Production C# | `MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc` |
 | `csharp-test-style` | C# unit tests | `MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc` |
-| `codebase-memory` | Index / graph search on IAP | `MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md` |
+| `codebase-memory` | Index / graph search on IAP or Web | IAP: `MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md`; Web: `Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md` |
 | `iap-plugin-architecture-backend` | Visualizer plugin backend | `MicroService.IAP/MicroService.IAP/.cursor/skills/iap-plugin-architecture-backend/SKILL.md` |
 | `build-project` | Build / compile | `MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md` |
 | `run-unit-tests` | Run LAP.Tests | `MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md` |
@@ -79,4 +79,4 @@ Canonical RULES:
 - Visualizer backend: skill [`iap-plugin-architecture-backend`](.agents/skills/iap-plugin-architecture-backend/SKILL.md) → `MicroService.IAP/MicroService.IAP/MicroService.IAP/Visualizer/Plugin/docs/plugin-architecture-backend.md`
 - Visualizer frontend: `Web/WebUI/iap/docs/visualizer/plugin/plugin-architecture-frontend.md`
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
-- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md) + [`MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md`](MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)
+- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → Web exploration [`codebase-memory.md`](Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md) + Web indexing [`ADDITIONAL-RULES/codebase-memory.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md) + IAP [`MicroService.IAP/.../codebase-memory/SKILL.md`](MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)
