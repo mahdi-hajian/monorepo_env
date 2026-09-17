@@ -33,8 +33,12 @@ The nested-table cell for backing-store field names. Non-empty names for the tec
 _Avoid_: YEAR_COL - with a trailing separator, one name only when two exist
 
 **Nested Structure View**:
-The expanded Record Source row in the grid, with Source Structure beneath it. Structure Export uses the same nested data.
-_Avoid_: master-detail that exists only in the file
+The expanded Record Source row in the grid, with Source Structure beneath it. Structure Export uses the same nested data. The Object Framework consumer turns this on and supplies the nested table; Object Framework does not hard-code Source Structure.
+_Avoid_: master-detail that exists only in the file, warehouse columns baked into Object Framework
+
+**Object Framework Consumer**:
+The product page that hosts Object Framework and chooses master-detail, nested content, and custom context-menu actions.
+_Avoid_: Object Framework itself deciding Source Structure
 
 **Structure Export**:
 A file of Record Sources with each source's Structure Rows nested beneath it, in Excel or CSV.
