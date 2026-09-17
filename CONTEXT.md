@@ -9,23 +9,31 @@ A tabular data source shown as one row on the BDMP record-sources list.
 _Avoid_: Warehouse, table, انبار
 
 **Source Structure**:
-The fields of a Record Source as they appear when that row is expanded.
+The nested table under a Record Source, made of Structure Rows.
 _Avoid_: schema, call records, callRecords
 
 **Source Column**:
-One field defined on a Record Source. In the nested view it is a row, and the set of rows is the same as the schema-definition grid in source edit, including hidden fields.
+One field defined on a Record Source. The nested table has one Structure Row per Source Column. The set matches the schema-definition grid in source edit, including hidden fields.
 _Avoid_: Structure Column
 
 **Structure Column**:
-A header of the nested table. The full set is column number, column id, display name, database name, type, and description. A header is omitted for a source whose database type has no such property, for example Elastic has no database name. Mixed exports keep per-source headers.
-_Avoid_: Source Column, forcing all six headers on every source
+A header of every nested table. Always these seven, on every master-detail: column number, column id, display name, database name, type, description, technology type.
+_Avoid_: Source Column, dropping headers per database type, a database-name header per technology, two nested rows per Source Column
+
+**Structure Row**:
+One nested-table row, one-to-one with a Source Column, even when that column is stored in more than one technology.
+_Avoid_: one nested row per technology
+
+**Technology Type**:
+The Type-column phrasing from the record-sources list, including Elastic size. When a Source Column is stored in more than one technology, those labels are joined with the same separator the list uses.
+_Avoid_: one technology per Structure Row, dropping size
 
 **Nested Structure View**:
 The expanded Record Source row in the grid, with Source Structure beneath it. Structure Export uses the same nested data.
 _Avoid_: master-detail that exists only in Excel
 
 **Structure Export**:
-An Excel file of Record Sources with each source's structure indented one level beneath it.
+An Excel file of Record Sources with each source's Structure Rows indented one level beneath it.
 _Avoid_: Export, csvExport, excelExport, Object File Export, Default Grid Export
 
 **Default Grid Export**:
