@@ -12,6 +12,7 @@ description: >-
 
 1. [`Web/WebUI/convention.md`](../../../Web/WebUI/convention.md)
 2. [`Web/WebUI/.agents/RULES/coding/coding-principles.md`](../../../Web/WebUI/.agents/RULES/coding/coding-principles.md)
+3. [`Web/WebUI/.agents/RULES/coding/prefer-string-enums.md`](../../../Web/WebUI/.agents/RULES/coding/prefer-string-enums.md) — string enums for closed identifier sets; no `as const` maps for those
 
 ## Instructions
 

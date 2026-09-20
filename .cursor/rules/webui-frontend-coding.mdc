@@ -13,6 +13,7 @@ When editing frontend code under `Web/WebUI/**` (TypeScript, and co-located HTML
 1. [`Web/WebUI/convention.md`](../../Web/WebUI/convention.md) — single source of truth for shared Angular standards
 2. [`Web/WebUI/.agents/RULES/coding/coding-principles.md`](../../Web/WebUI/.agents/RULES/coding/coding-principles.md)
 3. Workspace skill [`webui-coding`](../../.agents/skills/webui-coding/SKILL.md)
+4. Closed string identifiers (actions, column keys, menu ids): [`prefer-string-enums.md`](../../Web/WebUI/.agents/RULES/coding/prefer-string-enums.md) via [`.cursor/rules/webui-prefer-string-enums.mdc`](webui-prefer-string-enums.mdc)
 
 ## Also load by path / task
 
