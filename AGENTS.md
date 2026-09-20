@@ -38,11 +38,11 @@ When the prompt matches a trigger, **read the full skill / canonical file before
 | Skill | Trigger | Path |
 |-------|---------|------|
 | `webui-coding` | Any WebUI TS/HTML/SCSS coding | `.agents/skills/webui-coding/SKILL.md` → `Web/WebUI/.agents/RULES/coding/` |
-| `webui-testing` | WebUI `*.spec.ts` | `.agents/skills/webui-testing/SKILL.md` → `Web/WebUI/.agents/RULES/testing/` |
+| `webui-testing` | WebUI `*.spec.ts` | `.agents/skills/webui-testing/SKILL.md` → `Web/WebUI/.agents/RULES/testing/` (+ IMAP [`imap-testing-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) for `iap/**`) |
 | `webui-cypress` | WebUI `*.cy.ts` | `.agents/skills/webui-cypress/SKILL.md` → `Web/WebUI/.agents/RULES/cypress/` |
 | `iap-lap-coding` | `iap/**` visualizer / explore / AG Grid | `.agents/skills/iap-lap-coding/SKILL.md` → `Web/WebUI/.agents/IMAP/SKILLS/reference/` |
 | `iap-plugin-architecture-frontend` | Visualizer plugins / MountPoint | `.agents/skills/iap-plugin-architecture-frontend/SKILL.md` |
-| `iap-unit-test-run` | Add/edit `iap/**/*.spec.ts` | `.agents/skills/iap-unit-test-run/SKILL.md` |
+| `iap-unit-test-run` | Add/edit `iap/**/*.spec.ts` | `.agents/skills/iap-unit-test-run/SKILL.md` → run skill + [`imap-testing-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) |
 | `add-web-feature-flag` | New `web.uiconfig` flag | `.agents/skills/add-web-feature-flag/SKILL.md` |
 | `document-web-feature-flag` | Document web feature flag | `.agents/skills/document-web-feature-flag/SKILL.md` |
 | `iap-ogma-decoupling` | Ogma decoupling plan phases | `.agents/skills/iap-ogma-decoupling/SKILL.md` |
@@ -55,6 +55,7 @@ Canonical RULES:
 - `Web/WebUI/.agents/RULES/coding/coding-principles.md`
 - `Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`
 - `Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`
+- `Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md` (IMAP / `iap/**` only)
 - `Web/WebUI/.agents/RULES/cypress/cypress-writing-principles.md`
 
 ## Skills usage guide (C# / LAP)

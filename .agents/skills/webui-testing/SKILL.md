@@ -11,8 +11,9 @@ description: >-
 
 1. [`Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`](../../../Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md)
 2. [`Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`](../../../Web/WebUI/.agents/RULES/testing/tests-writing-principles.md)
+3. For `iap/**` only: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md)
 
 ## Instructions
 
 - Public behavior only; one `expect` per behavior; AAA; `data-testid`.
-- For `iap/**` specs, also load [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md) and run the required Karma command after edits.
+- For `iap/**` specs, also load IMAP `imap-testing-rules.md` and [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md), then run the required Karma command after edits.

@@ -11,4 +11,4 @@ description: >-
 
 **WebUI root:** `Web/WebUI` (run commands from there).
 
-Writing tests still follows [`webui-testing`](../webui-testing/SKILL.md).
+Writing tests still follows [`webui-testing`](../webui-testing/SKILL.md) plus IMAP [`imap-testing-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md).
