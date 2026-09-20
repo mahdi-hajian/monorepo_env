@@ -13,13 +13,12 @@ When editing frontend code under `Web/WebUI/**` (TypeScript, and co-located HTML
 1. [`Web/WebUI/convention.md`](../../Web/WebUI/convention.md) — single source of truth for shared Angular standards
 2. [`Web/WebUI/.agents/RULES/coding/coding-principles.md`](../../Web/WebUI/.agents/RULES/coding/coding-principles.md)
 3. Workspace skill [`webui-coding`](../../.agents/skills/webui-coding/SKILL.md)
-4. Closed string identifiers (actions, column keys, menu ids): [`prefer-string-enums.md`](../../Web/WebUI/.agents/RULES/coding/prefer-string-enums.md) via [`.cursor/rules/webui-prefer-string-enums.mdc`](webui-prefer-string-enums.mdc)
 
 ## Also load by path / task
 
 | When | Read |
 |------|------|
-| `iap/**` (esp. visualizer / explore) | [`iap-lap-coding`](../../.agents/skills/iap-lap-coding/SKILL.md) |
+| `iap/**` (esp. visualizer / explore) | [`iap-lap-coding`](../../.agents/skills/iap-lap-coding/SKILL.md) + IMAP [`imap-coding-rules.md`](../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/coding/imap-coding-rules.md) |
 | Visualizer plugins / MountPoint / PluginsModule | [`iap-plugin-architecture-frontend`](../../.agents/skills/iap-plugin-architecture-frontend/SKILL.md) |
 | `*.spec.ts` under `iap/**` | shared testing RULES + [`imap-testing-rules.md`](../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) + [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) |
 | Feature flag / `web.uiconfig` | [`add-web-feature-flag`](../../.agents/skills/add-web-feature-flag/SKILL.md) |

@@ -24,7 +24,7 @@ Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/)
 
 | Context | Apply |
 |---------|--------|
-| `Web/WebUI/**/*.ts` (production) | [`.cursor/rules/webui-frontend-coding.mdc`](.cursor/rules/webui-frontend-coding.mdc) → read `convention.md` + coding RULES + [`webui-coding`](.agents/skills/webui-coding/SKILL.md); for closed string identifiers also [`.cursor/rules/webui-prefer-string-enums.mdc`](.cursor/rules/webui-prefer-string-enums.mdc) → [`prefer-string-enums.md`](Web/WebUI/.agents/RULES/coding/prefer-string-enums.md) |
+| `Web/WebUI/**/*.ts` (production) | [`.cursor/rules/webui-frontend-coding.mdc`](.cursor/rules/webui-frontend-coding.mdc) → read `convention.md` + coding RULES + [`webui-coding`](.agents/skills/webui-coding/SKILL.md); for `iap/**` also IMAP [`imap-coding-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/coding/imap-coding-rules.md) via [`iap-lap-coding`](.agents/skills/iap-lap-coding/SKILL.md) |
 | `Web/WebUI/**/*.html` | [`.cursor/rules/webui-frontend-html.mdc`](.cursor/rules/webui-frontend-html.mdc) |
 | `Web/WebUI/**/*.spec.ts` | [`.cursor/rules/webui-frontend-testing.mdc`](.cursor/rules/webui-frontend-testing.mdc) → [`webui-testing`](.agents/skills/webui-testing/SKILL.md) |
 | `Web/WebUI/**/*.cy.ts` | [`.cursor/rules/webui-frontend-cypress.mdc`](.cursor/rules/webui-frontend-cypress.mdc) → [`webui-cypress`](.agents/skills/webui-cypress/SKILL.md) |
