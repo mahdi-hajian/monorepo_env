@@ -20,7 +20,7 @@ When editing frontend code under `Web/WebUI/**` (TypeScript, and co-located HTML
 |------|------|
 | `iap/**` (esp. visualizer / explore) | [`iap-lap-coding`](../../.agents/skills/iap-lap-coding/SKILL.md) |
 | Visualizer plugins / MountPoint / PluginsModule | [`iap-plugin-architecture-frontend`](../../.agents/skills/iap-plugin-architecture-frontend/SKILL.md) |
-| `*.spec.ts` under `iap/**` | testing rules + [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) |
+| `*.spec.ts` under `iap/**` | shared testing RULES + [`imap-testing-rules.md`](../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) + [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) |
 | Feature flag / `web.uiconfig` | [`add-web-feature-flag`](../../.agents/skills/add-web-feature-flag/SKILL.md) |
 | Document a web feature flag | [`document-web-feature-flag`](../../.agents/skills/document-web-feature-flag/SKILL.md) |
 | Ogma decoupling phases | [`iap-ogma-decoupling`](../../.agents/skills/iap-ogma-decoupling/SKILL.md) |

@@ -1,5 +1,5 @@
 ---
-description: WebUI Jasmine/TestBed specs — load testing RULES + IAP unit-test-run
+description: WebUI Jasmine/TestBed specs — load testing RULES + IMAP extras + IAP unit-test-run
 globs: Web/WebUI/**/*.spec.ts
 alwaysApply: false
 ---
@@ -12,4 +12,7 @@ Before writing or editing `*.spec.ts` under `Web/WebUI/**`:
 2. [`Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`](../../Web/WebUI/.agents/RULES/testing/tests-writing-principles.md)
 3. Skill [`webui-testing`](../../.agents/skills/webui-testing/SKILL.md)
 
-If the spec is under `iap/**`, also load [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) and run the mandated `ng test iap --configuration=withConfig` command after edits.
+If the spec is under `iap/**`, also load:
+
+4. IMAP [`imap-testing-rules.md`](../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) (coverage close-out + `setInput` / `setInputs`)
+5. [`iap-unit-test-run`](../../.agents/skills/iap-unit-test-run/SKILL.md) and run the mandated `ng test iap --configuration=withConfig` command after edits
