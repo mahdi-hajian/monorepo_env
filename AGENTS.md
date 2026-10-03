@@ -2,7 +2,7 @@
 
 **One Cursor rule** routes work: [`.cursor/rules/agent-routing.mdc`](.cursor/rules/agent-routing.mdc) — if you need to do X, read doc/skill Y.  
 **Skills** are **manual** (`disable-model-invocation: true`) — invoke with `@skill-name`.  
-**Tests:** only when the user explicitly asks.
+**Build / tests:** only when the user explicitly asks.
 
 | Area | Canonical folder |
 |------|------------------|

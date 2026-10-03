@@ -1,9 +1,6 @@
 ---
 name: build-project
-description: >-
-  Builds the MicroService.IAP solution or specific projects via dotnet build with
-  --no-restore (private NuGet feed constraints), from the correct project root.
-  Use when the user asks to build, verify compilation, or check for build errors.
+description: How to build MicroService.IAP via dotnet build (--no-restore).
 disable-model-invocation: true
 ---
 
@@ -11,4 +8,4 @@ disable-model-invocation: true
 
 **Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md)
 
-Read that file in full and follow it.
+Build **only** when the user explicitly asks. Read the canonical skill for commands.
