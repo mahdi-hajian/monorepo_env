@@ -1,0 +1,8 @@
+---
+description: Terminal output discipline — bound build/test/shell output before it enters model context, never dump full raw logs
+alwaysApply: true
+---
+
+# Terminal Output Discipline
+
+Never let large or unbounded command output enter context — bound it *before* it reaches you. For build/test, redirect stdout/stderr to a file, then extract only what's needed with Select-String/grep/tail (pass/fail/total counts, or on failure the relevant error/stack trace) — redirecting to a file and then reading the whole file back defeats the purpose and must never be done. Scope tests with --filter to the relevant class/namespace, use --no-build on repeat runs after a successful build, and suppress known noisy warnings (NuGet restore, etc.). Before rerunning any command, check whether a previous unchanged result already answers the question, and never re-paste output you've already shown unless it changed. Delete any temporary output files you created before giving your final response.
