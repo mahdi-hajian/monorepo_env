@@ -13,7 +13,7 @@ Docs: `MicroService.IAP/MicroService.IAP/.cursor/docs/`
 
 | If you need to… | Read |
 |-----------------|------|
-| Write/edit production C# | [`csharp-code-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) |
+| Write/edit production C# | [`csharp-code-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) (index → basics / DI / async / DTOs / TabService) |
 | Write/edit unit tests (`*Tests.cs`) | [`csharp-test-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
 | Author FluentValidation / `IValidator<T>` | [`lap-fluent-validation.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/lap-fluent-validation.md) |
 | Add translations, dictsource, fa-IR XML, `.WithMessage` | [`lap-language-dictionary.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/lap-language-dictionary.md) |

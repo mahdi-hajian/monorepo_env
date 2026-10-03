@@ -13,7 +13,7 @@
 
 | Topic | Doc |
 |-------|-----|
-| Production C# | [`…/docs/csharp-code-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) |
+| Production C# (index) | [`…/docs/csharp-code-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) → `csharp-basics`, `csharp-di-structure`, `csharp-async-tracing`, `csharp-dtos-collections`, `csharp-tabservice` |
 | Unit tests | [`…/docs/csharp-test-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
 | FluentValidation | [`…/docs/lap-fluent-validation.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/lap-fluent-validation.md) |
 | Translations | [`…/docs/lap-language-dictionary.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/lap-language-dictionary.md) |
