@@ -5,6 +5,7 @@ description: >-
   on a dedicated model type, error codes, ValidateAndThrow vs soft-fail, assembly
   DI registration, and tests. Use when adding or changing business/applicability
   validation, IValidator injection, or BrowsePath-style validators.
+disable-model-invocation: true
 ---
 
 # LAP FluentValidation

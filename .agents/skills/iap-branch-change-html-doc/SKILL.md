@@ -3,6 +3,7 @@ name: iap-branch-change-html-doc
 description: >-
   Builds a self-contained HTML document from git diff of the current IAP branch
   vs master. Use when the user asks to document iap/** branch changes as HTML.
+disable-model-invocation: true
 ---
 
 # IAP branch change HTML doc

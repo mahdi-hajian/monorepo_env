@@ -3,6 +3,7 @@ name: farsi-rtl-output
 description: >-
   Formats assistant replies RTL when the user writes in Persian (Farsi). Use
   when the user's message is primarily Persian, or they ask for RTL / فارسی layout.
+disable-model-invocation: true
 ---
 
 # Farsi RTL output

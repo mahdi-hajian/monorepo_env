@@ -3,6 +3,7 @@ name: webui-cypress
 description: >-
   WebUI Cypress component-test writing principles. Use automatically when
   writing or editing Web/WebUI/**/*.cy.ts files.
+disable-model-invocation: true
 ---
 
 # WebUI Cypress

@@ -1,11 +1,15 @@
 # `.agents` — analytics workspace agent skills
 
-Skills for agents in this monorepo. Full routing index: [`../AGENTS.md`](../AGENTS.md)
+Skills are **manual** (`disable-model-invocation: true`). Invoke with `@skill-name`.  
+**Tests:** run only when the user explicitly asks.  
+Routing index: [`../AGENTS.md`](../AGENTS.md)
 
-## C# — use automatically
+Rules under [`.cursor/rules/`](../.cursor/rules/) are tiny pointers to these skills / convention docs.
 
-| Skill | When |
-|-------|------|
+## C#
+
+| Skill | When to invoke |
+|-------|----------------|
 | [`csharp-code-style`](skills/csharp-code-style/SKILL.md) | Production `*.cs` |
 | [`csharp-test-style`](skills/csharp-test-style/SKILL.md) | `*Tests.cs` / `LAP.Tests` |
 | [`build-project`](skills/build-project/SKILL.md) | `dotnet build` |
@@ -15,14 +19,12 @@ Skills for agents in this monorepo. Full routing index: [`../AGENTS.md`](../AGEN
 | [`azure-devops-pr-followup`](skills/azure-devops-pr-followup/SKILL.md) | Fix ADO PR comments (IAP) |
 | [`azure-devops-pr-resolve`](skills/azure-devops-pr-resolve/SKILL.md) | Resolve ADO threads only |
 
-Cursor rules: `.cursor/rules/csharp-*.mdc`
-
-## WebUI frontend — use automatically
+## WebUI
 
 Canonical content lives under `Web/WebUI/.agents/`. These skills are entrypoints:
 
-| Skill | When |
-|-------|------|
+| Skill | When to invoke |
+|-------|----------------|
 | [`webui-coding`](skills/webui-coding/SKILL.md) | `Web/WebUI` TS/HTML/SCSS |
 | [`webui-testing`](skills/webui-testing/SKILL.md) | `*.spec.ts` |
 | [`webui-cypress`](skills/webui-cypress/SKILL.md) | `*.cy.ts` |
@@ -35,5 +37,3 @@ Canonical content lives under `Web/WebUI/.agents/`. These skills are entrypoints
 | [`iap-branch-change-html-doc`](skills/iap-branch-change-html-doc/SKILL.md) | Branch HTML doc |
 | [`farsi-rtl-output`](skills/farsi-rtl-output/SKILL.md) | Persian RTL replies |
 | [`web-azure-devops-pr-followup`](skills/web-azure-devops-pr-followup/SKILL.md) | ADO PR on **Web** repo |
-
-Cursor rules: `.cursor/rules/webui-frontend-*.mdc`

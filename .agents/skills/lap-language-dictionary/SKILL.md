@@ -1,10 +1,11 @@
-﻿---
+---
 name: lap-language-dictionary
 description: >-
   Adds and consumes LAP / MicroService.IAP translations via LanguageDictionary:
   dictsource.json, fa-IR XML, ILanguageDictionaryProvider, and FluentValidation
   WithMessage / ValidateAndThrow. Use when adding Persian UI or validation
   strings, a language dictionary key, or localizing validator/plugin errors.
+disable-model-invocation: true
 ---
 
 # LAP language dictionary (translations)

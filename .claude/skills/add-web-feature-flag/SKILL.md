@@ -4,6 +4,7 @@ description: >-
   Adds a web.uiconfig feature flag across BaseWebUiData.ts, web.uiconfig, and
   TS consumption. Asks for code default + development default first. Use when
   adding a feature flag/toggle for LAP/BDMP/DIA WebUI features.
+disable-model-invocation: true
 ---
 
 # Add web feature flag

@@ -5,6 +5,7 @@ description: >-
   wire vs client models, dedicated types, enums, AG Grid patterns. Use
   automatically when editing Web/WebUI/iap/** explore plugins, visualizer grids,
   or LAPortal AG Grid features.
+disable-model-invocation: true
 ---
 
 # IAP LAP coding

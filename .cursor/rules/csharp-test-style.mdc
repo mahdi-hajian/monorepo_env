@@ -1,13 +1,11 @@
 ---
-description: C# unit test conventions for LAP.Tests — canonical body under MicroService.IAP
+description: C# unit tests — read csharp-test-style docs before writing tests
 globs: "**/*Tests.cs"
 alwaysApply: false
 ---
 
-# C# unit test conventions (analytics workspace)
+# C# unit tests
 
-**Canonical source (read in full before writing tests):**
+Before writing or editing `*Tests.cs`, read:
 
-[`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc)
-
-Do not duplicate rules here. Production C#: [`csharp-code-style.mdc`](csharp-code-style.mdc).
+[`MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md)

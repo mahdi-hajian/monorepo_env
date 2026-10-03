@@ -1,15 +1,11 @@
 ---
-description: Route C# / LAP work to IAP coding rules and skills
+description: Route C# / LAP work to IAP convention docs
 globs: "**/*.cs"
 alwaysApply: false
 ---
 
-# C# / LAP agent routing (analytics workspace)
+# C# / LAP
 
-When the active files or task involve C# / MicroService.IAP / LAP:
+Production: [`csharp-code-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md)
 
-1. Production: [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc) (workspace stub: [`csharp-code-style.mdc`](csharp-code-style.mdc)).
-2. Tests: [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc) (workspace stub: [`csharp-test-style.mdc`](csharp-test-style.mdc)).
-3. Skills (thin wrappers under [`.agents/skills/`](../../.agents/skills/) → canonical under `MicroService.IAP/MicroService.IAP/.cursor/skills/` and `Web/WebUI/.agents/` — see root [`AGENTS.md`](../../AGENTS.md)).
-
-Do not invent alternate style; nested IAP / WebUI folders are the source of truth.
+Tests: [`csharp-test-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md)

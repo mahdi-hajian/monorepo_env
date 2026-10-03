@@ -1,6 +1,8 @@
 # Agent instructions (analytics workspace)
 
-When working on **C# / MicroService.IAP / LAP** or **WebUI frontend**, follow the standards and skills below automatically. Do not wait for the user to `@`-mention them.
+**Rules** are tiny pointers: when a glob matches, read the linked doc/skill before acting.  
+**Skills** are **manual** (`disable-model-invocation: true`) — invoke with `@skill-name`; they do not auto-fire from description.  
+**Tests:** do **not** run after code changes by default — only when the user explicitly asks (see [`.cursor/rules/tests-user-requested-only.mdc`](.cursor/rules/tests-user-requested-only.mdc)).
 
 **Canonical bodies (do not duplicate at repo root):** floor rule [`.cursor/rules/canonical-skills-and-rules.mdc`](.cursor/rules/canonical-skills-and-rules.mdc).
 
@@ -9,75 +11,64 @@ When working on **C# / MicroService.IAP / LAP** or **WebUI frontend**, follow th
 | C# rules + IAP skills | `MicroService.IAP/MicroService.IAP/.cursor/` (`rules/`, `skills/`) |
 | WebUI RULES + IMAP skills | `Web/WebUI/.agents/` (`RULES/`, `IMAP/SKILLS/`) |
 
-Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/) are **thin wrappers** that point at those folders. New SKILL/RULE files go in the product repo; here only a pointer + an `AGENTS.md` row.
+Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/) are **thin wrappers**. New SKILL/RULE bodies go in the product repo; here only a pointer + an `AGENTS.md` row.
 
-## Auto-apply for C#
+## Rule pointers (C#)
 
-| Context | Apply |
-|---------|--------|
-| Production `*.cs` | Wrapper [`.cursor/rules/csharp-code-style.mdc`](.cursor/rules/csharp-code-style.mdc) → canonical [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`](MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc) + skill [`.agents/skills/csharp-code-style/SKILL.md`](.agents/skills/csharp-code-style/SKILL.md) |
-| Test `*Tests.cs` / `LAP.Tests` | Wrapper [`.cursor/rules/csharp-test-style.mdc`](.cursor/rules/csharp-test-style.mdc) → canonical [`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc`](MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc) + skill [`.agents/skills/csharp-test-style/SKILL.md`](.agents/skills/csharp-test-style/SKILL.md) |
+| Context | Rule → doc |
+|---------|------------|
+| Production `*.cs` | [`.cursor/rules/csharp-code-style.mdc`](.cursor/rules/csharp-code-style.mdc) → [`…/docs/csharp-code-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) |
+| Test `*Tests.cs` | [`.cursor/rules/csharp-test-style.mdc`](.cursor/rules/csharp-test-style.mdc) → [`…/docs/csharp-test-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
 
 **IAP project root:** `MicroService.IAP/MicroService.IAP` (SDK 8.0.x). Prefer `--no-restore` for `dotnet build` / `dotnet test`.
 
-## Auto-apply for WebUI frontend
+## Rule pointers (WebUI)
 
-| Context | Apply |
-|---------|--------|
-| `Web/WebUI/**/*.ts` (production) | [`.cursor/rules/webui-frontend-coding.mdc`](.cursor/rules/webui-frontend-coding.mdc) → read `convention.md` + coding RULES + [`webui-coding`](.agents/skills/webui-coding/SKILL.md); for `iap/**` also IMAP [`imap-coding-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/coding/imap-coding-rules.md) via [`iap-lap-coding`](.agents/skills/iap-lap-coding/SKILL.md) |
-| `Web/WebUI/**/*.html` | [`.cursor/rules/webui-frontend-html.mdc`](.cursor/rules/webui-frontend-html.mdc) |
+| Context | Rule → skill |
+|---------|--------------|
+| `Web/WebUI/**/*.ts` | [`.cursor/rules/webui-frontend-coding.mdc`](.cursor/rules/webui-frontend-coding.mdc) → [`webui-coding`](.agents/skills/webui-coding/SKILL.md) |
+| `Web/WebUI/**/*.html` | [`.cursor/rules/webui-frontend-html.mdc`](.cursor/rules/webui-frontend-html.mdc) → [`webui-coding`](.agents/skills/webui-coding/SKILL.md) |
 | `Web/WebUI/**/*.spec.ts` | [`.cursor/rules/webui-frontend-testing.mdc`](.cursor/rules/webui-frontend-testing.mdc) → [`webui-testing`](.agents/skills/webui-testing/SKILL.md) |
 | `Web/WebUI/**/*.cy.ts` | [`.cursor/rules/webui-frontend-cypress.mdc`](.cursor/rules/webui-frontend-cypress.mdc) → [`webui-cypress`](.agents/skills/webui-cypress/SKILL.md) |
 
 **WebUI root:** `Web/WebUI`. Nested routing: [`Web/WebUI/AGENTS.md`](Web/WebUI/AGENTS.md).
 
-### Frontend skills usage guide
+## Manual skills index (WebUI)
 
-When the prompt matches a trigger, **read the full skill / canonical file before acting**.
-
-| Skill | Trigger | Path |
-|-------|---------|------|
-| `webui-coding` | Any WebUI TS/HTML/SCSS coding | `.agents/skills/webui-coding/SKILL.md` → `Web/WebUI/.agents/RULES/coding/` |
-| `webui-testing` | WebUI `*.spec.ts` | `.agents/skills/webui-testing/SKILL.md` → `Web/WebUI/.agents/RULES/testing/` (+ IMAP [`imap-testing-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) for `iap/**`) |
-| `webui-cypress` | WebUI `*.cy.ts` | `.agents/skills/webui-cypress/SKILL.md` → `Web/WebUI/.agents/RULES/cypress/` |
-| `iap-lap-coding` | `iap/**` visualizer / explore / AG Grid | `.agents/skills/iap-lap-coding/SKILL.md` → `Web/WebUI/.agents/IMAP/SKILLS/reference/` |
+| Skill | When to `@` invoke | Path |
+|-------|-------------------|------|
+| `webui-coding` | WebUI TS/HTML/SCSS | `.agents/skills/webui-coding/SKILL.md` |
+| `webui-testing` | WebUI `*.spec.ts` | `.agents/skills/webui-testing/SKILL.md` |
+| `webui-cypress` | WebUI `*.cy.ts` | `.agents/skills/webui-cypress/SKILL.md` |
+| `iap-lap-coding` | `iap/**` visualizer / explore | `.agents/skills/iap-lap-coding/SKILL.md` |
 | `iap-plugin-architecture-frontend` | Visualizer plugins / MountPoint | `.agents/skills/iap-plugin-architecture-frontend/SKILL.md` |
-| `iap-unit-test-run` | Add/edit `iap/**/*.spec.ts` | `.agents/skills/iap-unit-test-run/SKILL.md` → run skill + [`imap-testing-rules.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md) |
+| `iap-unit-test-run` | Run `iap/**` Karma specs | `.agents/skills/iap-unit-test-run/SKILL.md` |
 | `add-web-feature-flag` | New `web.uiconfig` flag | `.agents/skills/add-web-feature-flag/SKILL.md` |
 | `document-web-feature-flag` | Document web feature flag | `.agents/skills/document-web-feature-flag/SKILL.md` |
-| `iap-ogma-decoupling` | Ogma decoupling plan phases | `.agents/skills/iap-ogma-decoupling/SKILL.md` |
-| `iap-branch-change-html-doc` | Branch changes → HTML doc | `.agents/skills/iap-branch-change-html-doc/SKILL.md` |
-| `farsi-rtl-output` | Persian / RTL replies | `.agents/skills/farsi-rtl-output/SKILL.md` → `Web/WebUI/.agents/IMAP/SKILLS/reference/farsi-rtl-output/` |
-| `web-azure-devops-pr-followup` | ADO PR on **Web** repo | `.agents/skills/web-azure-devops-pr-followup/SKILL.md` |
+| `iap-ogma-decoupling` | Ogma decoupling plan | `.agents/skills/iap-ogma-decoupling/SKILL.md` |
+| `iap-branch-change-html-doc` | Branch → HTML doc | `.agents/skills/iap-branch-change-html-doc/SKILL.md` |
+| `farsi-rtl-output` | Persian / RTL replies | `.agents/skills/farsi-rtl-output/SKILL.md` |
+| `web-azure-devops-pr-followup` | ADO PR on **Web** | `.agents/skills/web-azure-devops-pr-followup/SKILL.md` |
 
-Canonical RULES:
+## Manual skills index (C# / LAP)
 
-- `Web/WebUI/.agents/RULES/coding/coding-principles.md`
-- `Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`
-- `Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`
-- `Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md` (IMAP / `iap/**` only)
-- `Web/WebUI/.agents/RULES/cypress/cypress-writing-principles.md`
-
-## Skills usage guide (C# / LAP)
-
-| Skill | Trigger | Canonical (via root wrapper) |
-|-------|---------|------------------------------|
-| `csharp-code-style` | Production C# | `MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc` |
-| `csharp-test-style` | C# unit tests | `MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-test-style.mdc` |
-| `codebase-memory` | Index / graph search on IAP or Web | IAP: `MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md`; Web: `Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md` |
-| `iap-plugin-architecture-backend` | Visualizer plugin backend | `MicroService.IAP/MicroService.IAP/.cursor/skills/iap-plugin-architecture-backend/SKILL.md` |
-| `build-project` | Build / compile | `MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md` |
-| `run-unit-tests` | Run LAP.Tests | `MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md` |
-| `lap-feature-flag` | Backend `Enable*` / `IOptions<T>` | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md` |
-| `lap-feature-flag-docs` | Document backend flag | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag-docs/SKILL.md` |
-| `lap-fluent-validation` | FluentValidation (`AbstractValidator<T>`, `ValidateAndThrow`, assembly DI) | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md` |
-| `lap-language-dictionary` | Add/use LAP translations (`dictsource`, `fa-IR` XML, `ILanguageDictionaryProvider`, FluentValidation `.WithMessage`) | `MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md` |
-| `azure-devops-pr-followup` | ADO PR on **MicroService.IAP** | `MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md` |
-| `azure-devops-pr-resolve` | Resolve IAP PR threads only | `MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-resolve/SKILL.md` |
+| Skill | When to `@` invoke | Canonical |
+|-------|-------------------|-----------|
+| `csharp-code-style` | Production C# | `MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md` |
+| `csharp-test-style` | C# unit tests | `MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md` |
+| `codebase-memory` | Index / graph search | IAP skill + Web `codebase-memory.md` |
+| `iap-plugin-architecture-backend` | Visualizer plugin backend | `…/skills/iap-plugin-architecture-backend/` |
+| `build-project` | Build / compile | `…/skills/build-project/` |
+| `run-unit-tests` | Run LAP.Tests | `…/skills/run-unit-tests/` |
+| `lap-feature-flag` | Backend `Enable*` / `IOptions<T>` | `…/skills/lap-feature-flag/` |
+| `lap-feature-flag-docs` | Document backend flag | `…/skills/lap-feature-flag-docs/` |
+| `lap-fluent-validation` | FluentValidation | `…/skills/lap-fluent-validation/` |
+| `lap-language-dictionary` | LAP translations | `…/skills/lap-language-dictionary/` |
+| `azure-devops-pr-followup` | ADO PR on **MicroService.IAP** | `…/skills/azure-devops-pr-followup/` |
+| `azure-devops-pr-resolve` | Resolve IAP PR threads only | `…/skills/azure-devops-pr-resolve/` |
 
 ## Related docs
 
-- Visualizer backend: skill [`iap-plugin-architecture-backend`](.agents/skills/iap-plugin-architecture-backend/SKILL.md) → `MicroService.IAP/MicroService.IAP/MicroService.IAP/Visualizer/Plugin/docs/plugin-architecture-backend.md`
-- Visualizer frontend: `Web/WebUI/iap/docs/visualizer/plugin/plugin-architecture-frontend.md`
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
-- Codebase Memory: wrapper [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc) → Web exploration [`codebase-memory.md`](Web/WebUI/.agents/IMAP/SKILLS/reference/codebase-memory/codebase-memory.md) + Web indexing [`ADDITIONAL-RULES/codebase-memory.md`](Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/codebase-memory.md) + IAP [`MicroService.IAP/.../codebase-memory/SKILL.md`](MicroService.IAP/MicroService.IAP/.cursor/skills/codebase-memory/SKILL.md); Web excludes in [`Web/.cbmignore`](Web/.cbmignore)
+- Codebase Memory: [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc)
+- Web excludes: [`Web/.cbmignore`](Web/.cbmignore)

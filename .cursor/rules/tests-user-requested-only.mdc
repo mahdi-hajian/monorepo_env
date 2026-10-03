@@ -1,0 +1,10 @@
+---
+description: Never run tests unless the user explicitly asks
+alwaysApply: true
+---
+
+# Tests: user-requested only
+
+Do **not** run unit, integration, or e2e tests after code changes by default.
+
+Run tests **only** when the user explicitly asks (e.g. «تست‌ها را اجرا کن», "run the tests").

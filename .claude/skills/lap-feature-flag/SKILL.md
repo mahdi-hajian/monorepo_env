@@ -6,6 +6,7 @@ description: >-
   AddApplicationConfigs, IOptions injection in consumers, LAPortal keys, and
   tests with Options.Create. Use when the user asks for a feature flag, config
   toggle, Enable* config, or wiring IOptions for new behavior in this repo.
+disable-model-invocation: true
 ---
 
 # LAP feature flags (configuration-backed toggles)

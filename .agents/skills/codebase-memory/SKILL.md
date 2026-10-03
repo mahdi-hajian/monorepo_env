@@ -4,6 +4,7 @@ description: >-
   Indexes and searches MicroService.IAP as its own Codebase Memory graph.
   Use when exploring LAP / visualizer backend architecture, finding symbols,
   tracing callers, indexing this repo, or using CBM / search_graph / index_repository.
+disable-model-invocation: true
 ---
 
 # Codebase Memory

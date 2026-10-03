@@ -3,6 +3,7 @@ name: webui-testing
 description: >-
   WebUI Jasmine + TestBed unit-test workflow and writing principles. Use
   automatically when writing or editing Web/WebUI/**/*.spec.ts files.
+disable-model-invocation: true
 ---
 
 # WebUI unit testing

@@ -4,6 +4,7 @@ description: >-
   Documents a web.uiconfig feature flag in Mohaymen administration docs. Asks
   for absolute docs path if missing. Use when documenting WebUI feature flags
   or web.uiconfig keys.
+disable-model-invocation: true
 ---
 
 # Document web feature flag

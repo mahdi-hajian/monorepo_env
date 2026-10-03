@@ -4,6 +4,7 @@ description: >-
   When the user asks about code architecture, symbols, callers, or project structure,
   ALWAYS query CBM first before falling back to Grep/Glob.
   Covers both MicroService.IAP (C# backend) and Web (TypeScript WebUI frontend).
+disable-model-invocation: true
 ---
 
 # Codebase Memory — ALWAYS USE FIRST

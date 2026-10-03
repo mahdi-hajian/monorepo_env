@@ -5,6 +5,7 @@ description: >-
   Model/Config, reflection registration, Execute vs ExecuteFunction, plugin DI.
   Use automatically when scaffolding or changing visualizer plugins under
   Visualizer/Plugin/**.
+disable-model-invocation: true
 ---
 
 # IAP plugin architecture (backend)

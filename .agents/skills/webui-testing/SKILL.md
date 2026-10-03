@@ -1,8 +1,7 @@
 ---
 name: webui-testing
-description: >-
-  WebUI Jasmine + TestBed unit-test workflow and writing principles. Use
-  automatically when writing or editing Web/WebUI/**/*.spec.ts files.
+description: WebUI Jasmine + TestBed unit-test workflow and writing principles.
+disable-model-invocation: true
 ---
 
 # WebUI unit testing
@@ -16,4 +15,4 @@ description: >-
 ## Instructions
 
 - Public behavior only; one `expect` per behavior; AAA; `data-testid`.
-- For `iap/**` specs, also load IMAP `imap-testing-rules.md` and [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md), then run the required Karma command after edits.
+- For `iap/**` specs, also load IMAP `imap-testing-rules.md`. To **run** Karma, use [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md) **only** when the user explicitly asks to run tests.

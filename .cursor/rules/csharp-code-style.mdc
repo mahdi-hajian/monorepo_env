@@ -1,13 +1,11 @@
 ---
-description: C# production conventions for LAP — canonical body under MicroService.IAP
+description: Production C# — read csharp-code-style docs before coding
 globs: "**/*.cs"
 alwaysApply: false
 ---
 
-# C# production conventions (analytics workspace)
+# C# production code
 
-**Canonical source (read in full before coding):**
+Before writing or editing production `*.cs`, read:
 
-[`MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc`](../../MicroService.IAP/MicroService.IAP/.cursor/rules/csharp-code-style.mdc)
-
-Do not duplicate rules here. For tests use [`csharp-test-style.mdc`](csharp-test-style.mdc). Routing: [`csharp-lap-routing.mdc`](csharp-lap-routing.mdc).
+[`MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md)

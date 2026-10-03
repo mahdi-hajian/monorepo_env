@@ -7,6 +7,7 @@ description: >-
   (never LAPortal.config for defaults), writes Persian table rows. Use when the
   user asks to document a feature flag, add Enable* config to admin docs, or
   fill empty rows in 01-la-portal.md.
+disable-model-invocation: true
 ---
 
 # مستندسازی فیچر فلگ‌های LAP (Admin Docs)
