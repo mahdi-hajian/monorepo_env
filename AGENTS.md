@@ -56,7 +56,6 @@ Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/)
 |-------|-------------------|-----------|
 | `csharp-code-style` | Production C# | `MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md` |
 | `csharp-test-style` | C# unit tests | `MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md` |
-| `codebase-memory` | Index / graph search | IAP skill + Web `codebase-memory.md` |
 | `iap-plugin-architecture-backend` | Visualizer plugin backend | `…/skills/iap-plugin-architecture-backend/` |
 | `build-project` | Build / compile | `…/skills/build-project/` |
 | `run-unit-tests` | Run LAP.Tests | `…/skills/run-unit-tests/` |
@@ -70,5 +69,3 @@ Root [`.cursor/rules/`](.cursor/rules/) and [`.agents/skills/`](.agents/skills/)
 ## Related docs
 
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
-- Codebase Memory: [`.cursor/rules/codebase-memory.mdc`](.cursor/rules/codebase-memory.mdc)
-- Web excludes: [`Web/.cbmignore`](Web/.cbmignore)
