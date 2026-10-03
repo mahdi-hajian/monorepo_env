@@ -1,0 +1,39 @@
+---
+description: Agent routing — which docs/skills to read for C# and WebUI work
+alwaysApply: true
+---
+
+# Agent routing (analytics workspace)
+
+Read the matching doc or skill **before** acting. Product bodies live in nested repos; this file only routes.
+
+## C# / LAP (`MicroService.IAP`)
+
+Docs: `MicroService.IAP/MicroService.IAP/.cursor/docs/`
+
+| If you need to… | Read |
+|-----------------|------|
+| Write/edit production C# | [`csharp-code-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) |
+| Write/edit unit tests (`*Tests.cs`) | [`csharp-test-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
+| Author FluentValidation / `IValidator<T>` | [`lap-fluent-validation.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/lap-fluent-validation.md) |
+| Add translations, dictsource, fa-IR XML, `.WithMessage` | [`lap-language-dictionary.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/lap-language-dictionary.md) |
+| Build / compile | Only when the user asks → [`build-project`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md) |
+| Run LAP.Tests | Only when the user asks → [`run-unit-tests`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md) |
+
+## WebUI (`Web/WebUI`)
+
+| If you need to… | Read |
+|-----------------|------|
+| Write/edit TS / HTML / SCSS | [`.agents/skills/webui-coding/SKILL.md`](../../.agents/skills/webui-coding/SKILL.md) |
+| Write/edit `*.spec.ts` | [`.agents/skills/webui-testing/SKILL.md`](../../.agents/skills/webui-testing/SKILL.md) |
+| Write/edit `*.cy.ts` | [`.agents/skills/webui-cypress/SKILL.md`](../../.agents/skills/webui-cypress/SKILL.md) |
+
+For `iap/**`, also follow skills under `.agents/skills/iap-*` when `@`-invoked. Nested routing: [`Web/WebUI/AGENTS.md`](../../Web/WebUI/AGENTS.md).
+
+## Always
+
+- **Canonical homes:** C# → `MicroService.IAP/MicroService.IAP/.cursor/`; WebUI → `Web/WebUI/.agents/`. Do not duplicate bodies at analytics root.
+- **Skills:** manual only (`disable-model-invocation: true`). Index: [`AGENTS.md`](../../AGENTS.md).
+- **Build:** do not run `dotnet build` / compile after code changes unless the user explicitly asks.
+- **Tests:** do not run after code changes unless the user explicitly asks.
+- **Terminal:** never dump unbounded build/test/shell logs into context — redirect to a file, extract only pass/fail/errors (do not read the whole file back), prefer `--filter` / `--no-build`, delete temp outputs when done.

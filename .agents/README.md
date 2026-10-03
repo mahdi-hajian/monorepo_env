@@ -4,14 +4,14 @@ Skills are **manual** (`disable-model-invocation: true`). Invoke with `@skill-na
 **Tests:** run only when the user explicitly asks.  
 Routing index: [`../AGENTS.md`](../AGENTS.md)
 
-Rules under [`.cursor/rules/`](../.cursor/rules/) are tiny pointers to these skills / convention docs.
+One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.
 
 ## C#
 
+C# conventions are **docs** (not skills): `csharp-code-style`, `csharp-test-style`, `lap-fluent-validation`, `lap-language-dictionary`.
+
 | Skill | When to invoke |
 |-------|----------------|
-| [`csharp-code-style`](skills/csharp-code-style/SKILL.md) | Production `*.cs` |
-| [`csharp-test-style`](skills/csharp-test-style/SKILL.md) | `*Tests.cs` / `LAP.Tests` |
 | [`build-project`](skills/build-project/SKILL.md) | `dotnet build` |
 | [`run-unit-tests`](skills/run-unit-tests/SKILL.md) | `dotnet test` |
 | [`lap-feature-flag`](skills/lap-feature-flag/SKILL.md) | Config toggles / `IOptions<T>` |
