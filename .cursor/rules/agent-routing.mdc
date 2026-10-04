@@ -26,7 +26,6 @@ Docs: `MicroService.IAP/MicroService.IAP/.cursor/docs/`
 |-----------------|------|
 | Write/edit TS / HTML / SCSS | [`.agents/skills/webui-coding/SKILL.md`](../../.agents/skills/webui-coding/SKILL.md) |
 | Write/edit `*.spec.ts` | [`.agents/skills/webui-testing/SKILL.md`](../../.agents/skills/webui-testing/SKILL.md) |
-| Write/edit `*.cy.ts` | [`.agents/skills/webui-cypress/SKILL.md`](../../.agents/skills/webui-cypress/SKILL.md) |
 
 For `iap/**`, also follow skills under `.agents/skills/iap-*` when `@`-invoked. Nested routing: [`Web/WebUI/AGENTS.md`](../../Web/WebUI/AGENTS.md).
 

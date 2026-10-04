@@ -1,7 +1,7 @@
 # `.agents` — analytics workspace agent skills
 
 Skills default to **manual** (`disable-model-invocation: true`); invoke with `@skill-name`.  
-**Model-invoked** stubs — Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`.  
+**Model-invoked** stubs — Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`.  
 IAP: `farsi-rtl-output`, `lap-fluent-validation`, `lap-language-dictionary`, `lap-feature-flag`, `build-project`, `run-unit-tests`.  
 **LAP `dotnet test` / build execution:** only when the user explicitly asks (IAP Karma follows `iap-unit-test-run`).  
 Routing index: [`../AGENTS.md`](../AGENTS.md)
@@ -34,7 +34,6 @@ Canonical content lives under `Web/WebUI/.agents/`. These skills are entrypoints
 |-------|----------------|
 | [`webui-coding`](skills/webui-coding/SKILL.md) | `Web/WebUI` TS/HTML/SCSS |
 | [`webui-testing`](skills/webui-testing/SKILL.md) | `*.spec.ts` |
-| [`webui-cypress`](skills/webui-cypress/SKILL.md) | `*.cy.ts` |
 | [`iap-lap-coding`](skills/iap-lap-coding/SKILL.md) | `iap/**` LAP / explore |
 | [`iap-plugin-architecture-frontend`](skills/iap-plugin-architecture-frontend/SKILL.md) | Visualizer plugins |
 | [`iap-unit-test-run`](skills/iap-unit-test-run/SKILL.md) | Run `iap` Karma specs |

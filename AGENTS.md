@@ -3,7 +3,7 @@
 **One Cursor rule** routes work: [`.cursor/rules/agent-routing.mdc`](.cursor/rules/agent-routing.mdc) — if you need to do X, read doc/skill Y.  
 **Skills:** default **manual** (`disable-model-invocation: true`) via `@skill-name`.  
 **Model-invoked (auto read):**  
-- Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`  
+- Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`  
 - IAP: `farsi-rtl-output`, `lap-fluent-validation`, `lap-language-dictionary`, `lap-feature-flag`, `build-project`, `run-unit-tests`  
 **Build / LAP `dotnet test` execution:** only when the user explicitly asks (IAP Karma may auto-run per `iap-unit-test-run`).
 
@@ -29,7 +29,6 @@
 |-------|-------------------|------|
 | `webui-coding` | WebUI TS/HTML/SCSS | `.agents/skills/webui-coding/SKILL.md` |
 | `webui-testing` | WebUI `*.spec.ts` | `.agents/skills/webui-testing/SKILL.md` |
-| `webui-cypress` | WebUI `*.cy.ts` | `.agents/skills/webui-cypress/SKILL.md` |
 | `iap-lap-coding` | `iap/**` visualizer / explore | `.agents/skills/iap-lap-coding/SKILL.md` |
 | `iap-plugin-architecture-frontend` | Visualizer plugins / MountPoint | `.agents/skills/iap-plugin-architecture-frontend/SKILL.md` |
 | `iap-unit-test-run` | Run `iap/**` Karma specs | `.agents/skills/iap-unit-test-run/SKILL.md` |

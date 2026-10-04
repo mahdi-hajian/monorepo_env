@@ -9,7 +9,7 @@ disable-model-invocation: false
 **Canonical sources (read in this order):**
 
 1. [`Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`](../../../Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md)
-2. [`Web/WebUI/.agents/RULES/testing/tests-writing-principles.md`](../../../Web/WebUI/.agents/RULES/testing/tests-writing-principles.md)
+2. [`Web/WebUI/.agents/GLOBAL/SKILLS/tests-writing-principles/SKILL.md`](../../../Web/WebUI/.agents/GLOBAL/SKILLS/tests-writing-principles/SKILL.md)
 3. For `iap/**` only: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md)
 
 ## Instructions
