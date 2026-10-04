@@ -7,9 +7,8 @@ description: >-
   MicroService.IAP.
 disable-model-invocation: false
 ---
-
 # LAP FluentValidation
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md)
+**Real source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md)
 
-Read that file in full and follow it (it points at `docs/lap-fluent-validation.md`).
+Read whole file. Follow it. (It point at `docs/lap-fluent-validation.md`.)

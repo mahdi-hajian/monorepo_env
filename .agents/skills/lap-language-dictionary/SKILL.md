@@ -7,9 +7,8 @@ description: >-
   or plugin/validation user-facing text in MicroService.IAP.
 disable-model-invocation: false
 ---
-
 # LAP language dictionary
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md)
+**Main source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md)
 
-Read that file in full and follow it (it points at `docs/lap-language-dictionary.md`).
+Read file full, follow it. It point to `docs/lap-language-dictionary.md`.

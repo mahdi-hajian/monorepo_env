@@ -6,9 +6,8 @@ description: >-
   to continue a phase.
 disable-model-invocation: true
 ---
-
 # iap-ogma-decoupling
 
-**Canonical source:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/iap-ogma-decoupling/iap-ogma-decoupling.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/iap-ogma-decoupling/iap-ogma-decoupling.md)
+**Source:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/iap-ogma-decoupling/iap-ogma-decoupling.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/iap-ogma-decoupling/iap-ogma-decoupling.md)
 
 Plan: `Web/WebUI/iap/docs/ogma-decoupling-plan.md`

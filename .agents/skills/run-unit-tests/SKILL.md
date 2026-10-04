@@ -6,9 +6,8 @@ description: >-
   this repo. Do not run tests unless the user explicitly asks.
 disable-model-invocation: false
 ---
-
 # Unit Test Run Guide (LAP.Tests)
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md)
+**Real source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md)
 
-Run tests **only** when the user explicitly asks. Read the canonical skill for commands and filters.
+Run tests **only** when user ask. Read skill doc for commands and filters.

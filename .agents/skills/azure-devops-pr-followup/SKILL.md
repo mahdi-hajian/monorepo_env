@@ -8,9 +8,8 @@ description: >-
   or follow up on MicroService.IAP / Analytics collection pull requests.
 disable-model-invocation: true
 ---
-
 # Azure DevOps PR follow-up (MCP)
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md)
+**CANON SOURCE:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-followup/SKILL.md)
 
-Read that file in full and follow it. For **Web** / WebUI PRs use [`web-azure-devops-pr-followup`](../web-azure-devops-pr-followup/SKILL.md) instead.
+READ FILE FULL. FOLLOW IT. FOR **WEB** / WEBUI PR, USE [`web-azure-devops-pr-followup`](../web-azure-devops-pr-followup/SKILL.md) INSTEAD.

@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Agent routing (analytics workspace)
 
-Read the matching doc or skill **before** acting. Product bodies live in nested repos; this file only routes.
+Read matching doc or skill **before** acting. Product bodies live in nested repos; this file only routes.
 
 ## C# / LAP (`MicroService.IAP`)
 
@@ -17,8 +17,8 @@ Docs: `MicroService.IAP/MicroService.IAP/.cursor/docs/`
 | Write/edit unit tests (`*Tests.cs`) | [`csharp-test-style.md`](../../MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
 | Author FluentValidation / `IValidator<T>` | [`lap-fluent-validation`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md) |
 | Add translations, dictsource, fa-IR XML, `.WithMessage` | [`lap-language-dictionary`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md) |
-| Build / compile | Only when the user asks → [`build-project`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md) |
-| Run LAP.Tests | Only when the user asks → [`run-unit-tests`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md) |
+| Build / compile | Only when user asks → [`build-project`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md) |
+| Run LAP.Tests | Only when user asks → [`run-unit-tests`](../../MicroService.IAP/MicroService.IAP/.cursor/skills/run-unit-tests/SKILL.md) |
 
 ## WebUI (`Web/WebUI`)
 
@@ -31,8 +31,8 @@ For `iap/**`, also follow skills under `.agents/skills/iap-*` when `@`-invoked. 
 
 ## Always
 
-- **Canonical homes:** C# → `MicroService.IAP/MicroService.IAP/.cursor/`; WebUI → `Web/WebUI/.agents/`. Do not duplicate bodies at analytics root.
-- **Skills:** see [`AGENTS.md`](../../AGENTS.md) for which are model-invoked vs `@`-only. Build/test **execution** still only when the user asks.
-- **Build:** do not run `dotnet build` / compile after code changes unless the user explicitly asks.
-- **Tests:** do not run after code changes unless the user explicitly asks.
-- **Terminal:** never dump unbounded build/test/shell logs into context — redirect to a file, extract only pass/fail/errors (do not read the whole file back), prefer `--filter` / `--no-build`, delete temp outputs when done.
+- **Canonical homes:** C# → `MicroService.IAP/MicroService.IAP/.cursor/`; WebUI → `Web/WebUI/.agents/`. No duplicate bodies at analytics root.
+- **Skills:** see [`AGENTS.md`](../../AGENTS.md) for model-invoked vs `@`-only. Build/test **execution** still only when user asks.
+- **Build:** no `dotnet build` / compile after code changes unless user explicitly asks.
+- **Tests:** no run after code changes unless user explicitly asks.
+- **Terminal:** never dump unbounded build/test/shell logs into context — redirect to file, extract only pass/fail/errors (no read whole file back), prefer `--filter` / `--no-build`, delete temp outputs when done.

@@ -6,9 +6,8 @@ description: >-
   Do not run a build unless the user explicitly asks.
 disable-model-invocation: false
 ---
-
 # Build Guide (MicroService.IAP)
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md)
+**Source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/build-project/SKILL.md)
 
-Build **only** when the user explicitly asks. Read the canonical skill for commands.
+Build **only** when user ask. Read skill for commands.

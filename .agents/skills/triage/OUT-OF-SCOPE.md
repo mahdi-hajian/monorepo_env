@@ -1,9 +1,9 @@
 # Out-of-Scope Knowledge Base
 
-The `.out-of-scope/` directory in a repo stores persistent records of rejected feature requests. It serves two purposes:
+`.out-of-scope/` dir in repo store permanent records of rejected feature requests. Two jobs:
 
-1. **Institutional memory** — why a feature was rejected, so the reasoning isn't lost when the issue is closed
-2. **Deduplication** — when a new issue comes in that matches a prior rejection, the skill can surface the previous decision instead of re-litigating it
+1. **Institutional memory** — why feature rejected, so reasoning not lost when issue closed
+2. **Deduplication** — when new issue match prior rejection, skill show previous decision instead of re-arguing it
 
 ## Directory structure
 
@@ -14,11 +14,11 @@ The `.out-of-scope/` directory in a repo stores persistent records of rejected f
 └── graphql-api.md
 ```
 
-One file per **concept**, not per issue. Multiple issues requesting the same thing are grouped under one file.
+One file per **concept**, not per issue. Many issues asking same thing grouped under one file.
 
 ## File format
 
-The file should be written in a relaxed, readable style — more like a short design document than a database entry. Use paragraphs, code samples, and examples to make the reasoning clear and useful to someone encountering it for the first time.
+File write in relaxed, readable style — more like short design doc than database entry. Use paragraphs, code samples, examples so reasoning clear and useful for someone first time seeing it.
 
 ```markdown
 # Dark Mode

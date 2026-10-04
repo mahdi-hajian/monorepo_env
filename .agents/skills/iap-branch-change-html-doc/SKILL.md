@@ -5,9 +5,8 @@ description: >-
   vs master. Use when the user asks to document iap/** branch changes as HTML.
 disable-model-invocation: true
 ---
-
 # IAP branch change HTML doc
 
-**Canonical source:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/iap-branch-change-html-doc/iap-branch-change-html-doc.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/iap-branch-change-html-doc/iap-branch-change-html-doc.md)
+**Source:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/iap-branch-change-html-doc/iap-branch-change-html-doc.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/iap-branch-change-html-doc/iap-branch-change-html-doc.md)
 
 Template: `Web/WebUI/.agents/IMAP/SKILLS/reference/iap-branch-change-html-doc/reference/html-template.md`

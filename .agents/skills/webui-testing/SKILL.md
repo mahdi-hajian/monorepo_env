@@ -1,18 +1,18 @@
-﻿---
+---
 name: webui-testing
-description: WebUI Jasmine + TestBed unit-test workflow and writing principles.
+description: WebUI Jasmine + TestBed unit-test workflow + writing principles.
 disable-model-invocation: false
 ---
 
 # WebUI unit testing
 
-**Canonical sources (read in this order):**
+**Main sources. Read in this order:**
 
 1. [`Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md`](../../../Web/WebUI/.agents/RULES/testing/tests-authoring-workflow.md)
 2. [`Web/WebUI/.agents/GLOBAL/SKILLS/tests-writing-principles/SKILL.md`](../../../Web/WebUI/.agents/GLOBAL/SKILLS/tests-writing-principles/SKILL.md)
-3. For `iap/**` only: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md)
+3. Only for `iap/**`: [`Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/testing/imap-testing-rules.md)
 
 ## Instructions
 
-- Public behavior only; one `expect` per behavior; AAA; `data-testid`.
-- For `iap/**` specs, also load IMAP `imap-testing-rules.md`. To **run** Karma, use [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md) **only** when the user explicitly asks to run tests.
+- Test public behavior only. One `expect` per behavior. AAA. Use `data-testid`.
+- `iap/**` specs: also load IMAP `imap-testing-rules.md`. To **run** Karma, use [`iap-unit-test-run`](../iap-unit-test-run/SKILL.md) **only** when user explicitly asks.

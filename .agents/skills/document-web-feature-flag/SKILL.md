@@ -6,9 +6,8 @@ description: >-
   or web.uiconfig keys.
 disable-model-invocation: true
 ---
-
 # Document web feature flag
 
-**Canonical source:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/document-web-feature-flag.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/document-web-feature-flag.md)
+**Real doc:** [`Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/document-web-feature-flag.md`](../../../Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/document-web-feature-flag.md)
 
-Supporting refs: `Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/reference/`.
+Help refs: `Web/WebUI/.agents/IMAP/SKILLS/reference/document-web-feature-flag/reference/`.

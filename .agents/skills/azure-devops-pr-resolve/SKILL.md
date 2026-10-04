@@ -7,9 +7,8 @@ description: >-
   (e.g. «resolve کن», «فقط resolve», «mark threads fixed») on MicroService.IAP / Analytics PRs.
 disable-model-invocation: true
 ---
-
 # Azure DevOps PR resolve (MCP only)
 
 **Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-resolve/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/azure-devops-pr-resolve/SKILL.md)
 
-Read that file in full and follow it. For code fixes + `done with AI` replies use [`azure-devops-pr-followup`](../azure-devops-pr-followup/SKILL.md).
+Read that file full. Follow it. For code fix + `done with AI` reply, use [`azure-devops-pr-followup`](../azure-devops-pr-followup/SKILL.md).

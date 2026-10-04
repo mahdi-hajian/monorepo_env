@@ -1,18 +1,18 @@
 # `.agents` — analytics workspace agent skills
 
-Skills default to **manual** (`disable-model-invocation: true`); invoke with `@skill-name`.  
+Skills default **manual** (`disable-model-invocation: true`); invoke with `@skill-name`.  
 **Model-invoked** stubs — Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`.  
 IAP: `farsi-rtl-output`, `lap-fluent-validation`, `lap-language-dictionary`, `lap-feature-flag`, `build-project`, `run-unit-tests`.  
-**LAP `dotnet test` / build execution:** only when the user explicitly asks (IAP Karma follows `iap-unit-test-run`).  
+**LAP `dotnet test` / build run:** only when user explicitly ask (IAP Karma follow `iap-unit-test-run`).  
 Routing index: [`../AGENTS.md`](../AGENTS.md)
 
-One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.
+One rule route everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.
 
 Skill craft: [`skills/writing-great-skills/SKILL.md`](skills/writing-great-skills/SKILL.md).
 
 ## C#
 
-C# style conventions are **docs**: `csharp-code-style`, `csharp-test-style`, and siblings. Validation / i18n workflows are **skills** that point at those docs.
+C# style convention be **docs**: `csharp-code-style`, `csharp-test-style`, and siblings. Validation / i18n workflow be **skills** that point at those docs.
 
 | Skill | When to invoke |
 |-------|----------------|
@@ -22,13 +22,13 @@ C# style conventions are **docs**: `csharp-code-style`, `csharp-test-style`, and
 | [`lap-feature-flag-docs`](skills/lap-feature-flag-docs/SKILL.md) | Admin docs for flags |
 | [`lap-fluent-validation`](skills/lap-fluent-validation/SKILL.md) | FluentValidation / `IValidator<T>` |
 | [`lap-language-dictionary`](skills/lap-language-dictionary/SKILL.md) | Translations / dictsource / fa-IR |
-| [`azure-devops-pr-followup`](skills/azure-devops-pr-followup/SKILL.md) | Fix ADO PR comments (IAP) |
+| [`azure-devops-pr-followup`](skills/azure-devops-pr-followup/SKILL.md) | Fix ADO PR comment (IAP) |
 | [`azure-devops-pr-resolve`](skills/azure-devops-pr-resolve/SKILL.md) | Resolve ADO threads only |
 | [`lap-pr-action`](skills/lap-pr-action/SKILL.md) | IAP branch vs master → HTML RTL PR summary |
 
 ## WebUI
 
-Canonical content lives under `Web/WebUI/.agents/`. These skills are entrypoints:
+Canonical content live under `Web/WebUI/.agents/`. These skills be entrypoints:
 
 | Skill | When to invoke |
 |-------|----------------|

@@ -8,9 +8,8 @@ description: >-
   toggle, Enable* config, or wiring IOptions for new behavior in this repo.
 disable-model-invocation: false
 ---
-
 # LAP feature flags (configuration-backed toggles)
 
-**Canonical source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md)
+**Real source:** [`MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md`](../../../MicroService.IAP/MicroService.IAP/.cursor/skills/lap-feature-flag/SKILL.md)
 
-Read that file in full and follow it. For documenting flags use [`lap-feature-flag-docs`](../lap-feature-flag-docs/SKILL.md).
+Read whole file. Do what it say. For flag docs use [`lap-feature-flag-docs`](../lap-feature-flag-docs/SKILL.md).

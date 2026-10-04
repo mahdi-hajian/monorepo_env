@@ -1,6 +1,6 @@
 # GLOSSARY.md Format
 
-`GLOSSARY.md` is the canonical language for this teaching workspace. All explainers, exercises, and learning records should adhere to its terminology. Building it is itself part of learning: compressing a concept into a tight definition is evidence the user understands it.
+`GLOSSARY.md` is the talk of this workspace. All explainers, exercises, learning records use its words. Building it is learning: squish idea into tight meaning prove user gets it.
 
 ## Structure
 
@@ -26,10 +26,10 @@ _Avoid_: Effort score, intensity rating
 
 ## Rules
 
-- **Add a term only when the user understands it.** The glossary is a record of compressed knowledge, not a dictionary the user reads to learn. If the user has just been introduced to a concept, wait until they can use it correctly before promoting it here.
-- **Be opinionated.** When several words exist for the same concept, pick the best one and list the rest as aliases to avoid. This is how language compresses.
-- **Keep definitions tight.** One or two sentences. Define what the term IS, not what it does or how to do it.
-- **Use the glossary's own terms inside definitions.** Once a term is in the glossary, prefer it everywhere — including inside other definitions. This is what makes complex terms easier to grasp later.
-- **Group under subheadings** when natural clusters emerge (e.g. `## Anatomy`, `## Programming`). A flat list is fine when terms cohere.
-- **Flag ambiguities explicitly.** If a term is used loosely in the wider field, note the resolution: "In this workspace, 'set' always means a working set — warm-ups are tracked separately."
-- **Revise as understanding deepens.** A definition the user wrote in week one may be wrong by week six. Update in place; do not leave stale entries.
+- **Add word only when user gets it.** Glossary is record of squeezed knowledge, not dictionary for reading to learn. User just met idea? Wait until they use it right before it come here.
+- **Be picky.** Many words for same thing? Pick best one. Others become aliases to avoid. This how language squishes.
+- **Keep meanings tight.** One or two sentences. Say what term IS, not what it do or how to do it.
+- **Use glossary words inside other meanings.** Once word in glossary, use it everywhere — even in other meanings. This make hard terms easy later.
+- **Group under subheadings** when natural clusters appear (e.g. `## Anatomy`, `## Programming`). Flat list fine when words stick together.
+- **Flag fuzzy meanings loud.** If word used loose in big world, note the fix: "Here, 'set' always mean working set — warm-ups tracked separate."
+- **Fix meanings when understanding grows.** Meaning user wrote in week one may be wrong by week six. Update in place. No stale words.
