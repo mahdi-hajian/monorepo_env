@@ -1,10 +1,10 @@
----
+﻿---
 name: iap-plugin-architecture-frontend
 description: >-
   IAP visualizer plugin architecture: PluginBaseView/PluginBase, PluginsModule,
   MountPoint Modal vs EndSidebar, sync/execute. Use automatically when
   scaffolding or changing visualizer plugins under Web/WebUI/iap/app/visualizer/**.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # IAP plugin architecture (frontend)

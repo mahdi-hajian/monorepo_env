@@ -1,7 +1,8 @@
 # `.agents` — analytics workspace agent skills
 
-Skills are **manual** (`disable-model-invocation: true`). Invoke with `@skill-name`.  
-**Tests:** run only when the user explicitly asks.  
+Skills default to **manual** (`disable-model-invocation: true`); invoke with `@skill-name`.  
+Web **model-invoked** stubs: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`.  
+**LAP / generic tests:** run only when the user explicitly asks (IAP Karma follows `iap-unit-test-run`).  
 Routing index: [`../AGENTS.md`](../AGENTS.md)
 
 One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.

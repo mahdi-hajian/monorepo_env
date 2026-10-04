@@ -1,7 +1,7 @@
----
+﻿---
 name: webui-testing
 description: WebUI Jasmine + TestBed unit-test workflow and writing principles.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # WebUI unit testing

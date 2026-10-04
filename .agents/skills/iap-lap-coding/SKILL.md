@@ -1,11 +1,11 @@
----
+﻿---
 name: iap-lap-coding
 description: >-
   LAP frontend coding conventions for iap/visualizer and explore-view: naming,
   wire vs client models, dedicated types, enums, AG Grid patterns. Use
   automatically when editing Web/WebUI/iap/** explore plugins, visualizer grids,
   or LAPortal AG Grid features.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # IAP LAP coding

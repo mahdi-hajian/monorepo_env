@@ -1,10 +1,10 @@
----
+﻿---
 name: webui-coding
 description: >-
   WebUI shared Angular/TypeScript coding principles (convention.md + coding-principles).
   Use automatically whenever writing or editing frontend code under Web/WebUI
   (*.ts, *.html, *.scss) that is not a Cypress file.
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 # WebUI coding

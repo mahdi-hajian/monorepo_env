@@ -1,8 +1,9 @@
 # Agent instructions (analytics workspace)
 
 **One Cursor rule** routes work: [`.cursor/rules/agent-routing.mdc`](.cursor/rules/agent-routing.mdc) — if you need to do X, read doc/skill Y.  
-**Skills** are **manual** (`disable-model-invocation: true`) — invoke with `@skill-name`.  
-**Build / tests:** only when the user explicitly asks.
+**Skills:** default **manual** (`disable-model-invocation: true`) via `@skill-name`.  
+Web model-invoked (auto): `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`.  
+**Build / LAP tests:** only when the user explicitly asks (IAP Karma may auto-run per `iap-unit-test-run`).
 
 | Area | Canonical folder |
 |------|------------------|
