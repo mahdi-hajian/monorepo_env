@@ -1,8 +1,9 @@
 # `.agents` — analytics workspace agent skills
 
 Skills default to **manual** (`disable-model-invocation: true`); invoke with `@skill-name`.  
-Web **model-invoked** stubs: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`.  
-**LAP / generic tests:** run only when the user explicitly asks (IAP Karma follows `iap-unit-test-run`).  
+**Model-invoked** stubs — Web: `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-coding`, `iap-plugin-architecture-frontend`, `add-web-feature-flag`, `webui-coding`, `webui-testing`, `webui-cypress`.  
+IAP: `farsi-rtl-output`, `lap-fluent-validation`, `lap-language-dictionary`, `lap-feature-flag`, `build-project`, `run-unit-tests`.  
+**LAP `dotnet test` / build execution:** only when the user explicitly asks (IAP Karma follows `iap-unit-test-run`).  
 Routing index: [`../AGENTS.md`](../AGENTS.md)
 
 One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.
@@ -24,8 +25,6 @@ C# style conventions are **docs**: `csharp-code-style`, `csharp-test-style`, and
 | [`azure-devops-pr-followup`](skills/azure-devops-pr-followup/SKILL.md) | Fix ADO PR comments (IAP) |
 | [`azure-devops-pr-resolve`](skills/azure-devops-pr-resolve/SKILL.md) | Resolve ADO threads only |
 | [`lap-pr-action`](skills/lap-pr-action/SKILL.md) | IAP branch vs master → HTML RTL PR summary |
-| [`lap-test-master`](skills/lap-test-master/SKILL.md) | Write/update LAP tests for branch vs master |
-| [`lap-test-uncommited`](skills/lap-test-uncommited/SKILL.md) | Write/update LAP tests for uncommitted changes |
 
 ## WebUI
 

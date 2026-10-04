@@ -33,7 +33,7 @@ For `iap/**`, also follow skills under `.agents/skills/iap-*` when `@`-invoked. 
 ## Always
 
 - **Canonical homes:** C# → `MicroService.IAP/MicroService.IAP/.cursor/`; WebUI → `Web/WebUI/.agents/`. Do not duplicate bodies at analytics root.
-- **Skills:** manual only (`disable-model-invocation: true`). Index: [`AGENTS.md`](../../AGENTS.md).
+- **Skills:** see [`AGENTS.md`](../../AGENTS.md) for which are model-invoked vs `@`-only. Build/test **execution** still only when the user asks.
 - **Build:** do not run `dotnet build` / compile after code changes unless the user explicitly asks.
 - **Tests:** do not run after code changes unless the user explicitly asks.
 - **Terminal:** never dump unbounded build/test/shell logs into context — redirect to a file, extract only pass/fail/errors (do not read the whole file back), prefer `--filter` / `--no-build`, delete temp outputs when done.
