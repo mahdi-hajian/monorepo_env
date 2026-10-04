@@ -15,8 +15,8 @@
 |-------|-----|
 | Production C# (index) | [`…/docs/csharp-code-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-code-style.md) → `csharp-basics`, `csharp-di-structure`, `csharp-async-tracing`, `csharp-dtos-collections`, `csharp-tabservice` |
 | Unit tests | [`…/docs/csharp-test-style.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/csharp-test-style.md) |
-| FluentValidation | [`…/docs/lap-fluent-validation.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/lap-fluent-validation.md) |
-| Translations | [`…/docs/lap-language-dictionary.md`](MicroService.IAP/MicroService.IAP/.cursor/docs/lap-language-dictionary.md) |
+| FluentValidation | [`…/skills/lap-fluent-validation`](MicroService.IAP/MicroService.IAP/.cursor/skills/lap-fluent-validation/SKILL.md) → docs |
+| Translations | [`…/skills/lap-language-dictionary`](MicroService.IAP/MicroService.IAP/.cursor/skills/lap-language-dictionary/SKILL.md) → docs |
 
 **IAP project root:** `MicroService.IAP/MicroService.IAP` (SDK 8.0.x). Prefer `--no-restore`.
 
@@ -47,6 +47,8 @@
 | `run-unit-tests` | Run LAP.Tests | `…/skills/run-unit-tests/` |
 | `lap-feature-flag` | Backend `Enable*` / `IOptions<T>` | `…/skills/lap-feature-flag/` |
 | `lap-feature-flag-docs` | Document backend flag | `…/skills/lap-feature-flag-docs/` |
+| `lap-fluent-validation` | FluentValidation / `IValidator<T>` | `…/skills/lap-fluent-validation/` |
+| `lap-language-dictionary` | Translations / dictsource / fa-IR | `…/skills/lap-language-dictionary/` |
 | `azure-devops-pr-followup` | ADO PR on **MicroService.IAP** | `…/skills/azure-devops-pr-followup/` |
 | `azure-devops-pr-resolve` | Resolve IAP PR threads only | `…/skills/azure-devops-pr-resolve/` |
 | `lap-pr-action` | IAP branch vs master → HTML RTL PR summary | `…/skills/lap-pr-action/` |

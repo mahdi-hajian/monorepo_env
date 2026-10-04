@@ -10,7 +10,7 @@ One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules
 
 ## C#
 
-C# conventions are **docs** (not skills): `csharp-code-style`, `csharp-test-style`, `lap-fluent-validation`, `lap-language-dictionary`.
+C# style conventions are **docs**: `csharp-code-style`, `csharp-test-style`, and siblings. Validation / i18n workflows are **skills** that point at those docs.
 
 | Skill | When to invoke |
 |-------|----------------|
@@ -18,6 +18,8 @@ C# conventions are **docs** (not skills): `csharp-code-style`, `csharp-test-styl
 | [`run-unit-tests`](skills/run-unit-tests/SKILL.md) | `dotnet test` |
 | [`lap-feature-flag`](skills/lap-feature-flag/SKILL.md) | Config toggles / `IOptions<T>` |
 | [`lap-feature-flag-docs`](skills/lap-feature-flag-docs/SKILL.md) | Admin docs for flags |
+| [`lap-fluent-validation`](skills/lap-fluent-validation/SKILL.md) | FluentValidation / `IValidator<T>` |
+| [`lap-language-dictionary`](skills/lap-language-dictionary/SKILL.md) | Translations / dictsource / fa-IR |
 | [`azure-devops-pr-followup`](skills/azure-devops-pr-followup/SKILL.md) | Fix ADO PR comments (IAP) |
 | [`azure-devops-pr-resolve`](skills/azure-devops-pr-resolve/SKILL.md) | Resolve ADO threads only |
 | [`lap-pr-action`](skills/lap-pr-action/SKILL.md) | IAP branch vs master → HTML RTL PR summary |
