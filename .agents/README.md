@@ -46,4 +46,3 @@ Canonical content lives under `Web/WebUI/.agents/`. These skills are entrypoints
 | [`farsi-rtl-output`](skills/farsi-rtl-output/SKILL.md) | Persian RTL replies |
 | [`web-azure-devops-pr-followup`](skills/web-azure-devops-pr-followup/SKILL.md) | ADO PR on **Web** repo |
 | [`web-pr-action`](skills/web-pr-action/SKILL.md) | WebUI branch vs master → HTML RTL PR summary |
-| [`web-test-master`](skills/web-test-master/SKILL.md) | Write/update WebUI tests for branch vs master |

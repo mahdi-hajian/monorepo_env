@@ -38,7 +38,6 @@ Web model-invoked (auto): `farsi-rtl-output`, `iap-unit-test-run`, `iap-lap-codi
 | `farsi-rtl-output` | Persian / RTL replies | `.agents/skills/farsi-rtl-output/SKILL.md` |
 | `web-azure-devops-pr-followup` | ADO PR on **Web** | `.agents/skills/web-azure-devops-pr-followup/SKILL.md` |
 | `web-pr-action` | WebUI branch vs master → HTML RTL PR summary | `.agents/skills/web-pr-action/SKILL.md` |
-| `web-test-master` | Write/update WebUI tests for branch vs master | `.agents/skills/web-test-master/SKILL.md` |
 
 ## Manual skills index (C# / LAP)
 
