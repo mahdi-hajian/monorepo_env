@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Agent routing (analytics workspace)
 
-Read matching doc or skill **before** acting. Product bodies live in nested repos; this file only routes.
+Read matching doc/skill **before** acting. Product bodies in nested repos; this file only routes.
 
 ## C# / LAP (`MicroService.IAP`)
 
