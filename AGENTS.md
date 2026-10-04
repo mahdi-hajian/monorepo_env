@@ -36,6 +36,8 @@
 | `iap-branch-change-html-doc` | Branch → HTML doc | `.agents/skills/iap-branch-change-html-doc/SKILL.md` |
 | `farsi-rtl-output` | Persian / RTL replies | `.agents/skills/farsi-rtl-output/SKILL.md` |
 | `web-azure-devops-pr-followup` | ADO PR on **Web** | `.agents/skills/web-azure-devops-pr-followup/SKILL.md` |
+| `web-pr-action` | WebUI branch vs master → HTML RTL PR summary | `.agents/skills/web-pr-action/SKILL.md` |
+| `web-test-master` | Write/update WebUI tests for branch vs master | `.agents/skills/web-test-master/SKILL.md` |
 
 ## Manual skills index (C# / LAP)
 
@@ -47,6 +49,16 @@
 | `lap-feature-flag-docs` | Document backend flag | `…/skills/lap-feature-flag-docs/` |
 | `azure-devops-pr-followup` | ADO PR on **MicroService.IAP** | `…/skills/azure-devops-pr-followup/` |
 | `azure-devops-pr-resolve` | Resolve IAP PR threads only | `…/skills/azure-devops-pr-resolve/` |
+| `lap-pr-action` | IAP branch vs master → HTML RTL PR summary | `…/skills/lap-pr-action/` |
+| `lap-test-master` | Write/update LAP tests for branch vs master | `…/skills/lap-test-master/` |
+| `lap-test-uncommited` | Write/update LAP tests for uncommitted changes | `…/skills/lap-test-uncommited/` |
+
+## Authoring (rules vs skills)
+
+| Skill | When to `@` invoke | Path |
+|-------|-------------------|------|
+| `rules-vs-skills` | Add/migrate rule, skill, or command; decide rule vs skill vs docs/RULES | `.agents/skills/rules-vs-skills/SKILL.md` |
+| `writing-great-skills` | Edit skill quality (invocation, hierarchy, pruning) | `.agents/skills/writing-great-skills/SKILL.md` |
 
 ## Related docs
 
