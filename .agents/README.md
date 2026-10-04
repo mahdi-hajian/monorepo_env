@@ -8,7 +8,7 @@ Routing index: [`../AGENTS.md`](../AGENTS.md)
 
 One rule routes everything: [`.cursor/rules/agent-routing.mdc`](../.cursor/rules/agent-routing.mdc) → docs under `MicroService.IAP/.../.cursor/docs/`.
 
-**When to add a rule vs a skill:** [`skills/rules-vs-skills/SKILL.md`](skills/rules-vs-skills/SKILL.md) (`@rules-vs-skills`). Skill craft: [`skills/writing-great-skills/SKILL.md`](skills/writing-great-skills/SKILL.md).
+Skill craft: [`skills/writing-great-skills/SKILL.md`](skills/writing-great-skills/SKILL.md).
 
 ## C#
 
