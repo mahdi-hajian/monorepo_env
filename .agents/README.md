@@ -41,6 +41,6 @@ Canonical content live under `Web/WebUI/.agents/`. These skills be entrypoints:
 | [`document-web-feature-flag`](skills/document-web-feature-flag/SKILL.md) | Document web flag |
 | [`iap-ogma-decoupling`](skills/iap-ogma-decoupling/SKILL.md) | Ogma decoupling plan |
 | [`iap-branch-change-html-doc`](skills/iap-branch-change-html-doc/SKILL.md) | Branch HTML doc |
-| [`farsi-rtl-output`](skills/farsi-rtl-output/SKILL.md) | Persian RTL replies |
+| [`farsi-rtl-output`](skills/farsi-rtl-output/SKILL.md) | Persian RTL replies (every heading/paragraph/list, not only opener) |
 | [`web-azure-devops-pr-followup`](skills/web-azure-devops-pr-followup/SKILL.md) | ADO PR on **Web** repo |
 | [`web-pr-action`](skills/web-pr-action/SKILL.md) | WebUI branch vs master → HTML RTL PR summary |
