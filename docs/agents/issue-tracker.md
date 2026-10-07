@@ -33,6 +33,12 @@ Host: `https://jira.mohaymen.ir`
   - `project_key`: `TECSDM` (or prefix of the overridden parent key)
   - `summary` / `description`: from the approved ticket (What to build + acceptance criteria + Blocked by)
 
+### Persian descriptions (required)
+
+Write Jira `description` / comments in **plain Persian Markdown** (headings, lists, `` `code` ``). Do **not** wrap in `{html}`, `<div dir="rtl">`, HTML entities, or Source-editor HTML — MCP mangles those and the result is worse than plain text.
+
+Keep issue keys, paths, and API names verbatim inside the Persian prose.
+
 ### Labels / triage on Jira
 
 When applying triage roles, set Jira labels to the strings in `triage-labels.md` when the project allows labels; also keep the local file `Status:` in sync.
