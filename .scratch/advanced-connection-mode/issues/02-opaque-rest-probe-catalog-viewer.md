@@ -7,7 +7,7 @@
 **Status:** ready-for-agent
 
 **Parent:** TECSDM-121817  
-**Spec:** `.scratch/advanced-connection-mode/spec.md` (TECSDM-121818)  
+**Spec:** `.scratch/advanced-connection-mode/spec.md`  
 **Jira:** [TECSDM-121820](https://jira.mohaymen.ir/browse/TECSDM-121820)
 
 - [ ] تست قبل از ذخیره با Payload موناکو و فیلدهای Typed/شناسه خالی طبق قرارداد

@@ -7,7 +7,7 @@
 **Status:** ready-for-agent
 
 **Parent:** TECSDM-121817  
-**Spec:** `.scratch/advanced-connection-mode/spec.md` (TECSDM-121818)  
+**Spec:** `.scratch/advanced-connection-mode/spec.md`  
 **Jira:** [TECSDM-121821](https://jira.mohaymen.ir/browse/TECSDM-121821)
 
 - [ ] تب فعال = سفارشی + Live → ذخیره محتوای Opaque بدون جزئیات پین‌شده بنویسد

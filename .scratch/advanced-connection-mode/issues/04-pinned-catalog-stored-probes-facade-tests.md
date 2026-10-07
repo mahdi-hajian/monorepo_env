@@ -7,7 +7,7 @@
 **Status:** ready-for-agent
 
 **Parent:** TECSDM-121817  
-**Spec:** `.scratch/advanced-connection-mode/spec.md` (TECSDM-121818)  
+**Spec:** `.scratch/advanced-connection-mode/spec.md`  
 **Jira:** [TECSDM-121822](https://jira.mohaymen.ir/browse/TECSDM-121822)
 
 - [ ] حالت پین: پیش‌نمایش → انتخاب پنل چپ → ذخیره شامل DataSource Opaque

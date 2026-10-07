@@ -7,7 +7,7 @@
 **Status:** ready-for-agent
 
 **Parent:** TECSDM-121817  
-**Spec:** `.scratch/advanced-connection-mode/spec.md` (TECSDM-121818)  
+**Spec:** `.scratch/advanced-connection-mode/spec.md`  
 **Jira:** [TECSDM-121819](https://jira.mohaymen.ir/browse/TECSDM-121819)
 
 - [ ] تب فرم و تب سفارشی در ایجاد/ویرایش در دسترس‌اند

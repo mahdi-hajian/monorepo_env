@@ -2,7 +2,7 @@
 
 Status: ready-for-agent
 
-Jira: [TECSDM-121818](https://jira.mohaymen.ir/browse/TECSDM-121818)
+Jira: none (spec is local-only; TECSDM-121818 was cancelled — it was not an implementation ticket)
 
 Domain: [Connections/CONTEXT.md](../../Connections/CONTEXT.md)  
 ADRs: [Connections/docs/adr/](../../Connections/docs/adr/)  
