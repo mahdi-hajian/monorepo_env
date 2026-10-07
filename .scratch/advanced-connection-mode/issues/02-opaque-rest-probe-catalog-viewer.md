@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+**Progress:** in progress — Opaque REST Probe برای Test/Preview و Catalog-Driven Viewer
+
 **Parent:** TECSDM-121817  
 **Spec:** `.scratch/advanced-connection-mode/spec.md`  
 **Jira:** [TECSDM-121820](https://jira.mohaymen.ir/browse/TECSDM-121820)

@@ -4,9 +4,9 @@
 
 **مسدودکننده:** هیچ — فوراً قابل شروع.
 
-**Status:** ready-for-agent
+**Status:** done
 
-**Progress:** in progress — پوسته تب‌ها، Draft سفارشی، چیدمان Monaco، resize پنل تنظیمات
+**Progress:** completed — پوسته تب‌ها، Draft سفارشی، چیدمان Monaco، resize پنل تنظیمات
 
 **Parent:** TECSDM-121817  
 **Spec:** `.scratch/advanced-connection-mode/spec.md`  
