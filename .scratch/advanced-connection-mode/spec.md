@@ -2,7 +2,7 @@
 
 Status: ready-for-agent
 
-Jira: none (spec is local-only; TECSDM-121818 was cancelled — it was not an implementation ticket)
+Jira parent (overview): [TECSDM-121817](https://jira.mohaymen.ir/browse/TECSDM-121817) — full narrative lives there; no separate spec Subtask. TECSDM-121818 was cancelled.
 
 Domain: [Connections/CONTEXT.md](../../Connections/CONTEXT.md)  
 ADRs: [Connections/docs/adr/](../../Connections/docs/adr/)  

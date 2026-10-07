@@ -44,11 +44,12 @@ When applying triage roles, set Jira labels to the strings in `triage-labels.md`
 
 ## When a skill says "publish to the issue tracker"
 
-1. Write the local `.scratch/.../issues/<NN>-<slug>.md` file(s) first.
+1. Write the local `.scratch/.../issues/<NN>-<slug>.md` file(s) first (and keep `spec.md` local).
 2. Use default parent `TECSDM-121817` unless the user gave another parent URL/key.
-3. Create one Jira Subtask per approved ticket via MCP; write the created key (e.g. `TECSDM-123456`) back into the local file (e.g. `Jira: TECSDM-123456` near the top).
+3. Create one Jira Subtask per approved **implementation** ticket via MCP; write the created key (e.g. `TECSDM-123456`) back into the local file (e.g. `Jira: TECSDM-123456` near the top).
+4. **Do not** create a Jira Subtask for the spec/roadmap. Put the high-level narrative (problem, solution, links, out of scope) on the **parent** Story description. Full detail stays in `.scratch/<feature-slug>/spec.md`.
 
-Do **not** close or rewrite the parent Jira issue.
+Do **not** close the parent Jira issue. Updating the parent description for overview text is expected.
 
 ## When a skill says "fetch the relevant ticket"
 
