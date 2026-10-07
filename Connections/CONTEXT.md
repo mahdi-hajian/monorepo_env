@@ -5,8 +5,8 @@ BDMP connection create and edit, including the advanced Opaque path on the creat
 ## Language
 
 **Create Connection Page**:
-The BDMP page that creates and edits a connection (`create-connection-page`), with settings on one side and the data-source viewer on the other.
-_Avoid_: connection manager alone, a new standalone product page
+The current BDMP connection create/edit page (`new-database-page`), with settings on one side and the data-source viewer on the other.
+_Avoid_: legacy `create-connection-page` checkboxes as the product UI, connection manager alone, a new standalone product page
 
 **Advanced Connection Mode**:
 The create-connection UI path that configures a connection through Monaco JSON instead of the typed form fields.
@@ -41,5 +41,13 @@ For Opaque Connection, the left panel viewer is chosen from the Preview / GetDat
 _Avoid_: guessing viewer from Monaco connectorName alone, a single neutral viewer for every Opaque catalog
 
 **Custom Tab Layout**:
-In the settings pane on Custom Tab, Monaco fills all remaining height; Test/Update buttons and the connection checkboxes sit only in a footer under Monaco (same controls, not a redesigned bar). The settings pane width is user-resizable.
-_Avoid_: fixed short Monaco with empty space below, buttons beside Monaco, non-resizable settings pane
+In the settings pane on Custom Tab, Monaco fills all remaining height; Test/Update buttons and only the UpdateWhileUsingConnection checkbox sit in a footer under Monaco. Oracle-only checkboxes (all schemas / synonyms) stay off this tab. The settings pane width is user-resizable between the current default and current + 100px (today: min `400px`, max `500px`).
+_Avoid_: fixed short Monaco with empty space below, buttons beside Monaco, showing IncludeAllSources or IncludeSynonyms under Monaco, non-resizable settings pane, a large max width beyond +100px
+
+**Payload**:
+The JSON document edited in Monaco for an Opaque Connection (API `content.payload`); stored encrypted as EncryptedPayload.
+_Avoid_: EncryptedPayload as the UI-facing name, typed connectionInfo fields
+
+**Pinned Catalog**:
+An Opaque Connection with UpdateWhileUsingConnection false and a persisted DataSource catalog of selected tables.
+_Avoid_: live mode, empty DataSource when pinned
