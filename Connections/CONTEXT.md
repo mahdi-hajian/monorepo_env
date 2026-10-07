@@ -1,6 +1,8 @@
 # Connections
 
-BDMP connection create and edit, including the advanced Opaque path on the create-connection page.
+BDMP connection create and edit, including Advanced Connection Mode on `new-database-page`.
+
+UI layout reference: [مود پیشرفته اتصال (Figma)](https://www.figma.com/design/nPCTIkotM0luhtdADTe2VU/%25D9%2585%25D9%2588%25D8%25AF-%25D9%25BE%25DB%258C%25D8%25B4%25D8%25B1%25D9%2581%25D8%25AA%25D9%2587-%25D8%25A7%25D8%25AA%25D8%25B5%25D8%25A7%25D9%2584?node-id=3-735).
 
 ## Language
 
@@ -9,7 +11,7 @@ The current BDMP connection create/edit page (`new-database-page`), with setting
 _Avoid_: legacy `create-connection-page` checkboxes as the product UI, connection manager alone, a new standalone product page
 
 **Advanced Connection Mode**:
-The create-connection UI path that configures a connection through Monaco JSON instead of the typed form fields.
+The create-connection UI path that configures a connection through Monaco JSON instead of the typed form fields. Layout follows the Figma linked above.
 _Avoid_: opaque-only backend term as the only product name, a separate app route
 
 **Opaque Connection**:
