@@ -49,5 +49,17 @@ The JSON document edited in Monaco for an Opaque Connection (API `content.payloa
 _Avoid_: EncryptedPayload as the UI-facing name, typed connectionInfo fields
 
 **Pinned Catalog**:
-An Opaque Connection with UpdateWhileUsingConnection false and a persisted DataSource catalog of selected tables.
-_Avoid_: live mode, empty DataSource when pinned
+An Opaque Connection with UpdateWhileUsingConnection false and a persisted DataSource catalog of selected tables. User fills it via Update → left-panel selection → Save, same as typed flow.
+_Avoid_: live mode, empty DataSource when pinned, a separate picker only for Opaque
+
+**Live Catalog**:
+An Opaque Connection with UpdateWhileUsingConnection true; DataSource details are not persisted; catalog is fetched when used.
+_Avoid_: requiring selected tables on Save in this mode
+
+**Opaque REST Probe**:
+Custom Tab Test Connection and data-source Preview call the new REST endpoints with raw Payload before save, or connection id after save—not the legacy MRPC ConnectionObjectPackage paths.
+_Avoid_: MRPC TestConnection/GetDataSources for Custom Tab
+
+**Tab Draft**:
+In-memory Form Tab and Custom Tab edits kept when switching tabs; only Active Tab is written on Save.
+_Avoid_: clearing the other tab on switch, persisting both drafts
