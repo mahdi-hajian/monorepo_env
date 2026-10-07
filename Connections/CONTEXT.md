@@ -31,3 +31,15 @@ _Avoid_: advanced tab as a second concept, form tab
 **Active Tab**:
 The settings tab the user is on when Save runs; it alone chooses persistence format and which draft is written.
 _Avoid_: saving both tabs, merging form and Monaco into one payload
+
+**Default Tab**:
+On open, the settings tab that matches the stored format: Typed Connection → Form Tab, Opaque Connection → Custom Tab. The other tab stays available.
+_Avoid_: hiding the non-matching tab, always opening Form Tab
+
+**Catalog-Driven Viewer**:
+For Opaque Connection, the left panel viewer is chosen from the Preview / GetDataSources catalog response (its shape / type), not from a typed connectionType in the form.
+_Avoid_: guessing viewer from Monaco connectorName alone, a single neutral viewer for every Opaque catalog
+
+**Custom Tab Layout**:
+In the settings pane on Custom Tab, Monaco fills all remaining height; Test/Update buttons and the connection checkboxes sit only in a footer under Monaco (same controls, not a redesigned bar). The settings pane width is user-resizable.
+_Avoid_: fixed short Monaco with empty space below, buttons beside Monaco, non-resizable settings pane

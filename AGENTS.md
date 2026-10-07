@@ -60,6 +60,20 @@
 |-------|-------------------|------|
 | `writing-great-skills` | Edit skill quality (invocation, hierarchy, pruning) | `.agents/skills/writing-great-skills/SKILL.md` |
 
+## Agent skills
+
+### Issue tracker
+
+Dual: local markdown under `.scratch/` plus Jira Subtasks via MCP (`user-MCP_DOCKER`), default parent [TECSDM-121817](https://jira.mohaymen.ir/browse/TECSDM-121817). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-role vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context: root `CONTEXT-MAP.md` points at per-context `CONTEXT.md` files; system ADRs in `docs/adr/`. See `docs/agents/domain.md`.
+
 ## Related docs
 
 - Nested IAP agents: `MicroService.IAP/MicroService.IAP/AGENTS.md`
