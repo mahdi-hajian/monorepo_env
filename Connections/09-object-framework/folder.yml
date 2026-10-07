@@ -1,0 +1,14 @@
+info:
+  name: 09 Object Framework
+  type: folder
+  seq: 9
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Inherited BaseObjectPackage methods on ConnectionObjectPackage that were not covered by Create / Load / Update / Delete.
+    LoadCreateSettings has no arguments (empty JSON array).
+    Favorite / Unfavorite take the last created connectionId.
+  type: text/markdown

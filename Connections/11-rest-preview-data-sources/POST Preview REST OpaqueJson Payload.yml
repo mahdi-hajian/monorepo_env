@@ -1,0 +1,45 @@
+info:
+  name: POST Preview REST OpaqueJson Payload
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/data-sources/preview"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": null,
+        "ConnectionInfo": null,
+        "ConnectionId": null,
+        "Payload": {
+          "connectorName": "oracle",
+          "properties": {
+            "connection-url": "jdbc:oracle:thin:@//host.docker.internal:1521/XE",
+            "connection-user": "LA_MASTER",
+            "connection-password": "!@#123qwe"
+          }
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Raw OpaqueJson preview before create. Same payload as Create OpaqueJson.
+  connectionType, connectionInfo, and connectionId must stay null.
+  QEM V2 expects payload.connectorName and payload.properties.
+  QEM must have APP_V2_ENABLED=true. Success is 200 OK with OpaqueJsonDataSourceCatalog.

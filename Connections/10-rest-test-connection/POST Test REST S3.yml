@@ -1,0 +1,42 @@
+info:
+  name: POST Test REST S3
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": "S3",
+        "ConnectionInfo": {
+          "ConnectionType": "S3",
+          "Server": "{{s3Server}}",
+          "Port": {{s3Port}},
+          "Username": "{{s3Username}}",
+          "Password": "{{s3Password}}",
+          "TableFormat": null
+        },
+        "ConnectionId": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Typed S3 / MinIO test through ASP.NET.
+  ConnectionObjectTesterFactory currently has no S3 tester, so this is expected to return NotSupportedException.

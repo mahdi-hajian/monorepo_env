@@ -1,0 +1,89 @@
+info:
+  name: Create S3
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ConnectionObjectPackage/Create?Mrpc-EngineName=LADW&Mrpc-EngineVersion=0.0.0.0&W_MultiTech=false&W_InputAsArray=true&W_HandlingMode=1"
+  params:
+    - name: Mrpc-EngineName
+      value: LADW
+      type: query
+    - name: Mrpc-EngineVersion
+      value: "0.0.0.0"
+      type: query
+    - name: W_MultiTech
+      value: "false"
+      type: query
+    - name: W_InputAsArray
+      value: "true"
+      type: query
+    - name: W_HandlingMode
+      value: "1"
+      type: query
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Mrpc-ExecNetTimeout
+      value: "60000"
+  auth: inherit
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "password": null,
+          "name": "Bruno S3",
+          "description": "S3 connection",
+          "tags": [],
+          "roles": [],
+          "outOfChartRoles": [],
+          "metadataValues": [],
+          "extraMetadata": {
+            "connectionType": "S3"
+          },
+          "content": {
+            "connectionType": "S3",
+            "updateWhileUsingConnection": true,
+            "connectionInfo": {
+              "connectionType": "S3",
+              "server": "{{s3Server}}",
+              "port": {{s3Port}},
+              "username": "{{s3Username}}",
+              "password": "{{s3Password}}",
+              "tableFormat": null
+            }
+          }
+        }
+      ]
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        let id = null;
+        if (typeof body === "string") {
+          id = String(body).replaceAll('"', "").trim();
+        } else if (body && typeof body === "object") {
+          id = body.Id || body.id || body.ObjectId || body.objectId
+            || (Array.isArray(body.Objects) && body.Objects[0] && (body.Objects[0].Id || body.Objects[0].id))
+            || (body.Object && (body.Object.Id || body.Object.id));
+        }
+        if (id) {
+          bru.setEnvVar("s3ConnectionId", id);
+          bru.setVar("s3ConnectionId", id);
+          bru.setEnvVar("connectionId", id);
+          bru.setVar("connectionId", id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create an S3 / MinIO connection. username is access key, password is secret key.

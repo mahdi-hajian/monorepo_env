@@ -1,0 +1,42 @@
+info:
+  name: POST Test REST Oracle With ConnectionId
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": "Oracle",
+        "ConnectionInfo": {
+          "ConnectionType": "Oracle",
+          "Server": "{{oracleServer}}",
+          "Port": {{oraclePort}},
+          "Username": "{{oracleUsername}}",
+          "Password": "{{oraclePassword}}",
+          "ServiceName": "{{oracleServiceName}}"
+        },
+        "ConnectionId": "{{oracleConnectionId}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Typed Oracle test that also sends connectionId. This stays on the LegacyTyped path.
+  isPasswordStored / isPasswordChanged are JsonIgnore on System.Text.Json, so REST cannot reuse a stored password the way Object Framework does. Send the env password.

@@ -1,0 +1,23 @@
+info:
+  name: GET Opaque Connection By Id v2
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v2/connections/{{opaqueConnectionId}}"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: X-API-Version
+      value: "2"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: REST v2 get one OpaqueJson connection by id.

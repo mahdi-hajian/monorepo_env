@@ -1,0 +1,40 @@
+opencollection: 1.0.0
+
+info:
+  name: LADW Connections
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    presets:
+      defaultEnvironment: Local
+request:
+  auth:
+    type: basic
+    username: "{{username}}"
+    password: "{{password}}"
+  scripts:
+    - type: before-request
+      code: |-
+        const username = bru.getEnvVar("username") || "";
+        const password = bru.getEnvVar("password") || "";
+        const encoded = Buffer.from(username + ":" + password).toString("base64");
+        req.setHeader("Authorization", "Basic " + encoded);
+docs:
+  content: |-
+    Collection Basic Auth (username / password from the Local environment).
+    Folders and requests use Auth = Inherit so they pick this up.
+    Bruno 4 treats a folder without `auth: inherit` as No Auth and blocks collection auth.
+
+    ConnectionObjectPackage surface in this collection:
+    01 Create, 02 GetConnections / LoadList, 03 Load / LoadWithFolderList,
+    04 Delete, 05 Update*, 06 TestConnection (MRPC typed; OpaqueJson via REST),
+    07 GetDataSources / FetchDataSources, 08 HasUniqueKey,
+    09 LoadCreateSettings / Favorite / Unfavorite.
+    REST:
+    - 02 GET /api/connections and GET /api/v2/connections
+    - 10 POST /api/v1/connections/test (typed + OpaqueJson)
+    - 11 POST /api/v1/connections/data-sources/preview (typed + OpaqueJson)
+  type: text/markdown

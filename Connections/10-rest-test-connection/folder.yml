@@ -1,0 +1,22 @@
+info:
+  name: 10 REST Test Connection
+  type: folder
+  seq: 10
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    POST /api/v1/connections/test
+    Body is TestConnectionDto, not an MRPC argument array.
+    Success is 204 No Content.
+
+    Shapes:
+    - Typed: connectionType + connectionInfo. Omit payload.
+    - Raw OpaqueJson: payload only. connectionType, connectionInfo, and connectionId must be null or omitted.
+    - Stored OpaqueJson: connectionId only.
+
+    Combining payload with typed fields or connectionId is invalid.
+    Object Framework TestConnection stays typed-only. Use this folder for OpaqueJson.
+  type: text/markdown

@@ -1,0 +1,43 @@
+info:
+  name: POST Test REST Oracle Official Sample
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": "Oracle",
+        "ConnectionInfo": {
+          "ConnectionType": "Oracle",
+          "Server": "{{oracleServer}}",
+          "Port": {{oraclePort}},
+          "Username": "{{oracleUsername}}",
+          "Password": "{{oraclePassword}}",
+          "ServiceName": "{{oracleServiceName}}"
+        },
+        "ConnectionId": null,
+        "Payload": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Same typed Oracle test as the official TestConnection.AspNet.http sample, including payload null.
+  Prefer POST Test REST Oracle if a JSON null payload is treated as a raw OpaqueJson body.

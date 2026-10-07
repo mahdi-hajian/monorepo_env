@@ -1,0 +1,45 @@
+info:
+  name: TestConnection OpaqueJson
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": null,
+        "ConnectionInfo": null,
+        "ConnectionId": null,
+        "payload": {
+            "connectorName": "oracle",
+            "properties": {
+              "connection-url": "jdbc:oracle:thin:@//host.docker.internal:1521/XE",
+              "connection-user": "LA_MASTER",
+              "connection-password": "!@#123qwe"
+            }
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Raw OpaqueJson test through POST /api/v1/connections/test.
+  ConnectionObjectPackage/TestConnection is typed-only and has no payload argument.
+  Payload matches Create OpaqueJson. Typed fields and connectionId must stay null.
+  Requires OpaqueJson and Query Engine Manager v2. Success is 200 OK.

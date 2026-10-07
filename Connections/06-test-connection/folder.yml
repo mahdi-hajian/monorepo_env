@@ -1,0 +1,20 @@
+info:
+  name: 06 Test Connection
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    ConnectionObjectPackage/TestConnection is typed-only:
+    [connectionType, connectionInfo, objectId]
+
+    OpaqueJson is not on that MRPC method. Use TestConnection OpaqueJson and
+    TestConnection OpaqueJson Stored here; they call POST /api/v1/connections/test.
+
+    Typed connections cannot be tested with objectId alone. Use connectionType + connectionInfo.
+    To reuse a stored password on this MRPC path, send isPasswordStored true, isPasswordChanged false, and the objectId.
+    S3 currently has no IConnectionObjectTester registered and returns NotSupportedException.
+  type: text/markdown

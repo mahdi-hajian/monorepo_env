@@ -1,0 +1,86 @@
+info:
+  name: Delete All Created
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ConnectionObjectPackage/Delete?Mrpc-EngineName=LADW&Mrpc-EngineVersion=0.0.0.0&W_MultiTech=false&W_InputAsArray=true&W_HandlingMode=1"
+  params:
+    - name: Mrpc-EngineName
+      value: LADW
+      type: query
+    - name: Mrpc-EngineVersion
+      value: "0.0.0.0"
+      type: query
+    - name: W_MultiTech
+      value: "false"
+      type: query
+    - name: W_InputAsArray
+      value: "true"
+      type: query
+    - name: W_HandlingMode
+      value: "1"
+      type: query
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Mrpc-ExecNetTimeout
+      value: "60000"
+  auth: inherit
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "ObjectIds": [
+            "{{oracleConnectionId}}",
+            "{{starRocksConnectionId}}",
+            "{{sqlServerConnectionId}}",
+            "{{s3ConnectionId}}",
+            "{{opaqueConnectionId}}"
+          ]
+        }
+      ]
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        const ids = [
+          bru.getEnvVar("oracleConnectionId"),
+          bru.getEnvVar("starRocksConnectionId"),
+          bru.getEnvVar("sqlServerConnectionId"),
+          bru.getEnvVar("s3ConnectionId"),
+          bru.getEnvVar("opaqueConnectionId")
+        ].filter(function (id) {
+          return id && String(id).trim().length > 0;
+        });
+        const unique = Array.from(new Set(ids));
+        req.setBody([
+          {
+            ObjectIds: unique
+          }
+        ]);
+    - type: after-response
+      code: |-
+        const status = res.getStatus();
+        if (status >= 200 && status < 300) {
+          ["oracleConnectionId", "starRocksConnectionId", "sqlServerConnectionId", "s3ConnectionId", "opaqueConnectionId", "connectionId"]
+            .forEach(function (name) {
+              bru.setEnvVar(name, "");
+              bru.setVar(name, "");
+            });
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Deletes every connection id currently stored in Local after Create.
+  Empty env ids are dropped in the before-request script so unused types are skipped.

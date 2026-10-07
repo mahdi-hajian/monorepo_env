@@ -1,0 +1,14 @@
+info:
+  name: 01 Create
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Create connection objects via ConnectionObjectPackage/Create.
+    OpaqueJson live: omit dataSource (updateWhileUsingConnection defaults to true).
+    OpaqueJson pinned: updateWhileUsingConnection false plus dataSource._type OpaqueJson with selected tables.
+  type: text/markdown

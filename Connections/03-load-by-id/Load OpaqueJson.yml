@@ -1,0 +1,50 @@
+info:
+  name: Load OpaqueJson
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ConnectionObjectPackage/Load?Mrpc-EngineName=LADW&Mrpc-EngineVersion=0.0.0.0&W_MultiTech=false&W_InputAsArray=true&W_HandlingMode=1"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  params:
+    - name: Mrpc-EngineName
+      value: LADW
+      type: query
+    - name: Mrpc-EngineVersion
+      value: 0.0.0.0
+      type: query
+    - name: W_MultiTech
+      value: "false"
+      type: query
+    - name: W_InputAsArray
+      value: "true"
+      type: query
+    - name: W_HandlingMode
+      value: "1"
+      type: query
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "LoadContent": true,
+          "RequestedObject": {
+            "Id": "{{opaqueConnectionId}}"
+          }
+        }
+      ]
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Object Framework Load clears OpaqueJson payload. Use GET Opaque Connection By Id v2 instead.

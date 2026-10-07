@@ -1,0 +1,42 @@
+info:
+  name: POST Test REST Oracle
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": "Oracle",
+        "ConnectionInfo": {
+          "ConnectionType": "Oracle",
+          "Server": "{{oracleServer}}",
+          "Port": {{oraclePort}},
+          "Username": "{{oracleUsername}}",
+          "Password": "{{oraclePassword}}",
+          "ServiceName": "{{oracleServiceName}}"
+        },
+        "ConnectionId": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Typed Oracle test through ASP.NET. Success is 204 No Content.
+  payload is omitted so the request stays on the LegacyTyped path.

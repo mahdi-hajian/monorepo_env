@@ -1,0 +1,59 @@
+info:
+  name: FetchDataSources StarRocks With ConnectionId
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ConnectionObjectPackage/FetchDataSources?Mrpc-EngineName=LADW&Mrpc-EngineVersion=0.0.0.0&W_MultiTech=false&W_InputAsArray=true&W_HandlingMode=1"
+  params:
+    - name: Mrpc-EngineName
+      value: LADW
+      type: query
+    - name: Mrpc-EngineVersion
+      value: "0.0.0.0"
+      type: query
+    - name: W_MultiTech
+      value: "false"
+      type: query
+    - name: W_InputAsArray
+      value: "true"
+      type: query
+    - name: W_HandlingMode
+      value: "1"
+      type: query
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Mrpc-ExecNetTimeout
+      value: "60000"
+  auth: inherit
+  body:
+    type: json
+    data: |-
+      [
+        "StarRocks",
+        {
+          "connectionType": "StarRocks",
+          "server": "{{starRocksServer}}",
+          "port": {{starRocksPort}},
+          "username": "{{starRocksUsername}}",
+          "password": null,
+          "database": "{{starRocksDatabase}}",
+          "catalog": "{{starRocksCatalog}}",
+          "isPasswordStored": true,
+          "isPasswordChanged": false
+        },
+        "{{starRocksConnectionId}}"
+      ]
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Live StarRocks catalog fetch. Loads the stored password and applies InUse flags from starRocksConnectionId.

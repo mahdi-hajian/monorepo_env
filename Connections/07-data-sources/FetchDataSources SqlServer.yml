@@ -1,0 +1,58 @@
+info:
+  name: FetchDataSources SqlServer
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ConnectionObjectPackage/FetchDataSources?Mrpc-EngineName=LADW&Mrpc-EngineVersion=0.0.0.0&W_MultiTech=false&W_InputAsArray=true&W_HandlingMode=1"
+  params:
+    - name: Mrpc-EngineName
+      value: LADW
+      type: query
+    - name: Mrpc-EngineVersion
+      value: "0.0.0.0"
+      type: query
+    - name: W_MultiTech
+      value: "false"
+      type: query
+    - name: W_InputAsArray
+      value: "true"
+      type: query
+    - name: W_HandlingMode
+      value: "1"
+      type: query
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Mrpc-ExecNetTimeout
+      value: "60000"
+  auth: inherit
+  body:
+    type: json
+    data: |-
+      [
+        "SqlServer",
+        {
+          "connectionType": "SqlServer",
+          "server": "{{sqlServerServer}}",
+          "port": {{sqlServerPort}},
+          "username": "{{sqlServerUsername}}",
+          "password": "{{sqlServerPassword}}",
+          "dataBaseName": "{{sqlServerDatabase}}",
+          "sslEnabled": false,
+          "fetchAllSchemas": false
+        },
+        null
+      ]
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Live SqlServer catalog fetch through Query Engine Manager. The database JSON field must be dataBaseName.

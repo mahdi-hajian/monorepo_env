@@ -1,0 +1,38 @@
+info:
+  name: TestConnection OpaqueJson Stored
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/test"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": null,
+        "ConnectionInfo": null,
+        "ConnectionId": "{{opaqueConnectionId}}",
+        "Payload": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  Tests a stored OpaqueJson connection through POST /api/v1/connections/test.
+  Run Create OpaqueJson first so opaqueConnectionId is set.
+  LAP.DW loads and decrypts the payload; do not send a raw payload here.
+  Success is 200 OK.

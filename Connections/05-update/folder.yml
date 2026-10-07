@@ -1,0 +1,19 @@
+info:
+  name: 05 Update
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Full Object Framework update surface for connections:
+    - LoadUpdateSettings: form/settings + content before edit
+    - UpdateContent: connection payload (must keep the same contentFormat)
+    - UpdateMetadata: name / description
+    - UpdateTags / UpdateRoles: access lists (empty arrays clear them)
+    Ids come from Create. Typed UpdateContent keeps updateWhileUsingConnection true so DataSource can stay null.
+    These requests send the env password with isPasswordChanged true.
+    To keep the stored password set isPasswordStored true and isPasswordChanged false.
+  type: text/markdown

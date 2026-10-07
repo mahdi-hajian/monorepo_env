@@ -1,0 +1,16 @@
+info:
+  name: 02 Get Connections
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    List connection APIs:
+    - GetConnections(type) for Oracle / StarRocks / S3 / InternalOracle / SqlServer / PostgreSql
+    - LoadList for all connection objects
+    - GET /api/connections for typed ConnectionInfo
+    - GET /api/v2/connections for OpaqueJson
+  type: text/markdown

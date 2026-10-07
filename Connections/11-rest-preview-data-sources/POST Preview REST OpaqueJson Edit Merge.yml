@@ -1,0 +1,45 @@
+info:
+  name: POST Preview REST OpaqueJson Edit Merge
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v1/connections/data-sources/preview"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: X-Api-Version
+      value: "1"
+  body:
+    type: json
+    data: |-
+      {
+        "ConnectionType": null,
+        "ConnectionInfo": null,
+        "ConnectionId": "{{opaqueConnectionId}}",
+        "Payload": {
+          "connectorName": "oracle",
+          "properties": {
+            "connection-url": "jdbc:oracle:thin:@//host.docker.internal:1521/XE",
+            "connection-user": "LA_MASTER",
+            "connection-password": "!@#123qwe"
+          }
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  OpaqueJson preview while editing. Run Create OpaqueJson first.
+  Payload is required. connectionId merges persisted InUse flags onto the live QEM catalog.
+  Typed fields must stay null. Do not send connectionId alone; that is GetDataSources.
+  QEM must have APP_V2_ENABLED=true. Success is 200 OK.

@@ -1,0 +1,15 @@
+info:
+  name: 08 Has Unique Key
+  type: folder
+  seq: 8
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    ConnectionObjectPackage/HasUniqueKey.
+    Run the matching GetDataSources request first so *DataSourceId is filled.
+    Oracle actually inspects unique/rowid keys. StarRocks and SqlServer fetchers currently always return false.
+    OpaqueJson is not supported on this path.
+  type: text/markdown

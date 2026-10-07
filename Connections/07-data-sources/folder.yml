@@ -1,0 +1,19 @@
+info:
+  name: 07 Data Sources
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    GetDataSources(connectionId) reads sources for a saved connection.
+    FetchDataSources(connectionType, connectionInfo, connectionId) talks to the live engine.
+    When connectionId is null the env password is used and no InUse state is applied.
+    When connectionId is set, a stored password can be loaded and persisted InUse flags are applied.
+    S3 has no IDataSourceFetcher, so FetchDataSources S3 is expected to fail.
+    OpaqueJson uses GetDataSources for a saved connection.
+    Live OpaqueJson preview is REST: folder 11 POST /api/v1/connections/data-sources/preview.
+    FetchDataSources on this MRPC method is LegacyTyped.
+  type: text/markdown

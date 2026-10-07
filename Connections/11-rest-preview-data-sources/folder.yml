@@ -1,0 +1,26 @@
+info:
+  name: 11 REST Preview Data Sources
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    POST /api/v1/connections/data-sources/preview
+    Body is PreviewConnectionDataSourcesDto, not an MRPC argument array.
+    Success is 200 OK with an IDataSourceCatalog.
+
+    Shapes:
+    - Typed: connectionType + connectionInfo. Omit payload.
+    - Typed with connectionId: same plus connectionId to apply persisted InUse flags.
+    - Raw OpaqueJson: payload only. connectionType and connectionInfo must be null.
+    - OpaqueJson edit merge: payload + connectionId. Typed fields must stay null.
+      Fresh catalog comes from QEM; saved selection is merged from the stored connection.
+
+    Payload-only with typed fields is invalid.
+    Preview cannot use connectionId alone. That shape belongs to GetDataSources.
+    Object Framework FetchDataSources stays typed-only. Use this folder for OpaqueJson.
+    QEM Opaque preview needs APP_V2_ENABLED=true.
+  type: text/markdown

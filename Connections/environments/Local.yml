@@ -1,0 +1,78 @@
+name: Local
+variables:
+  - name: baseUrl
+    value: http://localhost:58089
+  - name: username
+    value: admin
+    description: LADW Basic Auth username
+  - name: oracleServer
+    value: localhost
+  - name: oraclePort
+    value: "1521"
+  - name: oracleUsername
+    value: LA_MASTER
+  - name: oracleServiceName
+    value: XE
+  - name: oracleConnectionId
+    value: 29d00701-bc61-4f70-b916-e06890b8e2f4
+  - name: starRocksServer
+    value: localhost
+  - name: starRocksPort
+    value: "9030"
+  - name: starRocksUsername
+    value: root
+  - name: starRocksDatabase
+    value: demo_db
+  - name: starRocksCatalog
+    value: default_catalog
+  - name: starRocksConnectionId
+    value: 423beb85-a687-44cd-b65b-a7cac0508edc
+  - name: sqlServerServer
+    value: 192.168.30.171
+  - name: sqlServerPort
+    value: "1433"
+  - name: sqlServerUsername
+    value: sa
+  - name: sqlServerDatabase
+    value: Atid
+  - name: sqlServerConnectionId
+    value: ""
+  - name: s3Server
+    value: 127.0.0.1
+  - name: s3Port
+    value: "9000"
+  - name: s3Username
+    value: minioadmin
+  - name: s3ConnectionId
+    value: d740f020-3a41-4e5e-b1d8-2b91ca6d1ab3
+  - name: opaqueConnectionId
+    value: ab53be5a-25e2-4c33-8e02-cd016b65a750
+  - name: connectionId
+    value: ab53be5a-25e2-4c33-8e02-cd016b65a750
+  - name: dataSourceId
+    value: f5598cc4-b983-4396-a132-4647f42391ba
+    description: Last data source id captured from GetDataSources
+  - name: oracleDataSourceId
+    value: ""
+    description: First Oracle data source id from GetDataSources Oracle
+  - name: starRocksDataSourceId
+    value: ""
+    description: First StarRocks data source id from GetDataSources StarRocks
+  - name: sqlServerDataSourceId
+    value: ""
+    description: First SqlServer data source id from GetDataSources SqlServer
+  - name: s3DataSourceId
+    value: ""
+  - name: opaqueDataSourceId
+    value: f5598cc4-b983-4396-a132-4647f42391ba
+  - secret: true
+    name: password
+    description: LADW Basic Auth password
+  - secret: true
+    name: oraclePassword
+  - secret: true
+    name: starRocksPassword
+  - secret: true
+    name: sqlServerPassword
+  - secret: true
+    name: s3Password
