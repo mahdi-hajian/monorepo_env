@@ -63,3 +63,11 @@ _Avoid_: MRPC TestConnection/GetDataSources for Custom Tab
 **Tab Draft**:
 In-memory Form Tab and Custom Tab edits kept when switching tabs; only Active Tab is written on Save.
 _Avoid_: clearing the other tab on switch, persisting both drafts
+
+**Empty Payload Seed**:
+A new Custom Tab opens Monaco with `{}` only—no sample connectorName/properties skeleton.
+_Avoid_: Bruno sample JSON as default editor text, non-empty placeholders
+
+**Backend Probe Error**:
+Failures from Opaque REST Probe (including multi-database rejection) are shown using the server message; the UI does not invent a separate multi-catalog rule.
+_Avoid_: client-side counting of databases to block Preview/Test
