@@ -4,9 +4,9 @@
 
 **مسدودکننده:** TECSDM-121819 — نمایش تب‌های اتصال ساده و اتصال سفارشی
 
-**Status:** ready-for-agent
+**Status:** done
 
-**Progress:** implemented — Opaque REST Probe برای Test/Preview و Catalog-Driven Viewer؛ در انتظار تأیید دستی / همگام‌سازی Jira
+**Progress:** completed — Opaque REST Probe برای Test/Preview، Catalog-Driven Viewer، مودال خطای LADW، استخراج builder/fetcher
 
 **Parent:** TECSDM-121817  
 **Spec:** `.scratch/advanced-connection-mode/spec.md`  
@@ -23,3 +23,4 @@
 ## Comments
 
 - 2026-10-07: پیاده‌سازی شروع شد — `OpaqueRestProbeService` + انشعاب `MainConnectionFacadeService` روی Custom Tab؛ Test با Payload قبل از ذخیره و با ConnectionId بعد از ذخیره؛ Preview با Payload و در ویرایش با merge شناسه؛ Catalog-Driven از `_type` کاتالوگ به tables viewer؛ خطای سرور از طریق `HttpClientHandler` بدون قاعده چند-DB در کلاینت.
+- 2026-10-10: فاز ۲ به‌عنوان انجام‌شده بسته شد (شامل مودال LADW و سرویس‌های request-builder / items-fetcher). همگام‌سازی وضعیت Jira در صورت نیاز جداگانه.
