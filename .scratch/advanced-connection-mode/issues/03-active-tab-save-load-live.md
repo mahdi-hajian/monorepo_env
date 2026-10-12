@@ -4,7 +4,9 @@
 
 **مسدودکننده:** TECSDM-121819 — نمایش تب‌های اتصال ساده و اتصال سفارشی
 
-**Status:** ready-for-agent
+**Status:** done
+
+**Progress:** completed — Active Tab save (Live Opaque / Typed), Default Tab load via Load + LoadUpdateSettings, Object Framework Create/Update for Opaque
 
 **Parent:** TECSDM-121817  
 **Spec:** `.scratch/advanced-connection-mode/spec.md`  
@@ -12,7 +14,11 @@
 
 ## معیار پذیرش
 
-- [ ] ذخیره از اتصال سفارشی با به‌روزرسانی خودکار، اتصال سفارشی را بدون فهرست جداول ذخیره‌شده بنویسد
-- [ ] ذخیره از اتصال ساده فقط اتصال ساده را بنویسد
-- [ ] باز کردن اتصال سفارشی، تب اتصال سفارشی را با JSON ذخیره‌شده نشان دهد
-- [ ] باز کردن اتصال ساده، تب اتصال ساده را باز کند و تب اتصال سفارشی همچنان در دسترس بماند
+- [x] ذخیره از اتصال سفارشی با به‌روزرسانی خودکار، اتصال سفارشی را بدون فهرست جداول ذخیره‌شده بنویسد
+- [x] ذخیره از اتصال ساده فقط اتصال ساده را بنویسد
+- [x] باز کردن اتصال سفارشی، تب اتصال سفارشی را با JSON ذخیره‌شده نشان دهد
+- [x] باز کردن اتصال ساده، تب اتصال ساده را باز کند و تب اتصال سفارشی همچنان در دسترس بماند
+
+## Comments
+
+- 2026-10-12: فاز ۳ پیاده‌سازی شد — `MainConnectionFacadeService` برای Active Tab بین Typed و Opaque انشعاب می‌گیرد؛ Create مودال از طریق `ConnectionDesignObjectFrameworkService` با `OpaqueConnectionContent` / `OpaqueConnectionExtraMetadata`؛ لود Opaque با `Load` + `LoadUpdateSettings` و Default Tab.
