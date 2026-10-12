@@ -22,3 +22,4 @@
 ## Comments
 
 - 2026-10-12: فاز ۳ پیاده‌سازی شد — `MainConnectionFacadeService` برای Active Tab بین Typed و Opaque انشعاب می‌گیرد؛ Create مودال از طریق `ConnectionDesignObjectFrameworkService` با `OpaqueConnectionContent` / `OpaqueConnectionExtraMetadata`؛ لود Opaque با `Load` + `LoadUpdateSettings` و Default Tab.
+- 2026-10-12: فاز ۳ به‌عنوان انجام‌شده بسته شد؛ کار بعدی TECSDM-121822 (فاز ۴ — انتخاب و ذخیره جداول / Pinned Catalog). به‌روزرسانی وضعیت Jira به‌خاطر قطع بودن MCP ممکن نشد.
