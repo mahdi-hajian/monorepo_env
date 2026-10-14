@@ -105,4 +105,9 @@ Secondary (only if needed): shell unit tests for shortcut → intent and ghost c
 - Parent Story: [TECSDM-121879](https://jira.mohaymen.ir/browse/TECSDM-121879)
 - Local durable spec: `.scratch/file-browser-cut-paste/spec.md`
 - Glossary updates landed in CONTEXT (Cut pending, Same-browse-path Paste, Cut+Paste partial success, Background Paste menu) plus ADR 0018
-- Implementation tickets (to-tickets) are not part of this publish; this file is the roadmap/spec only
+- Implementation tickets (published):
+  - [TECSDM-122054](https://jira.mohaymen.ir/browse/TECSDM-122054) — 01 پایه MoveItems + Cut pending store
+  - [TECSDM-122055](https://jira.mohaymen.ir/browse/TECSDM-122055) — 02 Cut منو + Ctrl+X + ghost
+  - [TECSDM-122056](https://jira.mohaymen.ir/browse/TECSDM-122056) — 03 Paste جابه‌جایی مسیر دیگر
+  - [TECSDM-122057](https://jira.mohaymen.ir/browse/TECSDM-122057) — 04 لغو و لبه‌ها
+  - Local: `.scratch/file-browser-cut-paste/issues/`
