@@ -6,8 +6,8 @@ Jira: TECSDM-122054
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] کلاینت API برای `MoveItems` با شکل درخواست/پاسخ هم‌تراز بک‌اند موجود است و تست واحد دارد
-- [ ] حافظهٔ تب‌اسکوپ Cut pending می‌تواند set / clear / replace شود و با بستن تب از بین می‌رود
-- [ ] Copy / OS clipboard در این تیکت اضافه نشده است
+- [x] کلاینت API برای `MoveItems` با شکل درخواست/پاسخ هم‌تراز بک‌اند موجود است و تست واحد دارد
+- [x] حافظهٔ تب‌اسکوپ Cut pending می‌تواند set / clear / replace شود و با بستن تب از بین می‌رود
+- [x] Copy / OS clipboard در این تیکت اضافه نشده است
