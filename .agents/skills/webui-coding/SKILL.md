@@ -17,6 +17,6 @@ disable-model-invocation: false
 ## Instructions
 
 - Scaffolding: co-located `*.spec.ts` for every new unit.
-- Constructor DI, Termeh wrappers, Signals/`input()`/`output()`, `data-testid`, no drive-by NgModule migrations.
-- For `iap/**` LAP/visualizer, also read [`iap-lap-coding`](../iap-lap-coding/SKILL.md) and IMAP [`imap-coding-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/coding/imap-coding-rules.md).
+- DI via `inject()` (not constructor params), Termeh wrappers, Signals/`input()`/`output()`, `data-testid`, no drive-by NgModule migrations.
+- For `iap/**` LAP/visualizer, also read [`iap-lap-coding`](../iap-lap-coding/SKILL.md) and IMAP [`imap-coding-rules.md`](../../../Web/WebUI/.agents/IMAP/ADDITIONAL-RULES/coding/imap-coding-rules.md) (IMAP: `inject()` fields first in the class; web flags via `WebConfigService`).
 - For visualizer plugins, also read [`iap-plugin-architecture-frontend`](../iap-plugin-architecture-frontend/SKILL.md).
