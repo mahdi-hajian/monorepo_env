@@ -6,9 +6,9 @@ Jira: TECSDM-122057
 
 **Blocked by:** 03 — Paste جابه‌جایی (TECSDM-122056)
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Paste روی همان browse path منبع Cut → clear Cut pending، بدون `MoveItems`
-- [ ] Escape در FileBrowser (خارج از input/مودال) Cut pending و ghost را پاک می‌کند
-- [ ] وقتی Cut pending غیرخالی است Paste از منوی پس‌زمینهٔ خالی در دسترس است
-- [ ] نتیجهٔ نیمه‌موفق MoveItems: refresh + گزارش؛ clipboard فقط اگر Failed=0 خالی می‌شود؛ Paste با clipboard خالی کاری نمی‌کند
+- [x] Paste روی همان browse path منبع Cut → clear Cut pending، بدون `MoveItems`
+- [x] Escape در FileBrowser (خارج از input/مودال) Cut pending و ghost را پاک می‌کند
+- [x] وقتی Cut pending غیرخالی است Paste از منوی پس‌زمینهٔ خالی در دسترس است
+- [x] نتیجهٔ نیمه‌موفق MoveItems: refresh + گزارش؛ clipboard فقط اگر Failed=0 خالی می‌شود؛ Paste با clipboard خالی کاری نمی‌کند
