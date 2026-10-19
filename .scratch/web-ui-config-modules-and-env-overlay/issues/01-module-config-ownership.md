@@ -4,9 +4,9 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Shell Web Config فقط کلیدهای مشترک وب را در بدنهٔ کلاس دارد؛ کلیدهای ماژول روی کلاس/تایپ ماژول با code default هستند
-- [ ] `getImapConfig` / `getBdmpConfig` / `getPapConfig` / `getDiaConfig` کلیدهای ماژول مربوط را با type می‌دهند
-- [ ] Resolve اولیه: defaultهای کد ← Customer Web UI Config؛ بدون `__WEB_ENV__` رفتار serve مثل قبل است
-- [ ] تست روی seam resolve (default + فایل) و getters؛ compile مصرف‌کننده‌های موجود سبز می‌ماند
+- [x] Shell Web Config فقط کلیدهای مشترک وب را در بدنهٔ کلاس دارد؛ کلیدهای ماژول روی کلاس/تایپ ماژول با code default هستند
+- [x] `getImapConfig` / `getBdmpConfig` / `getPapConfig` / `getDiaConfig` کلیدهای ماژول مربوط را با type می‌دهند
+- [x] Resolve اولیه: defaultهای کد ← Customer Web UI Config؛ بدون `__WEB_ENV__` رفتار serve مثل قبل است
+- [x] تست روی seam resolve (default + فایل) و getters؛ compile مصرف‌کننده‌های موجود سبز می‌ماند
