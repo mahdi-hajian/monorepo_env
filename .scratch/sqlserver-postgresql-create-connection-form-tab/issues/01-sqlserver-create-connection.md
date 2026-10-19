@@ -6,7 +6,7 @@ Jira: TECSDM-122155
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-human
+**Status:** closed
 
 ## Acceptance criteria / DoD
 

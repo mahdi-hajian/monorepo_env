@@ -6,7 +6,7 @@ Jira: TECSDM-122156
 
 **Blocked by:** 01 — اتصال SQL Server روی صفحه ساخت اتصال
 
-**Status:** ready-for-agent
+**Status:** closed
 
 ## Acceptance criteria / DoD
 
