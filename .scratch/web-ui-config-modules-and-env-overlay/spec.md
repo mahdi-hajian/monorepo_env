@@ -1,9 +1,17 @@
 # Web UI Config: Module Types + Environment Overlay
 
 Status: ready-for-agent  
-Jira: [TECSDM-122184](https://jira.mohaymen.ir/browse/TECSDM-122184)  
+Jira: [TECSDM-122184](https://jira.mohaymen.ir/browse/TECSDM-122184) (story only; implementation tickets local — no Jira subtasks)  
 Domain: [Web UI Config](../../Web/WebUI/base-contract/CONTEXT.md)  
 ADR: [0001-web-config-ownership-layout](../../Web/WebUI/base-contract/docs/adr/0001-web-config-ownership-layout.md)
+
+## Implementation tickets (local)
+
+| # | File | Blocked by |
+|---|------|------------|
+| 01 | [issues/01-module-config-ownership.md](./issues/01-module-config-ownership.md) | — |
+| 02 | [issues/02-environment-config-overlay.md](./issues/02-environment-config-overlay.md) | 01 |
+| 03 | [issues/03-flag-authoring-and-iac-contract.md](./issues/03-flag-authoring-and-iac-contract.md) | 01, 02 |
 
 ## Problem Statement
 
