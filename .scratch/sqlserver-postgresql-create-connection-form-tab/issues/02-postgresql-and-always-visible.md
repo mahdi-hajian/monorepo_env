@@ -6,7 +6,7 @@ Jira: TECSDM-122156
 
 **Blocked by:** 01 — اتصال SQL Server روی صفحه ساخت اتصال
 
-**Status:** closed
+**Status:** ready-for-agent
 
 ## Acceptance criteria / DoD
 
@@ -16,3 +16,7 @@ Jira: TECSDM-122156
 - [ ] ذخیره و باز کردن اتصال PostgreSQL از همین صفحه ممکن است.
 - [ ] پس از اتمام این فاز، SQL Server و PostgreSQL بدون قابلیت جدا، همیشه در لیست نوع اتصال کنار Oracle و StarRocks دیده می‌شوند.
 - [ ] تست‌های واحد مرتبط سبز هستند.
+
+## Comments
+
+- هنوز شروع نشده. درخت Form Tab برای SqlServer الان Relational مشترک است (ADR-0013)؛ wiring و SourceTypes برای PostgreSql در فاز ۲ اضافه می‌شود.

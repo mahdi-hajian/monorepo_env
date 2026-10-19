@@ -21,5 +21,5 @@ Jira: TECSDM-122155
 
 ## Comments
 
-- پیاده‌سازی Form Tab Per-Type Connection Tree برای SqlServer + فلگ `BDMPSqlServerAndPostgreSqlConnectionTypesEnabled` (کد false، web.uiconfig توسعه true).
-- تست‌های واحد facade / store / SourceTypes flag / credentials نوشته شد؛ اجرای Karma توسط کاربر درخواست نشده.
+- Form Tab روی Relational Connection Tree (نام مشترک برای فازهای بعدی؛ فعلاً فقط SqlServer wired است).
+- فلگ `BDMPSqlServerAndPostgreSqlConnectionTypesEnabled` فقط SourceTypes را برای SqlServer می‌بندد.

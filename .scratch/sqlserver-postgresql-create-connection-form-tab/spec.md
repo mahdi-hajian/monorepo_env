@@ -3,7 +3,7 @@
 Status: ready-for-agent
 
 Parent: TECSDM-122148  
-Domain: Create Connection Page (`Web/WebUI/bdmp/app/connection/new-database-page/CONTEXT.md`, ADR-0012)
+Domain: Create Connection Page (`Web/WebUI/bdmp/app/connection/new-database-page/CONTEXT.md`, ADR-0013)
 
 ---
 
@@ -13,7 +13,7 @@ On the Create Connection Page, a connection author can only pick Oracle and Star
 
 ## Solution
 
-Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create Connection Page. Each type gets its own Per-Type Connection Tree (credentials UI, connection-info store, facade), matching Oracle/StarRocks isolation. Relational Form Fields cover server, port (defaults 1433 / 5432), username, password, free-text database name, FetchAllSchemas (default false), plus the shared UpdateWhileUsingConnection checkbox and Test/Update actions. SslEnabled is never shown and is always sent false. Visibility of both types in the header SourceTypes select is gated by `BDMPSqlServerAndPostgreSqlConnectionTypesEnabled` (code default false; development web.uiconfig true), removed in the final rollout phase. The left-panel viewer reuses the existing tables viewer used by other typed types. Icons reuse existing `sql-server.svg` and `postgre-sql.svg`.
+Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create Connection Page. Architecture uses one shared Relational Connection Tree (credentials UI, connection-info store, facade) for both; phase 1 wires SqlServer only, phase 2 wires PostgreSql and later removes the SourceTypes flag. Relational Form Fields cover server, port (defaults 1433 / 5432), username, password, free-text database name, FetchAllSchemas (default false), plus the shared UpdateWhileUsingConnection checkbox and Test/Update actions. SslEnabled is never shown and is always sent false. Persisted/preview catalogs use `_type: Relational`. Visibility in the header SourceTypes select is gated by `BDMPSqlServerAndPostgreSqlConnectionTypesEnabled` (code default false; development web.uiconfig true). The left-panel viewer reuses the existing tables viewer used by other typed types. Icons reuse existing `sql-server.svg` and `postgre-sql.svg`.
 
 ## User Stories
 
@@ -46,10 +46,10 @@ Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create 
 27. As a connection author, I want SqlServer and PostgreSql wire types to match backend `SqlServer` and `PostgreSql`, so that Create / Test / GetDataSources succeed.
 28. As a connection author saving from the Form Tab, I want Active Tab persistence rules unchanged, so that Typed vs Opaque behavior stays consistent.
 29. As a connection author on Custom Tab, I want SqlServer/PostgreSql Form Tab work not to change Opaque Monaco behavior, so that Advanced Connection Mode stays intact.
-30. As a connection author switching SourceTypes to SqlServer, I want the SqlServer credentials form and defaults, so that I do not see Oracle or StarRocks-only fields.
-31. As a connection author switching SourceTypes to PostgreSql, I want the PostgreSql credentials form and defaults, so that ports and labels match PostgreSql.
-32. As a developer, I want separate Per-Type Connection Trees for SqlServer and PostgreSql, so that a future field change on one type does not force the other.
-33. As a developer, I want each type registered as its own facade on the multi facade token, so that Simple Connection Mode dispatches like Oracle/StarRocks.
+30. As a connection author switching SourceTypes to SqlServer, I want the Relational credentials form with SqlServer defaults (port 1433), so that I do not see Oracle or StarRocks-only fields.
+31. As a connection author switching SourceTypes to PostgreSql (phase 2), I want the same Relational credentials form with PostgreSql defaults (port 5432), so that ports match PostgreSql.
+32. As a developer, I want one Relational Connection Tree for SqlServer and PostgreSql, so that Form Tab fields stay in one place (ADR-0013).
+33. As a developer, I want one Relational facade on the multi facade token (phase 1: SQLSERVER; phase 2: also POSTGRESQL), so that Simple Connection Mode dispatches like Oracle/StarRocks.
 34. As a connection author, I want SourceTypes icons from existing sql-server and postgre-sql assets, so that branding matches the rest of the product.
 35. As a connection author editing general connection name and UpdateWhileUsingConnection, I want those shared controls to keep working for the new types, so that I do not lose common Form Tab chrome.
 36. As a warehouse designer, I do not need warehouse DatabaseType tabs from this work, so that Create Connection Page shipping is not blocked on Warehouse Design.
@@ -61,11 +61,11 @@ Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create 
 42. As a connection author with Pinned Catalog, I want Update then table selection then Save to persist DataSource, so that pinned mode matches existing typed flow.
 43. As a translator, I want SourceTypes and field labels for SqlServer and PostgreSql, so that the Form Tab is localized like Oracle and StarRocks.
 44. As a QA engineer, I want unit tests at the facade and SourceTypes-flag seams, so that regressions are caught without full E2E for every field.
-45. As a future maintainer, I want ADR-0012 and glossary terms respected, so that shared Relational modules are not “refactored in” against the decision.
+45. As a future maintainer, I want ADR-0013 and glossary terms respected, so that SqlServer/PostgreSql stay on the shared Relational Connection Tree.
 
 ## Implementation Decisions
 
-- Scope is Create Connection Page only: Form Tab Per-Type Connection Trees, Ladw connection models/enums, header SourceTypes (flag-gated), wiring into Simple Connection Mode and credentials providers. Not warehouse DatabaseType, not bulk-register.
+- Scope is Create Connection Page only: Form Tab Relational Connection Tree (shared for SqlServer/PostgreSql), Ladw connection models/enums, header SourceTypes (flag-gated), wiring into Simple Connection Mode and credentials providers. Not warehouse DatabaseType, not bulk-register.
 - Backend already exposes `ConnectionType.SqlServer` and `ConnectionType.PostgreSql` with `RelationalConnectionInfo` (`Server`, `Port`, `Username`, `Password`, `DataBaseName`, `FetchAllSchemas`, `SslEnabled`). No new connection Create/Test/GetDataSources APIs required for this frontend work.
 - There is no SqlServer/PostgreSql helper API to list databases (unlike `StarRocksHelperApi`). Database name is free-text input.
 - Wire enum values on the LADW connection type must be `SqlServer` and `PostgreSql` (not “Postgres”). Map UI `ConnectionTypeEnum` ↔ `LadwConnectionType` the same way Oracle/StarRocks are mapped; add PostgreSql to the shared connection-type enum if missing.
@@ -73,7 +73,7 @@ Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create 
 - FetchAllSchemas: Form Tab checkbox “show all schemas”; default `false` on new connections. False → technology default schema (`dbo` / `public`) per backend relational profiles.
 - UpdateWhileUsingConnection, Test Connection, and Update remain shared Form Tab chrome (general connection info + action buttons), not duplicated per type beyond what Oracle/StarRocks already do.
 - Viewer: reuse existing Connection Tables Viewer / shared typed viewer path (same as other Form Tab typed types). Catalog shape follows relational/table details already handled by that viewer path.
-- Architecture: Per-Type Connection Tree for SqlServer and for PostgreSql (credentials component, connection-info store, facade implementing the existing facade connection service contract). Register both on the multi facade injection token. Do not introduce a shared Relational Form module (ADR-0012).
+- Architecture: one Relational Connection Tree for SqlServer and PostgreSql (credentials, connection-info store, facade). Register that facade once on the multi facade injection token. Phase 1: `verifyConnection` for SQLSERVER only and SourceTypes lists SqlServer under the flag. Phase 2: also POSTGRESQL / PostgreSql SourceType, then flag removal. Catalog `_type` is always `Relational` (ADR-0013; ADR-0012 superseded).
 - Feature flag key: `BDMPSqlServerAndPostgreSqlConnectionTypesEnabled`. Gates only SourceTypes options for these two types. Code default `false`; development `web.uiconfig` `true`. Final phase removes the flag and always shows the options.
 - Opening an existing SqlServer/PostgreSql connection while the flag is off is out of scope (not an expected product path).
 - Icons: `bundles/assets/img/database/sql-server.svg` and `bundles/assets/img/database/postgre-sql.svg`.
@@ -82,18 +82,18 @@ Add SqlServer and PostgreSql as Typed Connections on the Form Tab of the Create 
 
 ### Testing seam (single preferred seam)
 
-Highest existing seam: **typed Form Tab facade dispatch** — each new type’s facade implements the same facade connection service contract (`verifyConnection`, load/get connectionInfo, viewer store load/get) and is selected by Simple Connection Mode via the multi facade token, exactly like Oracle and StarRocks.
+Highest existing seam: **typed Form Tab facade dispatch** — the Relational facade implements the same facade connection service contract (`verifyConnection`, load/get connectionInfo, viewer store load/get) and is selected by Simple Connection Mode via the multi facade token, exactly like Oracle and StarRocks.
 
-Secondary seam (flag only): SourceTypes option list construction — when the flag is true, SqlServer and PostgreSql options appear with correct icons/labels; when false, they do not. Prefer not inventing a new abstraction layer for the flag beyond how other BDMP web.uiconfig flags are read.
+Secondary seam (flag only): SourceTypes option list construction — when the flag is true, the phase-appropriate options appear; when false, they do not. Prefer not inventing a new abstraction layer for the flag beyond how other BDMP web.uiconfig flags are read.
 
 Do not make the HTTP client or QEM the unit-test seam for this UI work; prior art mocks the design-object / facade layer.
 
 ## Testing Decisions
 
 - Good tests assert external behavior of facades and SourceTypes visibility, not private store field names or template structure trivia.
-- Test SqlServer facade and PostgreSql facade the way Oracle/StarRocks facade specs do: `verifyConnection` true only for the matching engine; `getConnectionInfo` reflects store updates including defaults (port, FetchAllSchemas false, SslEnabled not exposed / false on payload build); load/viewer wiring where those types already test it.
-- Test SourceTypes provider (or header consumer) with flag on/off for presence of the two options.
-- Test connection-info stores for default port and FetchAllSchemas default false.
+- Test Relational facade the way Oracle/StarRocks facade specs do: `verifyConnection` true for SQLSERVER in phase 1; `getConnectionInfo` reflects store updates including defaults (port, FetchAllSchemas false, SslEnabled not exposed / false on payload build); load/viewer wiring with `_type: Relational`.
+- Test SourceTypes provider with flag on/off for SqlServer (phase 1) and later PostgreSql (phase 2).
+- Test Relational connection-info store for default port and FetchAllSchemas default false.
 - Prior art: Oracle/StarRocks facade specs, connection-info store specs, `DatabasePageStaticOptionsProviderService` usage in header specs, `SimpleConnectionModeStrategy` map coverage when extending types.
 - Prefer Jasmine + TestBed patterns from existing `new-database-page` specs; do not require LAP.DW integration tests for this frontend-only scope.
 
