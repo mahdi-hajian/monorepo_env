@@ -1,7 +1,7 @@
 # Web UI Config: Module Types + Environment Overlay
 
 Status: ready-for-agent  
-Jira: [TECSDM-122184](https://jira.mohaymen.ir/browse/TECSDM-122184) (story only; implementation tickets local — no Jira subtasks)  
+Tracker: local only (`.scratch/web-ui-config-modules-and-env-overlay/`) — no Jira  
 Domain: [Web UI Config](../../Web/WebUI/base-contract/CONTEXT.md)  
 ADR: [0001-web-config-ownership-layout](../../Web/WebUI/base-contract/docs/adr/0001-web-config-ownership-layout.md)
 

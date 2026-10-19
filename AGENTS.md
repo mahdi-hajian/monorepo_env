@@ -54,12 +54,6 @@
 | `azure-devops-pr-resolve` | Resolve IAP PR threads only | `…/skills/azure-devops-pr-resolve/` |
 | `lap-pr-action` | IAP branch vs master → HTML RTL PR summary | `…/skills/lap-pr-action/` |
 
-## Authoring
-
-| Skill | When to `@` invoke | Path |
-|-------|-------------------|------|
-| `writing-great-skills` | Edit skill quality (invocation, hierarchy, pruning) | `.agents/skills/writing-great-skills/SKILL.md` |
-
 ## Agent skills
 
 ### Issue tracker
