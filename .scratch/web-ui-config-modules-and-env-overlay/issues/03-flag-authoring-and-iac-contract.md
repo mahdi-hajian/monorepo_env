@@ -4,9 +4,9 @@
 
 **Blocked by:** 01 — مالکیت ماژولی کانفیگ + getImapConfig؛ 02 — Environment Config Overlay روی resolve
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] skill/مستند افزودن فلگ وب دیگر Shell را برای کلید ماژول هدف نمی‌گیرد
-- [ ] نام‌گذاری `WEB__` + عین کلید PascalCase و اولویت merge در قرارداد ops آمده است
-- [ ] نمونه/قرارداد inject `__WEB_ENV__` (اسکریپت یا شبه-کد entrypoint) طوری است که IaC بتواند بدون حدس پیاده کند
-- [ ] CONTEXT/ADR با رفتار نهایی هم‌خوان است
+- [x] skill/مستند افزودن فلگ وب دیگر Shell را برای کلید ماژول هدف نمی‌گیرد
+- [x] نام‌گذاری `WEB__` + عین کلید PascalCase و اولویت merge در قرارداد ops آمده است
+- [x] نمونه/قرارداد inject `__WEB_ENV__` (اسکریپت یا شبه-کد entrypoint) طوری است که IaC بتواند بدون حدس پیاده کند
+- [x] CONTEXT/ADR با رفتار نهایی هم‌خوان است

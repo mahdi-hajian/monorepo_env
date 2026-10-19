@@ -4,9 +4,9 @@
 
 **Blocked by:** 01 — مالکیت ماژولی کانفیگ + getImapConfig
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] با `__WEB_ENV__`، کلیدهای env روی نتیجهٔ فایل/default می‌نشینند و در تداخل env برنده است
-- [ ] رشته‌های `true`/`false` و عدد خالص مثل XML به boolean/number coerce می‌شوند
-- [ ] نبودن `__WEB_ENV__` خطا نمی‌دهد و نتیجه همان default + فایل است
-- [ ] تست روی همان seam resolve: precedence، absent، coerce
+- [x] با `__WEB_ENV__`، کلیدهای env روی نتیجهٔ فایل/default می‌نشینند و در تداخل env برنده است
+- [x] رشته‌های `true`/`false` و عدد خالص مثل XML به boolean/number coerce می‌شوند
+- [x] نبودن `__WEB_ENV__` خطا نمی‌دهد و نتیجه همان default + فایل است
+- [x] تست روی همان seam resolve: precedence، absent، coerce

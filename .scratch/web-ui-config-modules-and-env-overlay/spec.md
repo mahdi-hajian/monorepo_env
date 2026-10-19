@@ -1,6 +1,7 @@
 # Web UI Config: Module Types + Environment Overlay
 
-Status: ready-for-agent  
+Status: done  
+
 Tracker: local only (`.scratch/web-ui-config-modules-and-env-overlay/`) — no Jira  
 Domain: [Web UI Config](../../Web/WebUI/base-contract/CONTEXT.md)  
 ADR: [0001-web-config-ownership-layout](../../Web/WebUI/base-contract/docs/adr/0001-web-config-ownership-layout.md)

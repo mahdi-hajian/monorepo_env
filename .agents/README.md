@@ -37,7 +37,7 @@ Canonical content live under `Web/WebUI/.agents/`. These skills be entrypoints:
 | [`iap-lap-coding`](skills/iap-lap-coding/SKILL.md) | `iap/**` LAP / explore |
 | [`iap-plugin-architecture-frontend`](skills/iap-plugin-architecture-frontend/SKILL.md) | Visualizer plugins |
 | [`iap-unit-test-run`](skills/iap-unit-test-run/SKILL.md) | Run `iap` Karma specs |
-| [`add-web-feature-flag`](skills/add-web-feature-flag/SKILL.md) | New `web.uiconfig` flag |
+| [`add-web-feature-flag`](skills/add-web-feature-flag/SKILL.md) | New `web.uiconfig` flag on module/shell class + optional `WEB__` |
 | [`document-web-feature-flag`](skills/document-web-feature-flag/SKILL.md) | Document web flag |
 | [`iap-ogma-decoupling`](skills/iap-ogma-decoupling/SKILL.md) | Ogma decoupling plan |
 | [`iap-branch-change-html-doc`](skills/iap-branch-change-html-doc/SKILL.md) | Branch HTML doc |
