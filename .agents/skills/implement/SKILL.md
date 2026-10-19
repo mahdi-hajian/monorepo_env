@@ -3,12 +3,15 @@ name: implement
 description: "Implement a piece of work based on a spec or set of tickets."
 disable-model-invocation: true
 ---
-Implement work from spec or tickets.
 
-Use /tdd where possible, at pre-agreed seams.
+Implement the work described by the user in the spec or tickets.
 
-Run typechecking + single test files regularly. Full test suite once at end.
+If the user passes a ticket reference, fetch it from the issue tracker and state its title before starting. If the reference is ambiguous, ask.
 
-Once done, use /code-review to review the work.
+Call the Skill tool with "tdd" where possible, at pre-agreed seams.
 
-Commit work to current branch.
+Run typechecking regularly, single test files regularly, and the full test suite once at the end.
+
+Once done, call the Skill tool with "code-review" to review the work.
+
+Commit your work to the current branch.
