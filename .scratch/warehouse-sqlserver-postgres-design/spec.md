@@ -9,7 +9,8 @@ Tickets:
 - TECSDM-122144 — 01 exclusive tech plumbing
 - TECSDM-122145 — 02 SqlServer create
 - TECSDM-122146 — 03 PostgreSQL create
-- TECSDM-122147 — 04 list enabled technologies
+- TECSDM-122269 — 04 nav refactor + share exclusive/relational warehouse-design logic
+- TECSDM-122147 — 05 list enabled technologies
 
 ---
 
