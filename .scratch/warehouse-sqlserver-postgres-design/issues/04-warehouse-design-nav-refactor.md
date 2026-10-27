@@ -4,6 +4,8 @@ Jira: TECSDM-122269
 Parent: TECSDM-122084  
 Status: ready-for-agent
 
+**Progress note:** بخش‌های A و B پیاده‌سازی شدند؛ بخش C (اشتراک exclusive با StarRocks) عمداً خارج مانده.
+
 **What to build:** بعد از مرج PR فیچر SqlServer/PostgreSQL، منطق تکراری را جمع کنیم بدون تغییر رفتار UI. این کار عمداً از PR فیچر جدا شد تا سایز PR بزرگ نشود.
 
 **Blocked by:** 02 / TECSDM-122145 ؛ 03 / TECSDM-122146 (بعد از مرج PR فیچر)
@@ -70,10 +72,10 @@ Status: ready-for-agent
 
 ## Definition of Done
 
-- [ ] متدهای disable خصوصی از کامپوننت ناوبری حذف و به سرویس‌های بالا منتقل شده‌اند
-- [ ] helperی `hasElasticOrOracle` سرویس جداست و سه سرویس انحصاری از آن استفاده می‌کنند
-- [ ] عنوان ناوبری فقط از طریق pipe ساخته می‌شود؛ getterی `title` نیست
-- [ ] تکرار SqlServer/PostgreSQL در resource / schema-then-table / detailsV2 mapping / finder به لایهٔ مشترک پارامتریک کاهش یافته (تب و route جدا مانده)
-- [ ] شل exclusive (enable/disable، external-only، saved-connection، edit lock) بین StarRocks و relational یکدست‌تر شده بدون عوض کردن رفتار picker StarRocks
-- [ ] رفتار UI (disable تب‌ها، عنوان، create/edit SqlServer/PostgreSQL/StarRocks) نسبت به قبل تغییر نکرده
-- [ ] تست سرویس‌ها، pipe، و seamهای تب پوشش داده شده‌اند
+- [x] متدهای disable خصوصی از کامپوننت ناوبری حذف و به سرویس‌های بالا منتقل شده‌اند
+- [x] helperی `hasElasticOrOracle` سرویس جداست و سه سرویس انحصاری از آن استفاده می‌کنند
+- [x] عنوان ناوبری فقط از طریق pipe ساخته می‌شود؛ getterی `title` نیست
+- [x] تکرار SqlServer/PostgreSQL در resource / schema-then-table / detailsV2 mapping / finder به لایهٔ مشترک پارامتریک کاهش یافته (تب و route جدا مانده)
+- [ ] شل exclusive (enable/disable، external-only، saved-connection، edit lock) بین StarRocks و relational یکدست‌تر شده بدون عوض کردن رفتار picker StarRocks *(بخش C — خارج از این کار)*
+- [x] رفتار UI (disable تب‌ها، عنوان، create/edit SqlServer/PostgreSQL/StarRocks) نسبت به قبل تغییر نکرده
+- [x] تست سرویس‌ها، pipe، و seamهای تب پوشش داده شده‌اند
