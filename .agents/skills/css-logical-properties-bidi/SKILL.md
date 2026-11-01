@@ -80,6 +80,7 @@ Remember: under `dir=rtl`, `text-align: end` / `inset-inline-start` are the **ph
 | Image/map/face **pixel** coords: `left: calc(var(--x) * 1px)` | Coordinates are bitmap/geometry, not writing direction | Physical `left` |
 | Vendor / minified CSS | Third-party | Skip |
 | Horizontal `box-shadow` / lone `translateX` without updating the paired inset | Incomplete conversion | Leave physical or convert **both** axes of the idiom |
+| `dir="auto"` + inherited `text-align: start` | `start` uses the **element’s** direction; English auto → LTR → left inside RTL chrome | Local `text-align: match-parent` on that component only — **never** a global `[dir='auto']` rule |
 
 Also skip: CSS/SCSS **names** that merely contain `-left` (dead `$padding-left` → delete if unused); optional comment cleanup only.
 

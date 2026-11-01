@@ -93,11 +93,10 @@ Under document `dir=rtl`, `text-align: end` is physical **left** → Persian cel
 
 Inherited `start` resolves against the **element’s** direction. English/`dir="auto"` → LTR → left, even inside RTL chrome.
 
+Fix **only on that component** (do not add a global `[dir='auto']` rule — it changes unrelated auto-dir UI):
+
 ```scss
-body {
-  text-align: start;
-}
-[dir='auto'] {
+.checkbox-text { // or the specific class with dir="auto"
   text-align: match-parent; // start/end vs parent direction
 }
 ```
