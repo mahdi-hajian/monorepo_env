@@ -29,8 +29,9 @@ Copy and track:
 - [ ] 3. Collapse identical rtl/ltr SCSS mirrors
 - [ ] 4. Unify duplicate HTML/TS direction branches (safe cases)
 - [ ] 5. Leave vendor / map offsets / intentional third-party direction APIs
-- [ ] 6. Document out-of-scope leftovers for later
-- [ ] 7. Branch naming, commit, push only if user asks
+- [ ] 6. Post-convert trap scan (align classes, translateX, pixel coords)
+- [ ] 7. Document out-of-scope leftovers for later
+- [ ] 8. Branch naming, commit, push only if user asks
 ```
 
 ### 1. Inventory
@@ -43,9 +44,10 @@ Search under scope (exclude vendor/minified/docs/cypress as appropriate):
 - property lines `left:` / `right:` (not class names / IDs like `#mohaymen-left-section`)
 - asymmetric 4-value `padding` / `margin` / `border-width` where inline sides differ
 - `[direction=rtl|ltr]`, `:host-context([direction=…])`, `:host-context([dir=…])`
-- **`.k-rtl` / `.k-ltr`** (Kendo direction classes — same invert rules as `[direction=…]`)
+- **`.k-rtl` / `.k-ltr`** (Kendo — same invert rules as `[direction=…]`)
 - duplicate app SCSS under `assets/` (e.g. `base/assets/styles/gridComponent.scss`) when it mirrors `styles/`
 - `websiteDirection === 'rtl'|'ltr'`, `isRTL` used only to swap markup/icons
+- Named align / content-direction classes: `cell-align-*`, `*-alignment`, `.is-rtl` / `.is-ltr`, `.direction-mode`, `.text-right`
 
 ### 2. Convert physical → logical
 
@@ -61,28 +63,41 @@ Use the mapping in [reference.md](reference.md).
 
 After conversion, mirrored rtl/ltr blocks often become identical → merge (step 3).
 
-**Element that forces its own `direction`:** if a rule sets `direction: rtl` (e.g. `.text-right`, `.cell-direction-rtl`), prefer `direction` + `text-align: start` (and matching logical props). Do **not** apply neutral `text-align: right` → `end` on that block — with `direction: rtl`, physical `right` is **start**.
+**Element that forces its own `direction`:** if a rule sets `direction: rtl` (e.g. `.text-right`, `.cell-direction-rtl`), prefer `direction` + `text-align: start`. Do **not** apply neutral `text-align: right` → `end` on that block — with `direction: rtl`, physical `right` is **start**.
 
-**Asymmetric 4-value shorthands** (`padding: T R B L` with R≠L, or `border-width: …`): rewrite with `*-block` / `*-inline` (see reference). Symmetric `T R T R` may become `padding-block` / `padding-inline` optionally.
+**Asymmetric 4-value shorthands** (`padding: T R B L` with R≠L): rewrite with `*-block` / `*-inline` (see reference).
 
-**Do not convert:**
+### 2b. Known traps — do **not** convert (or revert if already converted)
 
-- Vendor / minified CSS (jquery, kendo theme, fotorama, pdf.js, Semantic under `assets/styles/semantic`, …)
-- Map/canvas **pixel** offsets (`left`/`top` for markers)
-- Horizontal `box-shadow` / `translateX` unless you add explicit rtl mirrors or logical alternatives
-- CSS custom property **names** / unused SCSS vars that only *contain* `-left` in the name — remove dead `$padding-left` if unused; do not bulk-rename unrelated tokens
-- Comments that mention physical props (optional cleanup only)
+Remember: under `dir=rtl`, `text-align: end` / `inset-inline-start` are the **physical left / right** sides flipped vs LTR intuition.
+
+| Trap | Why it breaks | Keep / fix |
+|------|----------------|------------|
+| Semantic physical align: `.cell-align-right`, `.cell-align-left`, `.right-alignment`, `.left-alignment`, `.is-rtl` / `.is-ltr` text-align, `.direction-mode` | HTML maps content RTL → class `*-right` → meant **physical right**. `right`→`end` becomes left under document RTL | Physical `text-align: right` / `left` |
+| Switch/slider thumb: `left` + `translateX(+N)` | Logical start under RTL puts thumb on the right; `translateX(+)` still moves further right → outside track | Physical `left` (or rewrite both states with inset-inline, no translateX) |
+| Centering: `left: 50%` + `translate(-50%)` / `translateX(-50%)` | Same mismatch → mis-centered loaders/overlays | Physical `left: 50%` |
+| Drag preview: `left: -50%` + `top: -50%` | Same family as centering | Physical `left: -50%` |
+| Image/map/face **pixel** coords: `left: calc(var(--x) * 1px)` | Coordinates are bitmap/geometry, not writing direction | Physical `left` |
+| Vendor / minified CSS | Third-party | Skip |
+| Horizontal `box-shadow` / lone `translateX` without updating the paired inset | Incomplete conversion | Leave physical or convert **both** axes of the idiom |
+
+Also skip: CSS/SCSS **names** that merely contain `-left` (dead `$padding-left` → delete if unused); optional comment cleanup only.
 
 ### 3. Collapse identical direction blocks
 
 If rtl and ltr blocks only differ by mirrored physical props (now the same logical props), delete both wrappers and keep one rule set.
+
+**Correct collapses (examples):**
+
+- rtl `text-align: right` + ltr `text-align: left` → one `text-align: start`
+- rtl `text-align: left` + ltr `text-align: right` → one `text-align: end`
 
 **Keep separate** when values truly differ:
 
 - font stacks (`html[direction=rtl|ltr]`)
 - explicit `direction: rtl|ltr` on chrome (header, `kendo-splitter`)
 - `k-rtl` / product-only tweaks
-- **DOM-order** hacks (`:first-child` vs `:last-child`) that pick which pane gets a border — logical `border-inline-*` does not remove the need for different child selectors
+- **DOM-order** hacks (`:first-child` vs `:last-child`) for which pane gets a border
 
 When merging float/layout lists, do **not** copy unrelated declarations across selector groups (e.g. do not add `display: flex` to rules that only had `float`).
 
@@ -92,39 +107,48 @@ Goal: one markup path that follows document `dir`, not two templates.
 
 | Pattern | Fix |
 |---------|-----|
-| Two `*ngIf` blocks for rtl vs ltr (e.g. Semantic `left icon` / `right action`) | One flex row; place items in DOM order so **inline-start → … → inline-end** matches product intent |
-| Chevron / angle icon swap via `websiteDirection` | One icon class + `transform: scaleX(-1)` under `[dir=rtl]` / `:host-context([dir=rtl])` |
+| Two `*ngIf` blocks for rtl vs ltr (e.g. Semantic `left icon` / `right action`) | One flex row; DOM order **inline-start → … → inline-end** |
+| Chevron / angle icon swap via `websiteDirection` | One icon + `transform: scaleX(-1)` under `[dir=rtl]` / `:host-context([dir=rtl])` |
 | Semantic/Ant `left`/`right` in class strings | Stable class + flex / logical CSS |
 | Duplicate pager controls hidden by direction | One control set; mirror arrows with CSS if needed |
-| Carousel `next`/`prev` with inverted index math per direction | Prefer **array ±1** methods; put prev at `inset-inline-start`, next at `inset-inline-end`; stable titles |
+| Carousel `next`/`prev` with inverted index math per direction | Array ±1; prev at `inset-inline-start`, next at `inset-inline-end`; stable titles |
 
-**Keep** (usually):
+**Keep** (usually): `[dir]` on portals/drawers, `k-rtl` for Kendo, font-family by language, library `direction` APIs (e.g. Fotorama) — note in follow-up if ugly.
 
-- `[dir]="websiteDirection"` on portals/drawers that do not inherit
-- `k-rtl` (or equivalent) for Kendo/third-party grids
-- Font family selection for Arabic/Persian vs Latin
-- Passing `direction` into a library API that requires it (e.g. Fotorama) — note in follow-up doc if ugly
+### 5. Post-convert trap scan
 
-### 5. Out-of-scope documentation
+After bulk convert, grep the scope for regressions:
 
-If user asks to document leftovers outside the scoped folders, write a short markdown backlog (priority by shared shell → large apps → design system → vendor). Prefer a path the user chooses (often outside git or a docs folder they name).
+```
+text-align:\s*end   near cell-align|is-rtl|direction-mode|right-alignment
+inset-inline-start  near translateX\(|translate\(-50
+inset-inline-start:\s*50%
+left:\s*calc\(var\(--x
+```
 
-### 6. Git
+Fix traps per table in §2b before calling the package done.
 
-- Branch: `feature/<pkg>-logical-css-properties` (e.g. `feature/base-logical-css-properties`).
-- One branch per package if user asks for split PRs.
-- Commit / push **only** when explicitly requested.
-- Do not commit unrelated dirty files (local configs such as `web.uiconfig`).
-- Suggested commit subject: `Convert <pkg> styles to CSS logical properties for correct LTR/RTL layout.`
+### 6. Out-of-scope documentation
+
+If user asks, write a short backlog (shell → large apps → design system → vendor). Path the user chooses.
+
+### 7. Git
+
+- Branch: `feature/<pkg>-logical-css-properties`
+- One branch per package if split PRs requested
+- Commit / push **only** when explicitly requested
+- Do not commit unrelated dirty files (`web.uiconfig`, etc.)
+- Suggested subject: `Convert <pkg> styles to CSS logical properties for correct LTR/RTL layout.`
+- Follow-up fixes: short subjects like `Keep physical left for translate-based centering…`
 
 ## Done criteria
 
-- Under scope: no remaining physical margin/padding/border-inline-side / float left|right / text-align left|right / positional left|right in **app** scss (vendor excluded; comments OK).
-- Shared duplicates under `assets/` for the same app stylesheet converted when they exist in scope.
-- No duplicate rtl/ltr HTML for the same control when a single logical layout works.
-- LTR and RTL both intentional: spot-check key screens with root `dir=ltr` and `dir=rtl`.
-- Follow-up doc lists anything deferred.
+- App SCSS under scope uses logical props **except** intentional physical leftovers listed in §2b (and comments/vendor).
+- Shared `assets/` duplicates of app stylesheets converted when in scope.
+- No duplicate rtl/ltr HTML when a single logical layout works.
+- Trap scan (§5) clean; spot-check `dir=ltr` and `dir=rtl` (grids with `cell-align-*`, switches, centered loaders, face/map overlays if touched).
+- Follow-up doc lists deferred work.
 
 ## Additional resources
 
-- Property map, shorthand examples, Mohaymen WebUI notes: [reference.md](reference.md)
+- Property map, traps with code, Mohaymen notes: [reference.md](reference.md)

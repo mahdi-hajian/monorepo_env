@@ -36,7 +36,15 @@ Physical coordinates stay absolute. In RTL, physical **left** is the **inline-en
 
 Prefer converting then **deleting** the rtl/ltr wrappers when both sides match.
 
-### Self-directed elements
+### Under `dir=rtl` (cheat sheet)
+
+| Declaration | Physical side |
+|-------------|----------------|
+| `text-align: start` / `inset-inline-start` | **right** |
+| `text-align: end` / `inset-inline-end` | **left** |
+| `text-align: right` / `left:` | still right / left |
+
+## Self-directed elements
 
 ```scss
 // BAD after naive neutral map (right → end): with direction:rtl, end is physical LEFT
@@ -52,91 +60,142 @@ Prefer converting then **deleting** the rtl/ltr wrappers when both sides match.
 }
 ```
 
-Same idea for grid cell helpers: set `direction: rtl|ltr` on the cell class and use `text-align: start`.
+Same for grid `.cell-direction-rtl`: set `direction: rtl` + `text-align: start`.
+
+## Named physical align utilities (do not convert)
+
+Product maps **content** direction to class names that mean absolute sides:
+
+```scss
+// HTML: cellDirection === 'rtl' → 'cell-align-right'
+.cell-align-right td {
+  text-align: right; // NOT end
+}
+.cell-align-left td {
+  text-align: left; // NOT start
+}
+
+.is-rtl .element-container {
+  text-align: right; // NOT end
+}
+.is-ltr .element-container {
+  text-align: left; // NOT start
+}
+
+.direction-mode {
+  text-align: right;
+}
+```
+
+Under document `dir=rtl`, `text-align: end` is physical **left** → Persian cells look “LTR”.
 
 ## Shorthands
 
-Symmetric `padding: 8px 12px` (block / inline) is fine.
-
-Asymmetric TRBL example:
-
 ```scss
 // physical: top right bottom left
-border-width: 0 0 1px 1px;
-// logical:
-border-block-width: 0 1px;   // start end
-border-inline-width: 1px 0;  // start end
-```
-
-```scss
 padding: 5px 12px 1px 0;
 padding-block: 5px 1px;
-padding-inline: 0 12px; // start end = left right in LTR
+padding-inline: 0 12px; // start end
 ```
 
 ```scss
-// R === L but T !== B — optional normalize
-margin: 10px 0 5px 0;
-margin-block: 10px 5px;
-margin-inline: 0;
+border-width: 0 0 1px 1px;
+border-block-width: 0 1px;
+border-inline-width: 1px 0;
+```
+
+Symmetric `padding: 8px 12px` can stay.
+
+## Pairs that must stay physical with translate / geometry
+
+### Switch / slider thumbs
+
+```scss
+// BAD under dir=rtl — thumb starts on the right, translateX(+) exits the track
+.slider::before {
+  inset-inline-start: 3px;
+}
+.slider.checked::before {
+  transform: translateX(14px);
+}
+
+// OK with existing translateX
+.slider::before {
+  left: 3px;
+}
+```
+
+### Centering with translate
+
+```scss
+// BAD
+.loader {
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// OK
+.loader {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+### Drag-preview / offset pairs
+
+```scss
+// OK — keep both physical
+.column-drag-preview {
+  top: -50%;
+  left: -50%;
+}
+```
+
+### Bitmap / map pixel coordinates
+
+```scss
+// OK — geometry, not writing mode
+.border-box {
+  left: calc(var(--x) * 1px);
+  top: calc(var(--y) * 1px);
+}
 ```
 
 ## HTML unification examples
 
-**Search field (icon at inline-end, action at inline-start):**
+**Search field:** one flex row; action at inline-start, icon at inline-end.
 
-```html
-<div class="search-box">
-  <button *ngIf="action" class="action"></button>
-  <input />
-  <i class="search-icon"></i>
-</div>
-```
+**Chevron:** one `fa-angle-left` + `scaleX(-1)` under `:host-context([dir='rtl'])`.
 
-```scss
-.search-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-```
+**Carousel:** `prev` = index−1 at `inset-inline-start`; `next` = index+1 at `inset-inline-end`.
 
-**Chevron:**
+## Correct rtl/ltr collapses
 
-```html
-<i class="far fa-angle-left pane-chevron"></i>
-```
-
-```scss
-:host-context([dir='rtl']) .pane-chevron {
-  transform: scaleX(-1);
-}
-```
-
-**Carousel:** `prevItem()` → index−1, `nextItem()` → index+1; place `.prev` at `inset-inline-start`, `.next` at `inset-inline-end`.
+| Before (mirrored) | After |
+|-------------------|--------|
+| rtl `text-align: right` + ltr `text-align: left` | `text-align: start` |
+| rtl `text-align: left` + ltr `text-align: right` | `text-align: end` |
+| rtl `margin-right: 5px` + ltr `margin-left: 5px` | `margin-inline-start: 5px` |
 
 ## Mohaymen WebUI notes
 
-- `WebsiteDirectionService` sets `html` attributes `dir` and `direction`.
-- Selectors may use `[direction="rtl"]` or `:host-context([direction='rtl'])` — treat like dir for inventory; prefer logical props over new mirrors.
-- Kendo: keep applying `k-rtl` in TS when required; when converting SCSS under `.k-rtl`, **invert** physical sides.
-- Split PRs per package (`feature/<pkg>-logical-css-properties`).
-- Migrated (feature branches / prior art): `bdmp`, `dm`, `iap`, `base`. Typical next: `ams`, then `dap` / `dia-*` / `termeh` (see local backlog if present).
-- `base` specifics worth reusing:
-  - Convert both `styles/gridComponent.scss` and `assets/styles/gridComponent.scss` if both exist.
-  - Shell chrome (`styles.scss` header/logout) collapses heavily after logical conversion.
-  - Keep font-family and explicit `direction` on header/splitter; keep `:first-child` / `:last-child` submodule borders if DOM order differs by product direction.
-- Azure DevOps remote for Web; `gh`/`az` may be missing locally — still push the feature branch when asked.
+- `WebsiteDirectionService` sets `html` `dir` and `direction`.
+- Selectors may use `[direction="rtl"]` / `:host-context([direction='rtl'])`.
+- Kendo: keep `k-rtl` in TS; invert physical sides under `.k-rtl` in SCSS.
+- Branch: `feature/<pkg>-logical-css-properties`.
+- Migrated: `bdmp`, `dm`, `iap`, `base`. Typical next: `ams`, then `dap` / `dia-*` / `termeh`.
+- `base`: convert both `styles/gridComponent.scss` and `assets/styles/gridComponent.scss`; keep fonts + header/splitter `direction`; keep `:first-child`/`:last-child` submodule borders if DOM order differs.
+- Azure DevOps remote; `gh`/`az` may be missing — still push when asked; don’t stage `web.uiconfig`.
 
 ## Script caution
 
-Bulk replace scripts that rewrite every `.scss` file can flip CRLF→LF and dirty unrelated files. Only write files that actually change properties; restore mtime-only phantoms (`git diff` empty → checkout).
+Bulk replace can flip CRLF→LF. Only write files that change; restore empty diffs.
 
 If automating:
 
-1. Track brace depth and treat `[direction=rtl]`, `:host-context([direction=rtl])`, and **`.k-rtl`** as invert contexts.
-2. Preserve original newlines (CRLF on Windows checkouts).
-3. Skip vendor trees (`assets/styles/semantic`, `jquery-kendo`, `*.min.css`, fotorama, …) but **do** process app duplicates like `assets/styles/gridComponent.scss`.
-4. After bulk convert, manually fix self-`direction` blocks and re-invert any `.k-rtl` rules that were treated as neutral.
-5. Prefer Node when Python is unavailable on the agent machine.
-6. Never stage unrelated local config (`web.uiconfig`, etc.).
+1. Brace-depth invert for `[direction=rtl]`, `:host-context([direction=rtl])`, **`.k-rtl`**.
+2. Preserve CRLF on Windows.
+3. Skip vendor (`semantic`, `jquery-kendo`, `*.min.css`, fotorama); **do** process app `assets/styles/gridComponent.scss`.
+4. After convert: trap scan (align classes, `inset-inline-start: 50%` + translate, `--x` pixels, switch thumbs).
+5. Prefer Node if Python is missing.
+6. Never stage unrelated local config.
