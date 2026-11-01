@@ -5,7 +5,7 @@ description: >-
   to logical properties and reduce RTL/LTR-duplicated HTML/TS so layouts work
   in both directions. Use when the user asks for logical CSS, bidirectional
   layout, RTL+LTR fixes, or to migrate a package/module the same way as
-  WebUI bdmp/dm/iap.
+  WebUI bdmp/dm/iap/base.
 disable-model-invocation: true
 ---
 
@@ -16,7 +16,7 @@ Migrate a **scoped package/folder** (not the whole monorepo unless asked) so sty
 ## Preconditions
 
 1. Confirm document direction is set on a root element (`dir` and/or CSS `direction`). Logical properties follow that, not a custom attribute alone.
-2. Ask user for **scope paths** (e.g. `WebUI/base`, `WebUI/ams`). Do not expand outside scope.
+2. Ask user for **scope paths** (e.g. `WebUI/ams`). Do not expand outside scope.
 3. If the repo uses both `dir` and a custom attribute like `[direction=rtl]`, convert layout with logical props; keep custom selectors only for non-layout differences (fonts, etc.).
 
 ## Workflow
@@ -40,8 +40,11 @@ Search under scope (exclude vendor/minified/docs/cypress as appropriate):
 - `margin-left|margin-right|padding-left|padding-right`
 - `border-left|border-right`
 - `float:\s*(left|right)|text-align:\s*(left|right)`
-- property lines `left:` / `right:` (not class names)
+- property lines `left:` / `right:` (not class names / IDs like `#mohaymen-left-section`)
+- asymmetric 4-value `padding` / `margin` / `border-width` where inline sides differ
 - `[direction=rtl|ltr]`, `:host-context([direction=…])`, `:host-context([dir=…])`
+- **`.k-rtl` / `.k-ltr`** (Kendo direction classes — same invert rules as `[direction=…]`)
+- duplicate app SCSS under `assets/` (e.g. `base/assets/styles/gridComponent.scss`) when it mirrors `styles/`
 - `websiteDirection === 'rtl'|'ltr'`, `isRTL` used only to swap markup/icons
 
 ### 2. Convert physical → logical
@@ -53,25 +56,35 @@ Use the mapping in [reference.md](reference.md).
 | Context | Mapping |
 |---------|---------|
 | Neutral / no direction wrapper | `left` → `inline-start`, `right` → `inline-end` |
-| Inside `[direction=rtl]` / `:host-context(…rtl…)` | **invert**: physical `left` → `inline-end`, physical `right` → `inline-start` |
-| Inside LTR wrappers | same as neutral (`left` → `inline-start`) |
+| Inside `[direction=rtl]` / `:host-context(…rtl…)` / **`.k-rtl`** | **invert**: physical `left` → `inline-end`, physical `right` → `inline-start` |
+| Inside LTR wrappers / **`.k-ltr`** | same as neutral (`left` → `inline-start`) |
 
 After conversion, mirrored rtl/ltr blocks often become identical → merge (step 3).
 
-**Asymmetric 4-value shorthands** (`padding: T R B L` with R≠L, or `border-width: …`): rewrite with `*-block` / `*-inline` (see reference).
+**Element that forces its own `direction`:** if a rule sets `direction: rtl` (e.g. `.text-right`, `.cell-direction-rtl`), prefer `direction` + `text-align: start` (and matching logical props). Do **not** apply neutral `text-align: right` → `end` on that block — with `direction: rtl`, physical `right` is **start**.
+
+**Asymmetric 4-value shorthands** (`padding: T R B L` with R≠L, or `border-width: …`): rewrite with `*-block` / `*-inline` (see reference). Symmetric `T R T R` may become `padding-block` / `padding-inline` optionally.
 
 **Do not convert:**
 
-- Vendor / minified CSS (jquery, kendo theme, fotorama, pdf.js, …)
+- Vendor / minified CSS (jquery, kendo theme, fotorama, pdf.js, Semantic under `assets/styles/semantic`, …)
 - Map/canvas **pixel** offsets (`left`/`top` for markers)
 - Horizontal `box-shadow` / `translateX` unless you add explicit rtl mirrors or logical alternatives
-- CSS custom property **names** that contain `-left` (only change usages of physical props)
+- CSS custom property **names** / unused SCSS vars that only *contain* `-left` in the name — remove dead `$padding-left` if unused; do not bulk-rename unrelated tokens
+- Comments that mention physical props (optional cleanup only)
 
 ### 3. Collapse identical direction blocks
 
 If rtl and ltr blocks only differ by mirrored physical props (now the same logical props), delete both wrappers and keep one rule set.
 
-**Keep separate** when values truly differ (font stacks, label widths, `k-rtl`, product-only tweaks).
+**Keep separate** when values truly differ:
+
+- font stacks (`html[direction=rtl|ltr]`)
+- explicit `direction: rtl|ltr` on chrome (header, `kendo-splitter`)
+- `k-rtl` / product-only tweaks
+- **DOM-order** hacks (`:first-child` vs `:last-child`) that pick which pane gets a border — logical `border-inline-*` does not remove the need for different child selectors
+
+When merging float/layout lists, do **not** copy unrelated declarations across selector groups (e.g. do not add `display: flex` to rules that only had `float`).
 
 ### 4. HTML / TS direction branching
 
@@ -98,14 +111,16 @@ If user asks to document leftovers outside the scoped folders, write a short mar
 
 ### 6. Git
 
-- Branch prefix: follow repo convention (`feature/…` if required).
+- Branch: `feature/<pkg>-logical-css-properties` (e.g. `feature/base-logical-css-properties`).
 - One branch per package if user asks for split PRs.
 - Commit / push **only** when explicitly requested.
-- Do not commit unrelated dirty files (local configs).
+- Do not commit unrelated dirty files (local configs such as `web.uiconfig`).
+- Suggested commit subject: `Convert <pkg> styles to CSS logical properties for correct LTR/RTL layout.`
 
 ## Done criteria
 
-- Under scope: no remaining physical margin/padding/border-inline-side / float left|right / text-align left|right / positional left|right in **app** scss (vendor excluded).
+- Under scope: no remaining physical margin/padding/border-inline-side / float left|right / text-align left|right / positional left|right in **app** scss (vendor excluded; comments OK).
+- Shared duplicates under `assets/` for the same app stylesheet converted when they exist in scope.
 - No duplicate rtl/ltr HTML for the same control when a single logical layout works.
 - LTR and RTL both intentional: spot-check key screens with root `dir=ltr` and `dir=rtl`.
 - Follow-up doc lists anything deferred.
