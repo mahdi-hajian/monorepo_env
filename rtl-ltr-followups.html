@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>باقی‌مانده کار RTL / LTR — WebUI</title>
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --card: #fffdf9;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e7e0d5;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --warn: #9a3412;
+      --warn-soft: #ffedd5;
+      --ok: #166534;
+      --ok-soft: #dcfce7;
+      --p1: #1d4ed8;
+      --p2: #7c3aed;
+      --p3: #b45309;
+      --p4: #475569;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, "IRANSans", "IRANSansX", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 100% -10%, #dbeafe 0%, transparent 55%),
+        radial-gradient(900px 500px at 0% 100%, #ccfbf1 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+    .wrap {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header.hero {
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 45%, #1e3a5f 100%);
+      color: #f8fafc;
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 40px rgba(15, 118, 110, 0.25);
+    }
+    header.hero h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.65rem;
+      font-weight: 700;
+    }
+    header.hero p {
+      margin: 0;
+      opacity: 0.92;
+      font-size: 0.98rem;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .chip {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      font-size: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    nav.toc {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    nav.toc h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    nav.toc ol {
+      margin: 0;
+      padding-inline-start: 1.25rem;
+    }
+    nav.toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    nav.toc a:hover { text-decoration: underline; }
+    section.card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1.25rem 1.35rem 1.4rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+    section.card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 0.4rem;
+      color: #fff;
+    }
+    .badge.p1 { background: var(--p1); }
+    .badge.p2 { background: var(--p2); }
+    .badge.p3 { background: var(--p3); }
+    .badge.p4 { background: var(--p4); }
+    .badge.opt { background: var(--warn); }
+    h3 {
+      margin: 1.1rem 0 0.4rem;
+      font-size: 1.05rem;
+      color: #292524;
+    }
+    p { margin: 0.4rem 0 0.7rem; color: var(--ink); }
+    .muted { color: var(--muted); }
+    ul, ol { margin: 0.3rem 0 0.8rem; padding-inline-start: 1.35rem; }
+    li { margin: 0.25rem 0; }
+    code, .path {
+      font-family: ui-monospace, Consolas, "Courier New", monospace;
+      font-size: 0.86em;
+      background: #f5f5f4;
+      padding: 0.05em 0.35em;
+      border-radius: 0.3em;
+      direction: ltr;
+      unicode-bidi: isolate;
+      display: inline-block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 0.6rem 0 1rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 0.45rem 0.55rem;
+      text-align: right;
+      vertical-align: top;
+    }
+    th { background: #f5f5f4; font-weight: 600; }
+    td.num, th.num {
+      text-align: center;
+      direction: ltr;
+      unicode-bidi: isolate;
+      white-space: nowrap;
+    }
+    .callout {
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      margin: 0.8rem 0;
+    }
+    .callout.ok { background: var(--ok-soft); border: 1px solid #86efac; }
+    .callout.warn { background: var(--warn-soft); border: 1px solid #fdba74; }
+    .callout.info { background: var(--accent-soft); border: 1px solid #5eead4; }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+    }
+    .steps li {
+      position: relative;
+      padding: 0.65rem 0.75rem 0.65rem 0.75rem;
+      padding-inline-start: 2.6rem;
+      margin: 0.45rem 0;
+      background: #fafaf9;
+      border: 1px solid var(--line);
+      border-radius: 0.65rem;
+    }
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      inset-inline-start: 0.65rem;
+      top: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+    footer {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>باقی‌مانده کار برای RTL و LTR درست در WebUI</h1>
+      <p>
+        این سند توضیح می‌دهد بعد از مهاجرت <span class="chip" style="display:inline;padding:0 0.35rem">bdmp / dm / iap</span>
+        چه کارهایی مانده تا ظاهر و رفتار فرانت در هر دو جهت قابل اتکا باشد.
+      </p>
+      <div class="meta">
+        <span class="chip">مخاطب: توسعه‌دهنده / Agent</span>
+        <span class="chip">اسکیل: @css-logical-properties-bidi</span>
+        <span class="chip">برآورد حجم از اسکن SCSS (بدون vendorهای jquery/kendo/fotorama)</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="فهرست">
+      <h2>فهرست</h2>
+      <ol>
+        <li><a href="#done">چه چیزی انجام شده</a></li>
+        <li><a href="#why">چرا هنوز همه‌جا درست نیست</a></li>
+        <li><a href="#p1">اولویت ۱ — base</a></li>
+        <li><a href="#p2">اولویت ۲ — ams</a></li>
+        <li><a href="#p3">اولویت ۳ — dap، dia، termeh، …</a></li>
+        <li><a href="#p4">اولویت ۴ — کامپوننت‌های مشترک طراحی</a></li>
+        <li><a href="#iap-opt">داخل IAP (اختیاری)</a></li>
+        <li><a href="#order">ترتیب پیشنهادی اجرا</a></li>
+        <li><a href="#how">چطور به AI بدهی</a></li>
+        <li><a href="#qa">چک‌لیست تست</a></li>
+      </ol>
+    </nav>
+
+    <section class="card" id="done">
+      <h2>چه چیزی انجام شده</h2>
+      <div class="callout ok">
+        <strong>انجام‌شده روی برنچ‌های feature (هنوز روی master مرج نشده‌اند مگر خودتان مرج کرده باشید)</strong>
+        <span class="path">feature/bdmp-logical-css-properties</span>،
+        <span class="path">feature/dm-logical-css-properties</span>،
+        <span class="path">feature/iap-logical-css-properties</span>
+      </div>
+      <ul>
+        <li>تبدیل استایل‌های physical مثل <code>margin-left</code> / <code>left</code> / <code>float: left</code> به logical مثل <code>margin-inline-start</code> / <code>inset-inline-start</code>.</li>
+        <li>ادغام بلوک‌های تکراری RTL/LTR در SCSS وقتی فقط آینه هم بودند.</li>
+        <li>در IAP: کاهش شاخه‌زنی <code>websiteDirection</code> در HTML/TS (سرچ‌باکس، فلش pane، صفحه‌بندی، دکمه‌های پروفایل، اسلایدر عکس).</li>
+        <li>اسکیل قابل استفاده مجدد: <code>@css-logical-properties-bidi</code></li>
+      </ul>
+      <p class="muted">
+        فایل خلاصه انگلیسی قبلی: <span class="path">E:\mono one\bidirectional-layout-followups.md</span>
+      </p>
+    </section>
+
+    <section class="card" id="why">
+      <h2>چرا هنوز «همه‌جا» درست نیست؟</h2>
+      <p>
+        ماژول‌هایی مثل IAP و BDMP بخشی از UI را خودشان استایل می‌کنند، ولی خیلی از فاصله‌ها، مودال‌ها،
+        گریدها و کنترل‌های مشترک از <strong>پکیج‌های بالاتر</strong> (مخصوصاً <code>base</code>) می‌آیند.
+        اگر آنجا هنوز <code>margin-left</code> یا <code>text-align: right</code> باشد، در حالت LTR
+        همان صفحهٔ «مهاجرت‌شده» هم می‌تواند کج به نظر برسد.
+      </p>
+      <p>
+        علاوه بر CSS، بعضی کتابخانه‌های third-party (Kendo، Fotorama، jQuery Confirm) جهت را جداگانه
+        می‌فهمند یا اصلاً physical هستند؛ این‌ها را نباید مثل SCSS اپلیکیشن فله‌ای عوض کرد.
+      </p>
+    </section>
+
+    <section class="card" id="p1">
+      <h2><span class="badge p1">اولویت ۱</span> WebUI/base — شِل مشترک</h2>
+      <p>
+        <strong>اثر:</strong> تقریباً همهٔ ماژول‌ها این لایه را لود می‌کنند. بدون درست شدن base،
+        مهاجرت bdmp/dm/iap ناقص می‌ماند.
+      </p>
+      <p>
+        <strong>حجم تقریبی اسکن:</strong>
+        حدود <strong>۳۳ فایل SCSS</strong> و نزدیک <strong>۲۸۰ رخداد</strong> physical
+        (بدون شمارش استایل‌های jquery/kendo داخل assets).
+      </p>
+
+      <h3>چه چیزهایی داخل base مهم‌اند؟</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>مسیر / ناحیه</th>
+            <th>چرا مهم است</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="path">base/styles.scss</span></td>
+            <td>استایل سراسری، تراز متن body، بلوک‌های زیاد <code>[direction=rtl]</code> / <code>ltr</code>، هدر و لایه‌های عمومی.</td>
+          </tr>
+          <tr>
+            <td><span class="path">base/styles/gridComponent.scss</span> و کپی assets</td>
+            <td>رفتار جدول/گرید و جهت؛ ارتباط نزدیک با Kendo و کلاس <code>k-rtl</code>.</td>
+          </tr>
+          <tr>
+            <td><span class="path">base/styles/ngzorro-custom-styles.scss</span></td>
+            <td>بازنویسی ظاهر Ant Design / ng-zorro با سمت‌های فیزیکی.</td>
+          </tr>
+          <tr>
+            <td><span class="path">base/src/lib/app/*</span></td>
+            <td>کامپوننت‌های مشترک: modal، dropdown، toolbar، tree، search-input، accordion، multiselect، dialog، form-field و …</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>کارهایی که باید انجام شود</h3>
+      <ul>
+        <li>تبدیل physical → logical با همان قواعد اسکیل (داخل بلوک RTL نگاشت را معکوس کن، بعد بلوک‌های یکسان را ادغام کن).</li>
+        <li>تفاوت واقعی را نگه دار: فونت فارسی در RTL در برابر فونت لاتین در LTR.</li>
+        <li>تم Kendo داخل assets را فله‌ای ادیت نکن؛ مطمئن شو جایی که لازم است <code>k-rtl</code> ست می‌شود.</li>
+        <li>بعد از اتمام: تست شِل (هدر، منو، مودال عمومی، یک گرید نمونه) در هر دو <code>dir</code>.</li>
+      </ul>
+
+      <div class="callout info">
+        <strong>پیشنهاد اجرایی</strong>
+        یک برنچ جدا مثل <span class="path">feature/base-logical-css-properties</span> بسازید و فقط <code>WebUI/base</code> را اسکوپ کنید.
+        در صورت نیاز تکه‌های خیلی وابستهٔ <code>termeh</code> را همان‌جا یا بلافاصله بعدش انجام دهید.
+      </div>
+    </section>
+
+    <section class="card" id="p2">
+      <h2><span class="badge p2">اولویت ۲</span> WebUI/ams — حجم بالا</h2>
+      <p>
+        <strong>اثر:</strong> محصول AMS صفحات سازمان/سیستم زیادی دارد؛ استایل‌های فیزیکی و
+        حتی <code>direction: rtl</code> سخت‌کد زیاد دیده می‌شود. در LTR احتمال شکستگی UI بالاست.
+      </p>
+      <p>
+        <strong>حجم تقریبی اسکن:</strong>
+        حدود <strong>۳۳ فایل SCSS</strong> و نزدیک <strong>۷۴۰+ رخداد</strong> — بزرگ‌ترین تکهٔ باقی‌مانده از نظر تعداد رخداد.
+      </p>
+
+      <h3>نقاط داغ</h3>
+      <ul>
+        <li>فایل‌های <span class="path">*.external.scss</span> زیر organization و system (groups، roles، data-sheet، services، SSO، dimensions، …).</li>
+        <li>قوانین تکراری که صفحه را همیشه به RTL هل می‌دهند؛ برای LTR باید یا logical شوند یا به <code>dir</code> سند وابسته شوند، نه hardcode.</li>
+      </ul>
+
+      <h3>نکتهٔ اجرایی</h3>
+      <p>
+        به‌خاطر حجم، بهتر است AMS را در چند PR خرد کنید (مثلاً organization جدا از system)،
+        ولی همه تحت اسکیل یکسان و اسکوپ مشخص.
+      </p>
+    </section>
+
+    <section class="card" id="p3">
+      <h2><span class="badge p3">اولویت ۳</span> بقیهٔ پکیج‌های محصول</h2>
+      <p class="muted">اعداد تقریبی از اسکن SCSS فعلی workspace (بدون vendorهای مشخص‌شده):</p>
+      <table>
+        <thead>
+          <tr>
+            <th>پکیج</th>
+            <th class="num">فایل</th>
+            <th class="num">≈ رخداد</th>
+            <th>توضیح</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="path">dap</span></td>
+            <td class="num">۳۵</td>
+            <td class="num">~۱۰۸</td>
+            <td>ماژول محصول مستقل؛ بعد از base/ams منطقی است.</td>
+          </tr>
+          <tr>
+            <td><span class="path">dia-plugins</span></td>
+            <td class="num">۱۹</td>
+            <td class="num">~۲۶</td>
+            <td>کروم پلاگین‌های DIA.</td>
+          </tr>
+          <tr>
+            <td><span class="path">dia-objects</span> / <span class="path">dia-shared-components</span></td>
+            <td class="num">۲+۱</td>
+            <td class="num">کم</td>
+            <td>همراه dia-plugins ببینید.</td>
+          </tr>
+          <tr>
+            <td><span class="path">termeh</span></td>
+            <td class="num">۴</td>
+            <td class="num">~۱۰</td>
+            <td>کم ولی cascade به اپ‌ها دارد؛ بخش‌های شِل را زودتر از dap در نظر بگیرید.</td>
+          </tr>
+          <tr>
+            <td><span class="path">termeh-charts</span> / <span class="path">termeh-patterns</span></td>
+            <td class="num">۱+۱</td>
+            <td class="num">کم</td>
+            <td>همراه termeh.</td>
+          </tr>
+          <tr>
+            <td><span class="path">authentication</span></td>
+            <td class="num">۱</td>
+            <td class="num">~۱۹</td>
+            <td>صفحه ورود / SSO؛ تجربهٔ اول کاربر در LTR.</td>
+          </tr>
+          <tr>
+            <td><span class="path">notification-center</span></td>
+            <td class="num">۳</td>
+            <td class="num">~۱۲</td>
+            <td>اولویت پایین‌تر.</td>
+          </tr>
+          <tr>
+            <td><span class="path">aip</span></td>
+            <td class="num">۴</td>
+            <td class="num">~۵</td>
+            <td>باقی‌ماندهٔ کم.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        ترتیب پیشنهادی داخل این اولویت:
+        <strong>termeh (تکه‌های شِل) → dap → dia-* → authentication → aip / notification-center / …</strong>
+      </p>
+    </section>
+
+    <section class="card" id="p4">
+      <h2><span class="badge p4">اولویت ۴</span> لایهٔ طراحی / جدول / ادیتور</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>پکیج</th>
+            <th>وضعیت اسکن فعلی</th>
+            <th>یادداشت</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="path">mohaymen-share-components</span></td>
+            <td>در این اسکن SCSS فیزیکیِ الگوی بالا دیده نشد (یا خیلی کم/از قبل logical)</td>
+            <td>با این حال اگر باگ LTR دیدید، TS/HTML و استایل‌های غیر scss را هم چک کنید.</td>
+          </tr>
+          <tr>
+            <td><span class="path">mohaymen-table</span></td>
+            <td>مشابه — در اسکن فعلی hit نداشت</td>
+            <td>جدول‌ها اغلب از base/grid و Kendo هم تأثیر می‌گیرند.</td>
+          </tr>
+          <tr>
+            <td><span class="path">mohaymen-code-editor</span></td>
+            <td>مشابه</td>
+            <td>ادیتور معمولاً LTR اجباری برای کد دارد؛ با layout صفحه قاطی نکنید.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted">
+        این اولویت بیشتر «صحت‌سنجی و باگ‌فیکس موردی» است تا مهاجرت بزرگ مثل AMS.
+      </p>
+    </section>
+
+    <section class="card" id="iap-opt">
+      <h2><span class="badge opt">اختیاری</span> داخل IAP — بعد از مهاجرت اصلی</h2>
+      <h3>Fotorama و attachments</h3>
+      <p>
+        کامپوننت <span class="path">custom-attachments</span> هنوز جهت را به API لایبرری Fotorama می‌دهد
+        و ایندکس تصاویر را برای RTL جابه‌جا می‌کند. این لزوماً باگ نیست، ولی یعنی منطق جهت هنوز در TS است.
+      </p>
+      <ul>
+        <li>اول در LTR واقعی رفتار گالری پیوست را تست کنید.</li>
+        <li>اگر درست بود، دست نزنید.</li>
+        <li>اگر غلط بود: تنظیمات Fotorama / آداپتر ایندکس را اصلاح کنید؛ CSS minified فله‌ای عوض نکنید.</li>
+      </ul>
+
+      <h3>Vendorهای minified</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>دارایی</th>
+            <th>کجا</th>
+            <th>سیاست</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>jQuery Confirm</td>
+            <td><span class="path">iap/assets/jquery-confirm.min.css</span> (+ کپی‌های base)</td>
+            <td>ادیت مستقیم ممنوع مگر مجبور؛ ترجیحاً override در SCSS خودتان</td>
+          </tr>
+          <tr>
+            <td>jqPagination</td>
+            <td><span class="path">iap/assets/jqpagination/</span></td>
+            <td>vendor</td>
+          </tr>
+          <tr>
+            <td>Fotorama</td>
+            <td><span class="path">iap/styles/fotorama.scss</span> / assets</td>
+            <td>vendor + API direction</td>
+          </tr>
+          <tr>
+            <td>PDF.js</td>
+            <td><span class="path">iap/assets/pdf-viewer/</span></td>
+            <td>دست نزنید</td>
+          </tr>
+          <tr>
+            <td>Kendo theme</td>
+            <td><span class="path">base/assets/.../jquery-kendo-*</span></td>
+            <td>از <code>k-rtl</code> و تنظیمات رسمی استفاده کنید</td>
+          </tr>
+          <tr>
+            <td>Offset مارکر نقشه</td>
+            <td>TSهای map در IAP</td>
+            <td><code>left</code>/<code>top</code> پیکسلی را logical نکنید</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card" id="order">
+      <h2>ترتیب پیشنهادی اجرا</h2>
+      <ol class="steps">
+        <li>
+          <strong>base</strong> (+ در صورت نیاز تکه‌های حیاتی termeh که شِل به آن وابسته است)
+        </li>
+        <li>
+          <strong>ams</strong> (ترجیحاً چند PR خرد)
+        </li>
+        <li>
+          <strong>dap</strong> سپس <strong>dia-plugins / dia-objects / dia-shared</strong>
+        </li>
+        <li>
+          <strong>authentication</strong> و بقیهٔ کوچک‌ها
+        </li>
+        <li>
+          صحت‌سنجی share-components / table / code-editor
+        </li>
+        <li>
+          فقط اگر باگ LTR ثابت شد: override دور vendor (نه ادیت .min.css)
+        </li>
+      </ol>
+    </section>
+
+    <section class="card" id="how">
+      <h2>چطور به AI بدهی انجام دهد؟</h2>
+      <p>
+        اسکیل Cursor به نام <code>css-logical-properties-bidi</code> نوشته شده تا همین migration را تکرار کند.
+        در چت Agent بنویسید <code>@css-logical-properties-bidi</code> تا دستورالعمل لود شود، بعد اسکوپ را بگویید.
+      </p>
+      <div class="callout info">
+        <strong>نمونه پیام</strong>
+        <div style="margin-top:0.4rem; direction:ltr; unicode-bidi:isolate; text-align:left; font-family:ui-monospace,Consolas,monospace; font-size:0.88rem; background:#f5f5f4; padding:0.75rem; border-radius:0.5rem;">
+          @css-logical-properties-bidi<br />
+          روی WebUI/base مهاجرت logical CSS و bidirectional را انجام بده.<br />
+          برنچ feature/base-logical-css-properties بساز، کامیت کن، vendor/minified و kendo theme را دست نزن.
+        </div>
+      </div>
+      <p class="muted">
+        مسیر اسکیل در ریپو:
+        <span class="path">.agents/skills/css-logical-properties-bidi/</span>
+        — و کپی در personal Agent Store برای پروژه‌های دیگر.
+      </p>
+    </section>
+
+    <section class="card" id="qa">
+      <h2>چک‌لیست تست بعد از هر پکیج</h2>
+      <ul>
+        <li>یک‌بار با <code>html[dir=rtl]</code> و یک‌بار با <code>html[dir=ltr]</code> (سرویس جهت معمولاً هر دو attribute <code>dir</code> و <code>direction</code> را می‌گذارد).</li>
+        <li>مودال، منو، فرم، گرید/جدول اصلی آن پکیج.</li>
+        <li>آیکن‌های «قبلی/بعدی» و drawerها.</li>
+        <li>مطمئن شوید برای Kendo هنوز در RTL کلاس <code>k-rtl</code> اعمال می‌شود.</li>
+        <li>نقشه/کانواس: جابه‌جایی ناخواستهٔ مارکرها را رگرسیون نکنید.</li>
+      </ul>
+    </section>
+
+    <footer>
+      سند محلی برای مطالعه — تولیدشده برای ادامهٔ کار bidirectional در WebUI.
+    </footer>
+  </div>
+</body>
+</html>
