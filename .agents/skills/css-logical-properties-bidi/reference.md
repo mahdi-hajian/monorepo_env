@@ -89,6 +89,19 @@ Product maps **content** direction to class names that mean absolute sides:
 
 Under document `dir=rtl`, `text-align: end` is physical **left** → Persian cells look “LTR”.
 
+## `dir="auto"` + `text-align: start`
+
+Inherited `start` resolves against the **element’s** direction. English/`dir="auto"` → LTR → left, even inside RTL chrome.
+
+```scss
+body {
+  text-align: start;
+}
+[dir='auto'] {
+  text-align: match-parent; // start/end vs parent direction
+}
+```
+
 ## Shorthands
 
 ```scss
