@@ -1,6 +1,6 @@
 # Spec: FileBrowser tile DnD move (phase 7 reopen)
 
-Status: ready-for-agent  
+Status: done  
 Jira parent: TECSDM-121879  
 Domain: `Web/WebUI/iap/.../plugins/file-browser/CONTEXT.md`  
 ADR: 0011 (updated — multi-select tile DnD; backend owns folder destination collision)
