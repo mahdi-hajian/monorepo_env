@@ -1,0 +1,143 @@
+﻿@font-face {
+    font-family: 'IRANSansWeb';
+    src: url('fonts/IRANSansWeb-Light.eot');
+    src: url('fonts/IRANSansWeb-Light.eot?#iefix') format('embedded-opentype'), url('fonts/IRANSansWeb-Light.woff') format('woff'), url('fonts/IRANSansWeb-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb';
+    src: url('fonts/IRANSansWeb-Bold.eot');
+    src: url('fonts/IRANSansWeb-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/IRANSansWeb-Bold.woff') format('woff'), url('fonts/IRANSansWeb-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IRANSansWeb';
+    src: url('fonts/IRANSansWeb.eot');
+    src: url('fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'), url('fonts/IRANSansWeb.woff') format('woff'), url('fonts/IRANSansWeb.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BYekan';
+    src: url('fonts/BYekan.ttf') format('truetype');
+    unicode-range: U+30-39;
+}
+
+@font-face {
+    font-family: 'B_Nazanin';
+    src: url('fonts/B_Nazanin.eot');
+    src: local('☺'), url('fonts/B_Nazanin.woff') format('woff'), url('fonts/B_Nazanin.ttf') format('truetype'), url('fonts/B_Nazanin.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+30-39;
+}
+
+@font-face {
+    font-family: 'bowtie';
+    src: url('fonts/bowtie.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html,
+body,
+#graph-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: B_Nazanin, BYekan, IRANSansWeb;
+    overflow: hidden;
+}
+
+.tooltip {
+    background: #fff;
+    border: #cdcdcd 1px solid;
+    color: #333;
+    user-select: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 5px 5px 5px #999;
+    will-change: unset;
+    max-width: unset !important;
+}
+
+.tooltip table>tbody>tr>td:first-child {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+input {
+    position: absolute;
+    top: 1em;
+    display: none;
+    z-index: 1;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-radius: 0.5em;
+    border: 1px solid #afafaf;
+    padding: 0 0.5em;
+    font-family: B_Nazanin, BYekan, IRANSansWeb;
+}
+
+.search-image {
+    position: absolute;
+    top: 1em;
+    z-index: 1;
+    cursor: pointer;
+    width: 2em;
+}
+
+.buttons-container {
+    position: absolute;
+    top: 1em;
+    z-index: 1;
+}
+
+.buttons-container button {
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.buttons-container button img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.hierarchical-image {
+    margin-right: -1px;
+}
+
+input:focus,
+input:active {
+    outline: none;
+}
+
+[direction="rtl"] input,
+[direction="rtl"] .search-image {
+    right: 1em;
+}
+
+[direction="rtl"] .buttons-container {
+    left: 1em;
+}
+
+[direction="ltr"] input,
+[direction="ltr"] .search-image {
+    left: 1em;
+}
+
+[direction="ltr"] .buttons-container {
+    right: 1em;
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" dir="rtl" direction="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <title>مدل داده</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <img class="search-image" src="images/search.png" />
+  <input type="text" name="search" />
+  <div id="graph-container"></div>
+  <span class="buttons-container">
+    <button onclick="layoutGraph(false)"><img class="hierarchical-image" src="images/hierarchical.png" /></button>
+    <button onclick="layoutGraph(true)"><img src="images/grid.png" /></button>
+  </span>
+  <script>
+    window.alert = () => { };
+  </script>
+  <script type="text/javascript" src="./mapbox-rtl.js"></script>
+  <script type="text/javascript" src="./images.js"></script>
+  <script type="text/javascript" src="./ogma.min.js"></script>
+  <script type="text/javascript" src="./ogma-wrapper.js"></script>
+  <script type="text/javascript" src="./graph.js"></script>
+  <script>
+    var ogma;
+    loadGraph();
+
+    async function loadGraph() {
+      var websiteDirection = "rtl";
+      const style = new LabelStyle;
+      style.font = (websiteDirection === 'rtl' ? 'B_Nazanin, BYekan,' : '') + 'IRANSansWeb';
+      style.dir = websiteDirection;
+
+      ogma = new OgmaWrapper({
+        options: {
+          interactions: {
+            rotation: {
+              enabled: false
+            },
+            pan: {
+              enabled: false
+            }
+          },
+          backgroundColor: null,
+          texts: {
+            preventOverlap: false
+          }
+        },
+        renderer: 'webgl',
+        container: 'graph-container'
+      }, style);
+
+      await addNodes(ogma);
+      await addEdges(ogma);
+
+      addTooltip(ogma);
+      await layoutGraph(ogma.getEdges().size === 0);
+    }
+
+    async function layoutGraph(isGrid) {
+      ogma.needRender = false;
+
+      if (isGrid) {
+        await ogma.layouts.grid();
+      } else {
+        await ogma.layouts
+          .hierarchical({
+            direction: 'BT',
+            levelDistance: 30,
+            nodeDistance: 15,
+            duration: 500,
+          });
+      }
+
+      await ogma.view.locateGraph({ padding: { right: 20, bottom: 100, left: 20 }, duration: 1000 });
+
+      ogma.needRender = true;
+      ogma.render();
+    }
+
+    function addTooltip(ogma) {
+      const tooltip = (obj) => {
+        if (!obj.getData().tooltip)
+          return '';
+
+        const lines = obj.getData().tooltip.map(x => `<td>${x}</td>`);
+
+        let html = '';
+        for (const line of lines) {
+          html += '<tr>' + line + '</tr>';
+        }
+
+        if (html !== '') {
+          html = `<table>${html}</table>`;
+        }
+        return html;
+      };
+
+      ogma.tools.tooltip.onNodeHover((node) => tooltip(node), { className: 'tooltip', delay: 1000 });
+      ogma.tools.tooltip.onEdgeHover((edge) => tooltip(edge), { className: 'tooltip', delay: 1000 });
+    }
+
+    async function addNodes(ogma) {
+      const nodes = [];
+
+      for (const node of json.nodes) {
+        nodes.push({
+          id: node.id,
+          attributes: {
+            radius: node.radius,
+            color: node.color,
+            image: node.icon ? { url: imagesDic[node.icon], scale: 0.7 } : null,
+            text: { content: node.label, backgroundColor: '#EEE', font: 'IRANSansWeb', size: 18, tip: false, minVisibleSize: 60, padding: 5 }
+          },
+          data: { label: node.label, tooltip: node.tooltip, hasLabel: false }
+        });
+      }
+
+      await ogma.addNodes(nodes);
+    }
+
+    async function addEdges(ogma) {
+      const edges = [];
+
+      for (const edge of json.edges) {
+        edges.push({
+          id: edge.id,
+          source: edge.source,
+          target: edge.target,
+          attributes: {
+            color: edge.color,
+            shape: edge.style.toLowerCase() === 'dashed' ? 'dashed' : !edge.isDirected ? 'line' : edge.isBiDirectional ? { head: 'arrow', tail: 'arrow' } : 'arrow',
+            width: 1,
+            text: { content: edge.label, backgroundColor: '#EEE', font: 'IRANSansWeb', size: 18, minVisibleSize: 16, padding: 5 }
+          },
+          data: {
+            hasLabel: false,
+            tooltip: edge.tooltip
+          }
+        })
+      }
+
+      await ogma.addEdges(edges);
+
+      document.getElementsByTagName("img")[0].addEventListener('click', () => {
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementsByTagName("input")[0].style.display = 'block';
+        document.getElementsByTagName("input")[0].focus();
+        document.getElementsByTagName("img")[0].style.display = 'none';
+      });
+
+      document.getElementById('graph-container').addEventListener('click', (event) => {
+        document.getElementsByTagName("input")[0].style.display = 'none';
+        document.getElementsByTagName("img")[0].style.display = 'block';
+      });
+
+      document.getElementsByTagName("input")[0].addEventListener('keydown', (event) => {
+        if (event.which === 13) {
+          const search = document.getElementsByName('search')[0].value.trim();
+          if (search) {
+            ogma.clearSelection();
+            ogma.getNodes().filter(x => x.getData().label && x.getData().label.indexOf(search) > -1).setSelected(true);
+            ogma.getEdges().filter(x => x.getData().label && x.getData().label.indexOf(search) > -1).setSelected(true);
+
+            fitGraph();
+          }
+        }
+      });
+
+      function fitGraph() {
+        const nodes = ogma.getSelectedNodes();
+        const edges = ogma.getSelectedEdges();
+        ogma.clearLabels();
+        ogma.clearMarks();
+        const duration = 1000;
+
+        if (nodes.size)
+          nodes.locate({ duration: duration }).then(() => ogma.render());
+        else (edges.size)
+        edges.locate({ duration: duration }).then(() => ogma.render());
+      }
+    }
+  </script>
+</body>
+
+</html>
