@@ -4,13 +4,13 @@
 
 **Blocked by:** 01 — OntologyGraphManager library
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Jira:** TECSDM-159414
 
-- [ ] Toolbar on entities/links/attributes opens the same View Graph overlay instead of downloading a ZIP.
-- [ ] Overlay is fullscreen (not a modal dialog) and does not use a separate route.
-- [ ] Preview reflects current in-memory Data Model Design state, including unsaved changes.
-- [ ] Domain mapper in `dm` feeds OntologyGraphManager; missing icon URLs do not crash the overlay.
-- [ ] **بازگشت** closes the overlay and disposes the engine; Escape does not close.
-- [ ] Façade-level tests cover open → preview payload from editor state → close/dispose.
+- [x] Toolbar on entities/links/attributes opens the same View Graph overlay instead of downloading a ZIP.
+- [x] Overlay is fullscreen (not a modal dialog) and does not use a separate route.
+- [x] Preview reflects current in-memory Data Model Design state, including unsaved changes.
+- [x] Domain mapper in `dm` feeds OntologyGraphManager; missing icon URLs do not crash the overlay.
+- [x] **بازگشت** closes the overlay and disposes the engine; Escape does not close.
+- [x] Façade-level tests cover open → preview payload from editor state → close/dispose.
