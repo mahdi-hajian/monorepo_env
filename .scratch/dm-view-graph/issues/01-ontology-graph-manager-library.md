@@ -4,10 +4,10 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Jira:** TECSDM-159413
 
-- [ ] Library is wired into the WebUI workspace like sibling Mohaymen libs and exports OntologyGraphManager plus its thin graph DTO.
-- [ ] Manager supports setGraph, hierarchical layout, grid layout, search-and-locate, tooltips, clear/destroy without wiring/markers/fade/grouping APIs.
-- [ ] Unit tests cover the public contract / pure DTO→Ogma mapping at the secondary seam (no requirement for full WebGL CI canvas).
+- [x] Library is wired into the WebUI workspace like sibling Mohaymen libs and exports OntologyGraphManager plus its thin graph DTO.
+- [x] Manager supports setGraph, hierarchical layout, grid layout, search-and-locate, tooltips, clear/destroy without wiring/markers/fade/grouping APIs.
+- [x] Unit tests cover the public contract / pure DTO→Ogma mapping at the secondary seam (no requirement for full WebGL CI canvas).
