@@ -6,7 +6,7 @@
 
 **Status:** ready-for-agent
 
-**Jira:** (pending)
+**Jira:** TECSDM-159679
 
 - [ ] یک سازندهٔ مشترک درخت سرویس‌داده وجود دارد و قوانین mapping پوشه/سرویس را متمرکز می‌کند
 - [ ] Graph همچنان LoadService context execute را از همین درخت (یا معادل هم‌ارز) انجام می‌دهد بدون پسرفت UX

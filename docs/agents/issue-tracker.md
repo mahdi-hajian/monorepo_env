@@ -39,6 +39,8 @@ Write Jira `description` / comments in **plain Persian Markdown** (headings, lis
 
 Keep issue keys, paths, and API names verbatim inside the Persian prose.
 
+**Product tone on Jira Subtasks:** follow [`.agents/skills/jira-product-subtasks/SKILL.md`](../.agents/skills/jira-product-subtasks/SKILL.md) — user/QA language + clear Definition of Done; keep deep technical detail in `.scratch` / specs, not in the Jira body.
+
 ### Labels / triage on Jira
 
 When applying triage roles, set Jira labels to the strings in `triage-labels.md` when the project allows labels; also keep the local file `Status:` in sync.

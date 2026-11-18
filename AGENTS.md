@@ -39,6 +39,7 @@
 | `farsi-rtl-output` | Persian / RTL replies | `.agents/skills/farsi-rtl-output/SKILL.md` |
 | `web-azure-devops-pr-followup` | ADO PR on **Web** | `.agents/skills/web-azure-devops-pr-followup/SKILL.md` |
 | `web-pr-action` | WebUI branch vs master → HTML RTL PR summary | `.agents/skills/web-pr-action/SKILL.md` |
+| `jira-product-subtasks` | Jira Sub-task copy: Persian product + DoD | `.agents/skills/jira-product-subtasks/SKILL.md` |
 
 ## Manual skills index (C# / LAP)
 

@@ -6,7 +6,7 @@
 
 **Status:** ready-for-agent
 
-**Jira:** (pending)
+**Jira:** TECSDM-159680
 
 - [ ] مدل منوی host از حالت فقط‌تخت خارج می‌شود و children / resolve async را پشتیبانی می‌کند
 - [ ] در FileBrowser grid، زیرمنو با chrome فعلی AG Grid دیده می‌شود (نه تعویض به Termeh)

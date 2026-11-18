@@ -6,7 +6,7 @@
 
 **Status:** ready-for-agent
 
-**Jira:** (pending)
+**Jira:** TECSDM-159681
 
 - [ ] راست‌کلیک LoadService در FileBrowser grid درخت سرویس را async نشان می‌دهد (نه مودال browse به‌عنوان مسیر پیش‌فرض)
 - [ ] انتخاب سرویس دارای پارامتر → Parameters-only modal
