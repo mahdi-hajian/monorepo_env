@@ -1,13 +1,13 @@
 # Claude Code instructions (mono one)
 
-این فایل فقط برای Claude Code است — Cursor آن را نمی‌خواند.
+This file is for Claude Code only — Cursor does not read it.
 
 ## Codebase memory (auto)
 
-پروژه‌های ایندکس‌شده با `codebase-memory-mcp` (MCP تعریف‌شده در `~/.claude.json`):
+Projects indexed with `codebase-memory-mcp` (MCP defined in `~/.claude.json`):
 
-| پروژه | مسیر |
-|-------|------|
+| Project | Path |
+|---------|------|
 | ETLEngine | `ETLEngine/` |
 | LAP.Base | `LAP.Base/` |
 | LAP.DataModel | `LAP.DataModel/` |
@@ -18,33 +18,44 @@
 | Mohaymen.LanguageDictionary.Translations | `Mohaymen.LanguageDictionary.Translations/` |
 | Web | `Web/` |
 
-**همیشه** به جای `Grep`/`Glob` خام برای جستجوی ساختاری کد، agent مناسب codebase-memory را spawn کن:
+**Always** spawn the appropriate codebase-memory agent instead of raw `Grep`/`Glob` for structural code search:
 
-| Tier | Agent | کاربرد |
-|------|-------|--------|
-| 1 | `codebase-memory-scout` | جستجوی سریع provisional (۳-۴ فراخوانی گراف) |
-| 2 | `codebase-memory` | اکتشاف وظیفه‌محور پیش‌فرض |
-| 3 | `codebase-memory-auditor` | ممیزی کامل با scope مشخص |
+| Tier | Agent | Use |
+|------|-------|-----|
+| 1 | `codebase-memory-scout` | Fast provisional search (3–4 graph calls) |
+| 2 | `codebase-memory` | Default task-driven exploration |
+| 3 | `codebase-memory-auditor` | Full audit with a defined scope |
 
-**گردش کار استاندارد:**
-1. `list_projects` — انتخاب پروژه
-2. `index_status` — بررسی تازگی ایندکس
-3. `search_graph` / `trace_path` — جستجو
-4. `check_index_coverage` — اعتبارسنجی مسیرها
-5. fallback به `Read`/`Grep` برای شکاف‌های coverage
+**Standard workflow:**
+1. `list_projects` — select project
+2. `index_status` — check index freshness
+3. `search_graph` / `trace_path` — search
+4. `check_index_coverage` — validate paths
+5. Fall back to `Read`/`Grep` for coverage gaps
 
-**بعد از تغییر فایل‌ها:** `detect_changes` را چک کن و در صورت نیاز `index_repository` بزن.
+**After changing files:** check `detect_changes` and run `index_repository` if needed.
 
-## Agentهای سفارشی
+## Auto-reindex workflow (mandatory)
 
-سه agent سفارشی در `~/.claude/agents/`:
+Git watch is only enabled on the root project `E-mono-one`. The 9 separate projects are not watched.
+**Before every graph query** on a project other than `E-mono-one`, always:
 
-| Agent | فایل |
+1. Check **only that project** with `detect_changes` — do not check all of them
+2. If stale, refresh that one project with `index_repository(mode="full")`
+3. Then run the main query
+
+Refresh only the project you need — not all 9. Do not ask the user.
+
+## Custom agents
+
+Three custom agents live in `~/.claude/agents/`:
+
+| Agent | File |
 |-------|------|
 | `codebase-memory-scout` | `codebase-memory-scout.md` |
 | `codebase-memory` | `codebase-memory.md` |
 | `codebase-memory-auditor` | `codebase-memory-auditor.md` |
 
-## ارجاع به AGENTS.md
+## Reference to AGENTS.md
 
-برای قوانین مشترک (مهارت‌ها، کدنویسی، تست)، فایل [`AGENTS.md`](AGENTS.md) را همیشه بخوان.
+For shared rules (skills, coding, tests), always read [`AGENTS.md`](AGENTS.md).
