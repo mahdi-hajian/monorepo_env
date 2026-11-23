@@ -10,7 +10,7 @@ In Data Model Design, the toolbar action that users know as graph export only do
 
 ## Solution
 
-Replace the toolbar’s immediate download with **View Graph**: open a fullscreen **overlay** (not a modal dialog, not a separate route for now) on the current entities/links/attributes page. The overlay renders the ontology with a thin **OntologyGraphManager** (new `mohaymen-ontology-ogma` library). Graph data is built on the client from the in-memory Data Model Design model (including unsaved edits). **Get Graph** remains available on the overlay via an arrow popup and still downloads the persisted Graph Export Package through existing backend `ExportGraph`. Closing the overlay is only via **بستن** (not Escape).
+Replace the toolbar’s immediate download with **View Graph**: open a fullscreen **overlay** (not a modal dialog, not a separate route for now) on the current entities/links/attributes page. The overlay renders the ontology with a thin **OntologyGraphManager** (new `mohaymen-ontology-ogma` library). Graph data is built on the client from the in-memory Data Model Design model (including unsaved edits). **Get Graph** remains available beside the toolbar View Graph control via an arrow popup and still downloads the persisted Graph Export Package through existing backend `ExportGraph`. Closing the overlay is only via **بستن** (not Escape).
 
 ## User Stories
 
@@ -25,7 +25,7 @@ Replace the toolbar’s immediate download with **View Graph**: open a fullscree
 9. As a Data Model Design user, I want tooltips on nodes/edges showing attribute names (and edge tooltips where applicable), so that I can inspect details without leaving the canvas.
 10. As a Data Model Design user, I want a **بستن** control to close the overlay, so that I return to the exact editor state underneath.
 11. As a Data Model Design user, I do not want Escape to close View Graph, so that accidental key presses do not dismiss the overlay.
-12. As a Data Model Design user, I want Get Graph on the View Graph overlay via an arrow popup, so that download is available without leaving the preview.
+12. As a Data Model Design user, I want Get Graph via an arrow popup next to the toolbar View Graph button, so that download stays on the design toolbar chrome (not on the overlay).
 13. As a Data Model Design user, I want Get Graph to download the persisted Graph Export Package (existing ExportGraph), so that offline ZIP behavior stays familiar even if preview showed unsaved edits.
 14. As a Data Model Design user, I want to understand that Get Graph may differ from the unsaved preview, so that I am not surprised when the ZIP reflects only saved ontology.
 15. As a Data Model Design user, I want nodes without a resolvable icon URL to still render (without image), so that missing icons do not break the whole preview.
@@ -37,21 +37,21 @@ Replace the toolbar’s immediate download with **View Graph**: open a fullscree
 21. As a Data Model Design user, I want toolbar labeling for the entry action to mean View Graph (مشاهده گراف), so that the action matches what happens.
 22. As a Data Model Design user, I want closing View Graph to destroy the graph engine cleanly, so that reopening starts fresh without leaked WebGL/resources.
 23. As a Data Model Design user, I want opening View Graph while already open to be a no-op or refresh per façade rules, so that double-clicks do not stack overlays.
-24. As a Data Model Design user, I want RTL-friendly chrome placement (layout controls vs search/back) per design, so that the overlay matches Figma.
+24. As a Data Model Design user, I want chrome placement to match Figma physical edges (layouts on the left; search and بستن on the right), so that the overlay matches the design—not an RTL-heuristic swap.
 
 ## Implementation Decisions
 
 - **Shell:** Fullscreen overlay on the current Data Model Design page (entities / links / attributes). No dedicated `graph-preview` route in this iteration. Not `app-termeh-modal` / nz-modal.
-- **Entry:** Shared toolbar on all three design pages: add View Graph / مشاهده گراف that opens the overlay. Until Get Graph moves onto the overlay (issue 04), keep Get Graph / دریافت گراف as a separate toolbar button next to View Graph (existing ExportGraph download)—do not leave users without ZIP download between slices.
+- **Entry:** Shared toolbar on all three design pages: View Graph / مشاهده گراف opens the overlay; Get Graph / دریافت گراف is an arrow popup beside that same toolbar control (existing ExportGraph download)—not a separate full toolbar button and not on the overlay.
 - **Close:** Only **بستن**. Do not bind Escape to close.
 - **Engine:** New library `mohaymen-ontology-ogma` exposing `OntologyGraphManager` over raw Ogma 4.x. Capabilities limited to setGraph, hierarchical layout, grid layout, search-and-locate, tooltips, clear, destroy. No GraphManager, no pattern-drawing, no wiring/markers/fade/grouping.
 - **Domain mapping:** In `dm`, map in-memory editor model (`DataModelWrapper` and related types) to the thin graph DTO consumed by OntologyGraphManager (port the rules embodied by backend GraphGenerator/GraphNodeGenerator/GraphEdgeGenerator semantics as needed for preview). Do not put this mapper inside the Ogma library.
 - **Icons:** Prefer editor-ready icon URLs for preview; do not require base64 packaging like ZIP export. Missing URL → node without image; do not fail the whole overlay.
-- **Get Graph:** Final UX: on the overlay, arrow-popup control; invoke existing persisted `ExportGraph` + download link flow (saved system ontology only). Preview may show unsaved; ZIP does not have to match unsaved state. Interim (pre-issue 04): same ExportGraph download remains on the design toolbar next to View Graph.
+- **Get Graph:** Final UX: arrow popup beside toolbar View Graph; invoke existing persisted `ExportGraph` + download link flow (saved system ontology only). Preview may show unsaved; ZIP does not have to match unsaved state. Overlay chrome (per Figma): layout + search + بستن only—no download there.
 - **Primary test seam:** One `dm` View Graph façade coordinating overlay visibility, building preview graph from current editor state, and Get Graph download. Prefer testing this seam’s external behavior over internal Ogma details.
 - **Secondary seam:** OntologyGraphManager public contract (+ pure DTO→Ogma raw mapper in the library if present).
 - **DI:** Keep DataModelDataManagerService scoping as today for this iteration (component-provided on design pages); overlay lives on those pages so in-memory state remains available without hoisting. Route-based preview (and service hoist) explicitly deferred.
-- **Design reference:** Figma IMAP new features file; View Graph overlay frames (full-bleed canvas, layout toggles, search, بستن, Get Graph on overlay)—not modal chrome.
+- **Design reference:** Figma IMAP new features file; View Graph overlay frames (full-bleed canvas, layout toggles, search, بستن)—not modal chrome; Get Graph is toolbar arrow popup next to View Graph.
 
 ### Approved test seams (from design review)
 
