@@ -4,10 +4,10 @@
 
 **Blocked by:** 02 — View Graph overlay + mapper + toolbar entry
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Jira:** TECSDM-159416
 
-- [ ] Layout controls on the overlay switch hierarchical and grid layouts via the manager.
-- [ ] Search finds matching labels and locates selection on the canvas.
-- [ ] Chrome placement matches RTL/design expectations (layout vs search/back regions).
+- [x] Layout controls on the overlay switch hierarchical and grid layouts via the manager.
+- [x] Search finds matching labels and locates selection on the canvas.
+- [x] Chrome placement matches RTL/design expectations (layout vs search/back regions).
